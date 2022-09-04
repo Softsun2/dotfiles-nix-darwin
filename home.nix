@@ -212,7 +212,7 @@
       pkgs.vimPlugins.cmp_luasnip             # completion source: luasnip snippets
       pkgs.vimPlugins.lspkind-nvim            # pictograms for completion suggestions
 
-      mypkgs.vimPlugins.substrata-nvim        # substrata colorscheme
+      mypkgs.substrata-nvim        # substrata colorscheme
     ]; 
 
     extraPackages = with pkgs; [

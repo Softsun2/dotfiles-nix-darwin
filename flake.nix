@@ -27,9 +27,8 @@
         config.allowUnfree = true;
       };
 
-      mypkgs = import ./pkgs pkgs.callpackage {
-        inherit (pkgs.vimUtils) buildVimPluginFrom2Nix;
-        inherit (pkgs) fetchFromGithub;
+      mypkgs = import ./pkgs {
+        inherit pkgs;
       };
 
       lib = nixpkgs.lib;
