@@ -31,7 +31,7 @@ I enjoy how default software usually looks. Want to avoid the whole modern sleek
 
 ### Terminal
 * zsh
-  * fix "no file or dir: hm-session-vars.sh"
+  * fix "no file or dir: hm-session-vars.sh" when opening new zsh
 * tmux
   * fzf into tmux session
     * use case: less frequent workspaces
@@ -47,10 +47,12 @@ I enjoy how default software usually looks. Want to avoid the whole modern sleek
     * buildtime and runtime config files are cool!
 * cheat sheet script
 
-### Desktop Environment
+### Home Environment
 * hotkey daemon?
 * program launcher or figure out nix & ~/Applications
 * yabai wm?
+* ✅ figure out system-wide fonts
+* fix rebuild alias (leaving result link in working dir)
 
 ### NeoVim
 * simple, functional, minimal mental overhead

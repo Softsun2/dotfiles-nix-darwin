@@ -27,12 +27,20 @@
         config.allowUnfree = true;
       };
 
+      mypkgs = import ./pkgs pkgs.callpackage {
+        inherit (pkgs.vimUtils) buildVimPluginFrom2Nix;
+        inherit (pkgs) fetchFromGithub;
+      };
+
       lib = nixpkgs.lib;
     in {
     homeManagerConfigurations = {
       softsun2 = home-manager.lib.homeManagerConfiguration {
         inherit system;
         inherit pkgs;
+        extraSpecialArgs = {
+            inherit mypkgs;
+        };
         configuration = ./home.nix;
         username = "softsun2";
         homeDirectory = "/home/softsun2";

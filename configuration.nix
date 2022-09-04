@@ -22,9 +22,14 @@
   programs.zsh.enable = true;  # default shell on catalina
 
   # system fonts
-  fonts.fonts = with pkgs; [
-    unifont
-  ];
+  fonts = {
+    fontDir.enable = true;     # install fonts to /Library/Fonts
+    fonts = with pkgs; [
+      jetbrains-mono
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      unifont 
+    ];
+  };
 
   # enable key repeating at default speed
   system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, mypkgs, ... }:
 {
 
   # home-manager configuration appendix:
@@ -7,12 +7,12 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # terminal eye candy
+    exa
+
     # terminal workflow
     tldr
     fzf
-    
-    # text editing
-    rnix-lsp
 
     # applications
     # discord
@@ -29,7 +29,7 @@
       # export PATH=$HOME/suckless/dwm/bar:$PATH
       # set vim as default editor
       EDITOR="vim"
-      
+
       # Single line prompt
       AGKOZAK_MULTILINE=0
 
@@ -51,6 +51,9 @@
 
       bindkey '^y' autosuggest-accept
       bindkey -s '^f' 'f\n'
+
+      # auto-attatch to tmux session
+      # tmux a
     '';
 
     history = {
@@ -62,18 +65,19 @@
     enableAutosuggestions = true;
 
     shellAliases = {
-      # ls  = "exa --icons";
+      ls  = "exa --icons";
       l   = "ls -l";
       ll  = "ls -la";
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
+      gd  = "cd $(git rev-parse --show-toplevel)";
 
       shell = "nix-shell";
       home = "vim $HOME/.dotfiles/home.nix";
       build-home = "nix build -o ~/.dotfiles/result ~/.dotfiles/.#homeManagerConfigurations.softsun2.activationPackage && $HOME/.dotfiles/result/activate";
       flake = "vim $HOME/.dotfiles/flake.nix";
       config = "vim $HOME/.dotfiles/configuration.nix";
-      rebuild = "darwin-rebuild switch --flake $HOME/.dotfiles";
+      rebuild = "darwin-rebuild switch --flake ~/.dotfiles";
     };
 
     plugins = [
@@ -115,6 +119,11 @@
   programs.tmux = {
     enable = true;
     prefix = "C-a";
+    escapeTime = 50;
+    terminal = "screen-256color";
+    extraConfig = ''
+      set-option -g status-position top
+    '';
     plugins =  with pkgs; [
       tmuxPlugins.cpu
       {
@@ -136,8 +145,8 @@
     settings = {
       cursor = "none";
       # shell_integration = "no-cursor";
-      # font_family = "JetBrains Mono";
-      font_size = 14;
+      font_family = "JetBrains Mono";
+      font_size = 12;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
       window_padding_width = 5;
@@ -146,25 +155,78 @@
     };
     extraConfig = ''
       # run time colors
-      include ~/.dotfiles/kitty/theme.conf
+      include ~/.dotfiles/config/kitty/theme.conf
 
       # minimize functionality
-      clear_all_shortcuts yes
-      clear_all_mouse_actions yes
+      # clear_all_shortcuts yes
+      # clear_all_mouse_actions yes
 
       # the few shortcuts & mouse actions I actually want
 
       # modifying fontsize
-      map cmd+equal change_font_size all +2.0
-      map cmd+minus change_font_size all -2.0
+      # map cmd+equal change_font_size all +1.0
+      # map cmd+minus change_font_size all -1.0
 
       # copy and pasting (mac)
-      map cmd+c copy_to_clipboard
+      # map cmd+c copy_to_clipboard
       # fix paste
-      map cmd+v paste
+      # map cmd+v paste
 
       # clicking links
     '';
+  };
+
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+
+    # comment
+
+    # written in vim script
+    extraConfig = ''
+      luafile $HOME/.dotfiles/config/nvim/lua/init.lua
+    '';
+
+    plugins = [
+      pkgs.vimPlugins.nvim-treesitter         # better highlighting, indentation, and folding
+      pkgs.vimPlugins.nvim-lspconfig          # lsp
+
+      pkgs.vimPlugins.telescope-nvim          # integrated fuzzy finder
+      pkgs.vimPlugins.plenary-nvim
+
+      pkgs.vimPlugins.harpoon
+      pkgs.vimPlugins.nvim-tree-lua           # file tree
+
+      pkgs.vimPlugins.nvim-web-devicons       # dev icons
+      pkgs.vimPlugins.indent-blankline-nvim   # indent lines
+      pkgs.vimPlugins.vim-nix                 # nix
+
+      pkgs.vimPlugins.luasnip                 # snippets
+
+      pkgs.vimPlugins.nvim-cmp                # completions
+      pkgs.vimPlugins.cmp-buffer              # completion source: buffer
+      pkgs.vimPlugins.cmp-path                # completion source: file path
+      pkgs.vimPlugins.cmp-nvim-lua            # completion source: nvim config aware lua
+      pkgs.vimPlugins.cmp-nvim-lsp            # completion source: lsp
+      pkgs.vimPlugins.cmp-cmdline             # completion source: cmdline
+      pkgs.vimPlugins.cmp_luasnip             # completion source: luasnip snippets
+      pkgs.vimPlugins.lspkind-nvim            # pictograms for completion suggestions
+
+      mypkgs.vimPlugins.substrata-nvim        # substrata colorscheme
+    ]; 
+
+    extraPackages = with pkgs; [
+      # lsp parser compiler
+      gcc
+
+      # language servers
+      rnix-lsp
+      sumneko-lua-language-server
+      nodePackages.pyright
+
+      # telescope depency
+      ripgrep
+    ];
   };
 
   programs.git = {
