@@ -42,6 +42,22 @@
         "type": "github"
       }
     },
+    "mynixpkgs": {
+      "locked": {
+        "lastModified": 1662327403,
+        "narHash": "sha256-c4l/bKQ28PFUPOkzlUQXZPEWhSwiBvqE2Il0WAi8Eg0=",
+        "owner": "Softsun2",
+        "repo": "nixpkgs",
+        "rev": "d67ace1e3cb91750e9ca72781cd4883bd7ebd133",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Softsun2",
+        "ref": "nixpkgs-22.05-darwin",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1662073734,
@@ -62,6 +78,7 @@
       "inputs": {
         "darwin": "darwin",
         "home-manager": "home-manager",
+        "mynixpkgs": "mynixpkgs",
         "nixpkgs": "nixpkgs"
       }
     }

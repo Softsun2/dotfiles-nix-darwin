@@ -2,6 +2,8 @@ local function getHiGuiAttr(group, attr)
   return vim.fn.synIDattr(vim.fn.hlID(group), attr, "cterm")
 end
 
+vim.cmd [[colorscheme substrata]]
+
 vim.cmd('hi SignColumn ctermbg=NONE')
 vim.cmd('hi StatusLineNC cterm=NONE')
 vim.cmd('hi StatusLine cterm=bold,underline')

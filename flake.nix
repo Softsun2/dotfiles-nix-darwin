@@ -10,6 +10,8 @@
     
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.05-darwin";
 
+    mynixpkgs.url = "github:Softsun2/nixpkgs/nixpkgs-22.05-darwin";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +19,7 @@
 
   };
 
-  outputs = inputs @ { self, darwin, nixpkgs, home-manager, ... }:
+  outputs = inputs @ { self, darwin, nixpkgs, mynixpkgs, home-manager, ... }:
     # need to include x86 packages that can't be built on arm yet
     let
       system = "aarch64-darwin";
@@ -27,8 +29,9 @@
         config.allowUnfree = true;
       };
 
-      mypkgs = import ./pkgs {
-        inherit pkgs;
+      mypkgs = import mynixpkgs {
+        inherit system;
+        config.allowUnfree = true;
       };
 
       lib = nixpkgs.lib;
