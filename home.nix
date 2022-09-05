@@ -70,7 +70,7 @@
       ll  = "ls -la";
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
-      gd  = "cd $(git rev-parse --show-toplevel)";
+      gd  = "cd $(git rev-parse --show-toplevel)/";
 
       shell = "nix-shell";
       home = "vim $HOME/.dotfiles/home.nix";
@@ -122,7 +122,9 @@
     escapeTime = 50;
     terminal = "screen-256color";
     extraConfig = ''
-      set-option -g status-position top
+      set-option -g status-position bottom
+      set -g status-bg black 
+      set -g status-fg blue 
     '';
     plugins =  with pkgs; [
       tmuxPlugins.cpu
@@ -149,9 +151,10 @@
       font_size = 12;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
-      window_padding_width = 5;
+      window_padding_width = 10;
       confirm_os_window_close = 0;
       enable_audio_bell = "no";
+      hide_window_decorations = "titlebar-only";
     };
     extraConfig = ''
       # run time colors
@@ -198,7 +201,7 @@
       pkgs.vimPlugins.nvim-tree-lua           # file tree
 
       pkgs.vimPlugins.nvim-web-devicons       # dev icons
-      pkgs.vimPlugins.indent-blankline-nvim   # indent lines
+      pkgs.vimPlugins.indent-blankline-nvim
       pkgs.vimPlugins.vim-nix                 # nix
 
       pkgs.vimPlugins.luasnip                 # snippets
@@ -211,8 +214,13 @@
       pkgs.vimPlugins.cmp-cmdline             # completion source: cmdline
       pkgs.vimPlugins.cmp_luasnip             # completion source: luasnip snippets
       pkgs.vimPlugins.lspkind-nvim            # pictograms for completion suggestions
+      pkgs.vimPlugins.colorizer               # color name highlighter
 
       mypkgs.vimPlugins.substrata-nvim        # substrata colorscheme
+      mypkgs.vimPlugins.aquarium-vim          # aquarium colorscheme
+      mypkgs.vimPlugins.vim-yami              # yami colorscheme
+      mypkgs.vimPlugins.preto                 # preto colorscheme
+      mypkgs.vimPlugins.candle-grey           # candle-grey colorscheme
     ]; 
 
     extraPackages = with pkgs; [

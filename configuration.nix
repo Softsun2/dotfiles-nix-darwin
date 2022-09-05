@@ -43,6 +43,7 @@
   system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;    # disable natural scrolling
 
   # dock
+  system.defaults.dock.autohide = true;
   system.defaults.dock.mru-spaces = false;      # disable rearranging spaces based on most recent use
   system.defaults.dock.show-recents = false;    # hide recent applications
 
