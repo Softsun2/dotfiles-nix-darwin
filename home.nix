@@ -7,6 +7,9 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # xd
+    cmatrix
+
     # terminal eye candy
     exa
 
