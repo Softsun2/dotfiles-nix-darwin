@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# arg: branch name
+toggle () {
+  git checkout "$1"
+  cp monotone.conf "$HOME"/.dotfiles/config/kitty/theme.conf
+}
+
+THEME_PATH=$HOME/.dotfiles/config/nvim/vim-monotone
+cd "$THEME_PATH"
+BRANCH=$(git branch --show-current)
+
+if [ "$BRANCH" = "master" ]; then   # dark theme
+  toggle light
+else                                # light theme
+  toggle master
+fi

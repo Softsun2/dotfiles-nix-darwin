@@ -27,7 +27,7 @@
 
     initExtra = ''
       # shell scripts
-      # export PATH=$HOME/.dotfiles/bin/:$PATH
+      export PATH=$HOME/.dotfiles/bin:$PATH
       # bar script
       # export PATH=$HOME/suckless/dwm/bar:$PATH
       # set vim as default editor
@@ -55,6 +55,11 @@
       bindkey '^y' autosuggest-accept
       bindkey -s '^f' 'f\n'
 
+      # gd function
+      gd () {
+        cd "$(git rev-parse --show-toplevel)"/"$1"
+      }
+
       # auto-attatch to tmux session
       # tmux a
     '';
@@ -73,7 +78,6 @@
       ll  = "ls -la";
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
-      gd  = "cd $(git rev-parse --show-toplevel)/";
 
       shell = "nix-shell";
       home = "vim $HOME/.dotfiles/home.nix";
@@ -190,6 +194,7 @@
 
     # written in vim script
     extraConfig = ''
+      source $HOME/.dotfiles/config/nvim/vim-monotone/colors/monotone.vim
       luafile $HOME/.dotfiles/config/nvim/lua/init.lua
     '';
 
@@ -200,7 +205,7 @@
       pkgs.vimPlugins.telescope-nvim          # integrated fuzzy finder
       pkgs.vimPlugins.plenary-nvim
 
-      pkgs.vimPlugins.harpoon
+      pkgs.vimPlugins.harpoon                 # Tagged files
       pkgs.vimPlugins.nvim-tree-lua           # file tree
 
       pkgs.vimPlugins.nvim-web-devicons       # dev icons
@@ -208,6 +213,7 @@
       pkgs.vimPlugins.vim-nix                 # nix
 
       pkgs.vimPlugins.luasnip                 # snippets
+      pkgs.vimPlugins.nvim-autopairs               # snippets
 
       pkgs.vimPlugins.nvim-cmp                # completions
       pkgs.vimPlugins.cmp-buffer              # completion source: buffer
@@ -218,12 +224,16 @@
       pkgs.vimPlugins.cmp_luasnip             # completion source: luasnip snippets
       pkgs.vimPlugins.lspkind-nvim            # pictograms for completion suggestions
       pkgs.vimPlugins.colorizer               # color name highlighter
+      mypkgs.vimPlugins.vim-monotone          # oldbook colorscheme
+      # pkgs.vimPlugins.everforest              # color name highlighter
 
-      mypkgs.vimPlugins.substrata-nvim        # substrata colorscheme
-      mypkgs.vimPlugins.aquarium-vim          # aquarium colorscheme
-      mypkgs.vimPlugins.vim-yami              # yami colorscheme
-      mypkgs.vimPlugins.preto                 # preto colorscheme
-      mypkgs.vimPlugins.candle-grey           # candle-grey colorscheme
+      # mypkgs.vimPlugins.substrata-nvim        # substrata colorscheme
+      # mypkgs.vimPlugins.aquarium-vim          # aquarium colorscheme
+      # mypkgs.vimPlugins.vim-yami              # yami colorscheme
+      # mypkgs.vimPlugins.preto                 # preto colorscheme
+      # mypkgs.vimPlugins.candle-grey           # candle-grey colorscheme
+      # mypkgs.vimPlugins.oldbook-vim           # oldbook colorscheme
+      # mypkgs.vimPlugins.vim-alayas            # oldbook colorscheme
     ]; 
 
     extraPackages = with pkgs; [

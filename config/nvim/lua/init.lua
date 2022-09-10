@@ -18,7 +18,6 @@ source('colors.lua')
 -- todo
 --
 -- require lua files, don't use a vim cmd
--- harpoon
 -- lsp diagnostic interaction/code actions
 -- mv plugin settings to their own files
 -- mv all keymaps to keymaps.lua
