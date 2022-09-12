@@ -1,19 +1,19 @@
 local o = vim.opt
 
 -- Use or don't use terminal colors, depends on theme
-o.termguicolors = true
+o.termguicolors = false
 
 -- disable dianostic column bg
 vim.cmd('hi SignColumn ctermbg=NONE guibg=NONE')
 
 -- bold & underline status line for active pane
--- vim.cmd('hi StatusLine ctermfg=NONE ctermbg=NONE cterm=bold,underline guifg=NONE guibg=NONE gui=bold,underline')
+vim.cmd('hi StatusLine cterm=bold,underline gui=bold,underline')
 
 -- disable status line for inactive panes
--- vim.cmd('hi clear StatusLineNC')
+vim.cmd('hi StatusLineNC cterm=NONE gui=NONE')
 
 -- disable inverse vertsplit bar bg
--- vim.cmd('hi VertSplit cterm=NONE ctermbg=NONE gui=NONE guibg=NONE')
+vim.cmd('hi VertSplit cterm=NONE gui=NONE')
 
 -- disable folded indicator bg
 vim.cmd('hi Folded ctermbg=NONE guibg=NONE')
@@ -22,25 +22,26 @@ vim.cmd('hi Folded ctermbg=NONE guibg=NONE')
 vim.cmd('hi LineNr ctermbg=NONE guibg=NONE')
 
 -- set minimal cursor line
-vim.cmd('hi CursorLine ctermbg=NONE ctermfg=NONE cterm=bold,underline guibg=NONE guifg=NONE gui=bold,underline')
-
--- set indent line color
--- vim.cmd('hi clear IndentBlankLineChar')
--- vim.cmd('hi link IndentBlankLineChar Comment')
+vim.cmd('hi CursorLine ctermfg=NONE cterm=bold,underline guifg=NONE gui=bold,underline')
 
 -- disable end of buffer tildas
 vim.cmd('hi clear EndOfBuffer')
-vim.cmd('hi link EndOfBuffer Ignore')
+-- vim.cmd('hi link EndOfBuffer ColorColumn')
 
 -- disable match paren bg
--- vim.cmd('hi MatchParen ctermbg=NONE guibg=NONE')
+vim.cmd('hi MatchParen ctermbg=NONE guibg=NONE')
 
 -- set NonText characters to a less noticable color
-vim.cmd('hi clear NonText')
-vim.cmd('hi link NonText Comment')
+vim.cmd('hi NonText ctermfg=DarkGrey')
 
--- set root folder color to
-vim.cmd('hi clear NvimTreeRootFolder')
-vim.cmd('hi link NvimTreeRootFolder Todo')
+-- set indent line color
+vim.cmd('hi clear IndentBlankLineChar')
+vim.cmd('hi link IndentBlankLineChar NonText')
 
-vim.cmd('hi Normal guibg=NONE')
+-- Comment
+vim.cmd('hi clear Comment')
+vim.cmd('hi link Comment LineNr')
+
+-- Special
+vim.cmd('hi clear Special')
+

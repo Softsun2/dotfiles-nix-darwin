@@ -13,6 +13,7 @@
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    extra-platforms = aarch64-darwin x86_64-darwin
   '';
 
   # Auto upgrade nix package and the daemon service.
@@ -25,32 +26,107 @@
   fonts = {
     fontDir.enable = true;     # install fonts to /Library/Fonts
     fonts = with pkgs; [
-      jetbrains-mono
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-      unifont 
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
   };
 
-  # enable key repeating at default speed
-  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-  # value references for the following options
-  # https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
-  system.defaults.NSGlobalDomain.InitialKeyRepeat = 25;
-  system.defaults.NSGlobalDomain.KeyRepeat = 6;
+  system.defaults = {
+    NSGlobalDomain = {
+      # keybord
+      ApplePressAndHoldEnabled = false;               # enable key repeating
+      # value references for the following options
+      # https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
+      InitialKeyRepeat = 15;                          # delay before repeats begin
+      KeyRepeat = 3;                                  # delay between repeats
+      # TODO: Do I really need these?
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticSpellingCorrectionEnabled = false;
 
-  # trackpad
-  system.defaults.trackpad.Clicking = true;                                   # enable tap to click
-  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;    # disable natural scrolling
+      # trackpad
+      "com.apple.swipescrolldirection" = false;     # mouse-wheel-like scrolling
+      AppleEnableSwipeNavigateWithScrolls = false;  # disable two finger navigation gesture
 
-  # dock
-  system.defaults.dock.autohide = true;
-  system.defaults.dock.mru-spaces = false;      # disable rearranging spaces based on most recent use
-  system.defaults.dock.show-recents = false;    # hide recent applications
+      # misc
+      AppleInterfaceStyle = "Dark";                       # dark mode
+      AppleInterfaceStyleSwitchesAutomatically = false;   # disable auto dark/light mode
+      "com.apple.sound.beep.feedback" = 1;                # enable audio feedback when adjusting volume
+    };
 
-  # finder
-  system.defaults.finder.AppleShowAllFiles = true;        # show hidden files
-  system.defaults.finder.ShowStatusBar = true;            # show status bar at bottom of finder windows with item/disk space stats
-  system.defaults.finder.FXPreferredViewStyle = "clmv";   # set the default view to column view
+    trackpad = {
+      Clicking = true;                 # enable tap to click
+    };
+
+    dock = {
+      autohide = true;
+      mru-spaces = false;              # disable rearranging spaces based on most recent use
+      show-recents = false;            # hide recent applications
+      launchanim = false;              # disable opening application animations
+      tilesize = 50;                   # default is 64
+    };
+
+    finder = {
+      AppleShowAllExtensions = true;   # show all file extensions
+      AppleShowAllFiles = true;        # show hidden files
+      QuitMenuItem = true;             # enable quitting finder
+      _FXShowPosixPathInTitle = true;  # show the full POSIX filepath in the window title
+      FXPreferredViewStyle = "clmv";   # set the default view to column view
+    };
+
+    loginwindow = {
+      GuestEnabled = false;   # no guests on my watch
+      SHOWFULLNAME = true;    # display name and password field instead of userlist
+    };
+
+  };
+
+  # services
+  services = {
+
+    yabai = {
+      enable = true;
+      package = pkgs.yabai;
+      config = {
+        focus_follow_mouse = "autofocus";
+        layout = "bsp";
+      };
+    };
+
+    skhd = {
+      enable = true;
+      package = pkgs.skhd;
+    };
+
+  };
+
+  # homebrew
+  homebrew = {
+    enable = true;
+    onActivation = {
+      cleanup = "zap";
+    };
+    global = {
+      brewfile = true;
+      lockfiles = false;
+    };
+    taps = [
+      "homebrew/cask"
+      "homebrew/cask-versions"
+    ];
+    casks = [
+      "unity-hub"
+      "bartender"
+      "discord"
+      "firefox"
+      "launchbar"
+      "slack"
+      "spotify"
+      "zoom"
+    ];
+  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

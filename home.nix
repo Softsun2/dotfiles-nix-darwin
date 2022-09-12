@@ -10,15 +10,14 @@
     # xd
     cmatrix
 
-    # terminal eye candy
+    # eye candy
+    mypkgs.flavours
     exa
+    feh
 
     # terminal workflow
     tldr
     fzf
-
-    # applications
-    # discord
   ];
 
   programs.zsh = {
@@ -52,6 +51,9 @@
       autoload edit-command-line; zle -N edit-command-line
       bindkey '^e' edit-command-line
 
+      # falvours config location
+      export FLAVOURS_CONFIG_FILE=$HOME/.dotfiles/config/flavours/config.toml
+
       bindkey '^y' autosuggest-accept
       bindkey -s '^f' 'f\n'
 
@@ -62,6 +64,10 @@
 
       # auto-attatch to tmux session
       # tmux a
+    '';
+
+    profileExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
 
     history = {
@@ -84,7 +90,6 @@
       build-home = "nix build -o ~/.dotfiles/result ~/.dotfiles/.#homeManagerConfigurations.softsun2.activationPackage && $HOME/.dotfiles/result/activate";
       flake = "vim $HOME/.dotfiles/flake.nix";
       config = "vim $HOME/.dotfiles/configuration.nix";
-      rebuild = "darwin-rebuild switch --flake ~/.dotfiles";
     };
 
     plugins = [
@@ -152,8 +157,8 @@
   programs.kitty = {
     enable = true;
     settings = {
+      allow_remote_control = true;
       cursor = "none";
-      # shell_integration = "no-cursor";
       font_family = "JetBrains Mono";
       font_size = 12;
       scrollback_lines = 5000;
@@ -165,7 +170,7 @@
     };
     extraConfig = ''
       # run time colors
-      include ~/.dotfiles/config/kitty/theme.conf
+      include ~/.dotfiles/theme/kitty/theme.conf
 
       # minimize functionality
       # clear_all_shortcuts yes
@@ -194,47 +199,36 @@
 
     # written in vim script
     extraConfig = ''
-      source $HOME/.dotfiles/config/nvim/vim-monotone/colors/monotone.vim
       luafile $HOME/.dotfiles/config/nvim/lua/init.lua
     '';
 
-    plugins = [
-      pkgs.vimPlugins.nvim-treesitter         # better highlighting, indentation, and folding
-      pkgs.vimPlugins.nvim-lspconfig          # lsp
+    plugins = with pkgs.vimPlugins; [
+      nvim-treesitter         # better highlighting, indentation, and folding
+      nvim-lspconfig          # lsp
 
-      pkgs.vimPlugins.telescope-nvim          # integrated fuzzy finder
-      pkgs.vimPlugins.plenary-nvim
+      telescope-nvim          # integrated fuzzy finder
+      plenary-nvim
 
-      pkgs.vimPlugins.harpoon                 # Tagged files
-      pkgs.vimPlugins.nvim-tree-lua           # file tree
+      harpoon                 # Tagged files
+      nvim-tree-lua           # file tree
 
-      pkgs.vimPlugins.nvim-web-devicons       # dev icons
-      pkgs.vimPlugins.indent-blankline-nvim
-      pkgs.vimPlugins.vim-nix                 # nix
+      nvim-web-devicons       # dev icons
+      indent-blankline-nvim
+      vim-nix                 # nix
 
-      pkgs.vimPlugins.luasnip                 # snippets
-      pkgs.vimPlugins.nvim-autopairs               # snippets
+      luasnip                 # snippets
+      nvim-autopairs               # snippets
 
-      pkgs.vimPlugins.nvim-cmp                # completions
-      pkgs.vimPlugins.cmp-buffer              # completion source: buffer
-      pkgs.vimPlugins.cmp-path                # completion source: file path
-      pkgs.vimPlugins.cmp-nvim-lua            # completion source: nvim config aware lua
-      pkgs.vimPlugins.cmp-nvim-lsp            # completion source: lsp
-      pkgs.vimPlugins.cmp-cmdline             # completion source: cmdline
-      pkgs.vimPlugins.cmp_luasnip             # completion source: luasnip snippets
-      pkgs.vimPlugins.lspkind-nvim            # pictograms for completion suggestions
-      pkgs.vimPlugins.colorizer               # color name highlighter
-      mypkgs.vimPlugins.vim-monotone          # oldbook colorscheme
-      # pkgs.vimPlugins.everforest              # color name highlighter
-
-      # mypkgs.vimPlugins.substrata-nvim        # substrata colorscheme
-      # mypkgs.vimPlugins.aquarium-vim          # aquarium colorscheme
-      # mypkgs.vimPlugins.vim-yami              # yami colorscheme
-      # mypkgs.vimPlugins.preto                 # preto colorscheme
-      # mypkgs.vimPlugins.candle-grey           # candle-grey colorscheme
-      # mypkgs.vimPlugins.oldbook-vim           # oldbook colorscheme
-      # mypkgs.vimPlugins.vim-alayas            # oldbook colorscheme
-    ]; 
+      nvim-cmp                # completions
+      cmp-buffer              # completion source: buffer
+      cmp-path                # completion source: file path
+      cmp-nvim-lua            # completion source: nvim config aware lua
+      cmp-nvim-lsp            # completion source: lsp
+      cmp-cmdline             # completion source: cmdline
+      cmp_luasnip             # completion source: luasnip snippets
+      lspkind-nvim            # pictograms for completion suggestions
+      colorizer               # color name highlighter
+    ];
 
     extraPackages = with pkgs; [
       # lsp parser compiler
