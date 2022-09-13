@@ -18,6 +18,8 @@
     # terminal workflow
     tldr
     fzf
+    jq
+    tree
   ];
 
   programs.zsh = {

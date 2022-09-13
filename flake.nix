@@ -54,7 +54,7 @@
         inherit system;
         modules = [ ./configuration.nix ];
       };
-    };      
+    };
 
     };
 }

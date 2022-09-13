@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
-
+let
+  yabai = pkgs.yabai.overrideAttrs (old: rec {
+    src = builtins.fetchTarball {
+      url = https://github.com/koekeishiya/yabai/files/7915231/yabai-v4.0.0.tar.gz;
+      sha256 = "sha256:0rs6ibygqqzwsx4mfdx8h1dqmpkrsfig8hi37rdmlcx46i3hv74k";
+    };
+  });
+in
 {
   # nix-darwin options: https://daiderd.com/nix-darwin/manual/index.html
   # https://github.com/LnL7/nix-darwin/blob/master/tests/system-defaults-write.nix
@@ -53,7 +60,7 @@
       # misc
       AppleInterfaceStyle = "Dark";                       # dark mode
       AppleInterfaceStyleSwitchesAutomatically = false;   # disable auto dark/light mode
-      "com.apple.sound.beep.feedback" = 1;                # enable audio feedback when adjusting volume
+      "com.apple.sound.beep.feedback" = 0;                # enable audio feedback when adjusting volume
     };
 
     trackpad = {
@@ -88,16 +95,134 @@
 
     yabai = {
       enable = true;
-      package = pkgs.yabai;
+      package = yabai;
       config = {
-        focus_follow_mouse = "autofocus";
-        layout = "bsp";
+        # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#config
+
+        # global settings
+        mouse_follows_focus = "off";          # don't move mouse to focused window
+        focus_follows_mouse = "autofocus";    # focus but don't raise window under mouse
+        window_origin_display = "default";    # new windows are managed by active display
+        window_placement = "second_child";    # new windows become second-leaf node
+        window_topmost = "off";               # don't make floating windows stay on top
+        window_shadow  = "on";
+        window_opacity = "off";               # disable opacity for windows
+        window_opacity_duration = 0.0;        # duration of opacity transition
+        active_window_opacity = 1.0;
+        normal_window_opacity = 0.90;
+        window_border = "off";                # draw window borders, this doesn't seem to be working anyway
+        window_border_width = 5;
+        # TODO: is this flavour-able?
+        active_window_border_color = "0xff775759";
+        normal_window_border_color = "0xff555555";
+        insert_feedback_color = "0xffd75f5f";
+        split_ratio = 0.50;
+        auto_balance = "off";                 # disable all windows occupying the same amount of area
+        mouse_modifier = "fn";                # mod key for mouse actions
+        mouse_action1 = "move";               # mod + left-click -> move window
+        mouse_action2 = "resize";             # mod + right-click -> resize mindow
+        mouse_drop_action = "swap";           # dropping a window onto the center of another window swaps the two windows
+
+        # space settings
+        layout = "bsp";                       # binary space partitions
+        top_padding = 15;
+        bottom_padding = 15;
+        left_padding = 15;
+        right_padding = 15;
+        window_gap = 15;
+
       };
+
+      extraConfig = ''
+        yabai -m rule --add app="^System Preferences$" manage=off
+        yabai -m rule --add app="^Archive Utility$" manage=off
+        yabai -m rule --add app="^zoom.us$" manage=off
+      '';
+
     };
 
     skhd = {
       enable = true;
       package = pkgs.skhd;
+      skhdConfig = ''
+        # These are bound to change, I want these to emulate dwm at some point
+
+        # focus window
+         alt - h : yabai -m window --focus west
+         alt - j : yabai -m window --focus south
+         alt - k : yabai -m window --focus north
+         alt - l : yabai -m window --focus east
+
+        # swap managed window
+        shift + alt - h : yabai -m window --swap west
+        shift + alt - j : yabai -m window --swap south
+        shift + alt - k : yabai -m window --swap north
+        shift + alt - l : yabai -m window --swap east
+
+        # move managed window
+        shift + alt + ctrl - h : yabai -m window --warp west
+        shift + alt + ctrl - j : yabai -m window --warp south
+        shift + alt + ctrl - k : yabai -m window --warp north
+        shift + alt + ctrl - l : yabai -m window --warp east
+
+        # rotate tree
+        alt - r : yabai -m space --rotate 90
+
+        # toggle window fullscreen zoom
+        alt - f : yabai -m window --toggle zoom-fullscreen
+
+        # toggle padding and gap
+        alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+        # float / unfloat window and center on screen
+        alt - t : yabai -m window --toggle float;\
+                  yabai -m window --grid 4:4:1:1:2:2
+
+        # toggle window split type
+        alt - e : yabai -m window --toggle split
+
+        # balance size of windows
+        shift + alt - 0 : yabai -m space --balance
+
+        # move window and focus desktop
+        shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+        shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+        shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+        shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+        shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+        shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
+        shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
+        shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
+        shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
+
+        # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+        shift + alt - n : yabai -m space --create && \
+                           index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                           yabai -m window --space "$\{index}" && \
+                           yabai -m space --focus "$\{index}"
+
+        # fast focus desktop
+        cmd - 0 : yabai -m space --focus recent
+
+        # send window to monitor and follow focus
+        shift + alt - n : yabai -m window --display next; yabai -m display --focus next
+        shift + alt - p : yabai -m window --display previous; yabai -m display --focus previous
+
+        # increase window size
+        shift + alt - w : yabai -m window --resize top:0:-20
+        shift + alt - d : yabai -m window --resize left:-20:0
+
+        # decrease window size
+        shift + alt - s : yabai -m window --resize bottom:0:-20
+        shift + alt - a : yabai -m window --resize top:0:20
+
+        # Terminal
+        alt - return : /Users/softsun2/.nix-profile/bin/kitty -d=$HOME --single-instance --start-as=maximized
+
+        # dmenu type launcher:
+        # alt - p :
+
+      '';
     };
 
   };
@@ -121,7 +246,6 @@
       "bartender"
       "discord"
       "firefox"
-      "launchbar"
       "slack"
       "spotify"
       "zoom"
