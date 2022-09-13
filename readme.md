@@ -9,7 +9,7 @@ Override nix pkgs to include x86 builds of packages not available on aarch.
 ❓ I looked into this, doesn't make a whole lot of sense to me how the override works and I wasn't able to get it to work. Just going to control brew for these packages instead.
 
 ## MacOS
-* Make a pr to add [this](1) to nix-darwin?
+* Make a pr to add [this](https://www.mackungfu.org/UsabilityhackClickdraganywhereinmacOSwindowstomovethem) to nix-darwin?
 * yabai wm
   * very slow
 * hotkey daemon (skhd)
@@ -31,7 +31,7 @@ Override nix pkgs to include x86 builds of packages not available on aarch.
   * learn tmux cmds and config
     * vi mode for cmd line
 * ✅ fzf
-* setup [kitty](2)
+* setup [kitty](https://sw.kovidgoyal.net/kitty/#)
   * unmap annoying binds
   * startup options
   * additional config
@@ -57,6 +57,3 @@ Override nix pkgs to include x86 builds of packages not available on aarch.
   * ✅ treesitter
   * faster lsp-s?
   * harpoon
-
-[1]: https://www.mackungfu.org/UsabilityhackClickdraganywhereinmacOSwindowstomovethem
-[2]: https://sw.kovidgoyal.net/kitty/#
