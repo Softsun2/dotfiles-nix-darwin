@@ -1,19 +1,21 @@
--- source all configurations from one file
-NvimLuaConfigPrefix = '~/.dotfiles/config/nvim/lua/'
-
--- sources a file in this dir
 local function source(src)
-  vim.cmd('source ' .. NvimLuaConfigPrefix .. src)
+  dofile(
+    '/Users/softsun2/.dotfiles/config/nvim/lua/' ..
+    src ..
+    '.lua'
+  )
 end
 
-source('settings.lua')
-source('keymaps.lua')
-source('lsp.lua')
-source('luasnip.lua')
-source('completion.lua')
-source('plugins.lua')
-source('telescope.lua')
-source('colors.lua')
+source('settings')          -- TODO: this must be sourced before colors
+source('keymaps')
+source('lsp')
+source('luasnip')
+source('completion')
+source('telescope')
+source('treesitter')
+source('colors')
+source('indent-blankline')
+source('nvim-tree')
 
 -- todo
 --

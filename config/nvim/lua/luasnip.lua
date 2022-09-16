@@ -1,6 +1,9 @@
 local ls = require "luasnip"
 local types = require "luasnip.util.types"
 
+-- add friendly snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
 ls.config.set_config {
   -- be able to jump back into snippet even if you move
   -- outside of the section

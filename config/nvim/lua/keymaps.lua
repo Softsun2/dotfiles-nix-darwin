@@ -35,7 +35,7 @@ nkeymap( 'gd', ":Telescope lsp_definitions<cr>")
 -- harpoon
 nkeymap( '<leader>h', ":lua require('harpoon.ui').toggle_quick_menu()<cr>")
 nkeymap( '<leader>m', ":lua require('harpoon.mark').add_file()<cr>")
--- I'm sure there's a better way of doing this
+-- I'm sure there's a better way of doing this lol
 nkeymap( '<leader>1', ":lua require('harpoon.ui').nav_file(1)<cr>")
 nkeymap( '<leader>2', ":lua require('harpoon.ui').nav_file(2)<cr>")
 nkeymap( '<leader>3', ":lua require('harpoon.ui').nav_file(3)<cr>")

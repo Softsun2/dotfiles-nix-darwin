@@ -44,6 +44,9 @@ lspconfig.pyright.setup {
 
 
 -- html ?
+lspconfig.html.setup {
+  capabilities = capabilities,
+}
 
 
 -- css ?

@@ -242,7 +242,6 @@ in
       "homebrew/cask-versions"
     ];
     casks = [
-      "unity-hub"
       "bartender"
       "discord"
       "firefox"

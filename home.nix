@@ -6,6 +6,8 @@
 
   programs.home-manager.enable = true;
 
+  # local port forwarding webserver
+  # nodePackages.live-server
   home.packages = with pkgs; [
     # xd
     cmatrix
@@ -14,6 +16,9 @@
     mypkgs.flavours
     exa
     feh
+
+    # applications
+    zathura
 
     # terminal workflow
     tldr
@@ -63,9 +68,6 @@
       gd () {
         cd "$(git rev-parse --show-toplevel)"/"$1"
       }
-
-      # auto-attatch to tmux session
-      # tmux a
     '';
 
     profileExtra = ''
@@ -142,17 +144,17 @@
     '';
     plugins =  with pkgs; [
       tmuxPlugins.cpu
-      {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '15' # minutes
-        '';
-      }
+      # {
+      #   plugin = tmuxPlugins.resurrect;
+      #   extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      # }
+      # {
+      #   plugin = tmuxPlugins.continuum;
+      #   extraConfig = ''
+      #     set -g @continuum-restore 'on'
+      #     set -g @continuum-save-interval '15' # minutes
+      #   '';
+      # }
     ];
   };
 
@@ -201,11 +203,27 @@
 
     # written in vim script
     extraConfig = ''
-      luafile $HOME/.dotfiles/config/nvim/lua/init.lua
+      lua << EOF
+        vim.opt_local.runtimepath:prepend('/Users/softsun2/.dotfiles/config/nvim/lua')
+      EOF
+      luafile ~/.dotfiles/config/nvim/lua/init.lua
     '';
 
     plugins = with pkgs.vimPlugins; [
-      nvim-treesitter         # better highlighting, indentation, and folding
+      ( nvim-treesitter. withPlugins (
+        plugins: with plugins; [
+          tree-sitter-nix
+          tree-sitter-lua
+          tree-sitter-bash
+          tree-sitter-c
+          tree-sitter-cpp
+          tree-sitter-make
+          tree-sitter-python
+          tree-sitter-html
+          tree-sitter-css
+          tree-sitter-json
+        ]
+      ))
       nvim-lspconfig          # lsp
 
       telescope-nvim          # integrated fuzzy finder
@@ -218,8 +236,9 @@
       indent-blankline-nvim
       vim-nix                 # nix
 
-      luasnip                 # snippets
-      nvim-autopairs               # snippets
+      luasnip                 # snippet engine
+      friendly-snippets       # more snippets
+      # nvim-autopairs
 
       nvim-cmp                # completions
       cmp-buffer              # completion source: buffer
@@ -233,13 +252,11 @@
     ];
 
     extraPackages = with pkgs; [
-      # lsp parser compiler
-      gcc
-
       # language servers
       rnix-lsp
       sumneko-lua-language-server
       nodePackages.pyright
+      nodePackages.vscode-langservers-extracted
 
       # telescope depency
       ripgrep
