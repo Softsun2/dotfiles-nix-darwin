@@ -17,7 +17,7 @@ in
   ];
 
   # enable flakes
-  nix.package = pkgs.nixFlakes;
+  nix.package = pkgs.nixVersions.stable;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     extra-platforms = aarch64-darwin x86_64-darwin
@@ -111,11 +111,10 @@ in
         active_window_opacity = 1.0;
         normal_window_opacity = 0.90;
         window_border = "off";                # draw window borders, this doesn't seem to be working anyway
-        window_border_width = 5;
-        # TODO: is this flavour-able?
-        active_window_border_color = "0xff775759";
-        normal_window_border_color = "0xff555555";
-        insert_feedback_color = "0xffd75f5f";
+        # window_border_width = 5;
+        # active_window_border_color = "0xff775759";
+        # normal_window_border_color = "0xff555555";
+        # insert_feedback_color = "0xffd75f5f";
         split_ratio = 0.50;
         auto_balance = "off";                 # disable all windows occupying the same amount of area
         mouse_modifier = "fn";                # mod key for mouse actions
@@ -242,6 +241,7 @@ in
       "homebrew/cask-versions"
     ];
     casks = [
+      "gephi"
       "bartender"
       "discord"
       "firefox"

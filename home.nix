@@ -6,25 +6,27 @@
 
   programs.home-manager.enable = true;
 
-  # local port forwarding webserver
-  # nodePackages.live-server
-  home.packages = with pkgs; [
+  home.packages = [
     # xd
-    cmatrix
+    pkgs.cmatrix
 
     # eye candy
     mypkgs.flavours
-    exa
-    feh
+    pkgs.exa
+    pkgs.feh
 
     # applications
-    zathura
+    pkgs.zathura
 
     # terminal workflow
-    tldr
-    fzf
-    jq
-    tree
+    pkgs.tldr
+    pkgs.fzf
+    pkgs.jq
+    pkgs.tree
+    pkgs.nodePackages.live-server
+
+    # ?
+    pkgs.nodejs
   ];
 
   programs.zsh = {
@@ -88,6 +90,7 @@
       ll  = "ls -la";
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
+      s   = "kitty +kitten ssh";
 
       shell = "nix-shell";
       home = "vim $HOME/.dotfiles/home.nix";
@@ -164,7 +167,7 @@
       allow_remote_control = true;
       cursor = "none";
       font_family = "JetBrains Mono";
-      font_size = 12;
+      font_size = 20;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
       window_padding_width = 10;
@@ -257,6 +260,7 @@
       sumneko-lua-language-server
       nodePackages.pyright
       nodePackages.vscode-langservers-extracted
+      nodePackages.typescript-language-server
 
       # telescope depency
       ripgrep

@@ -7,7 +7,7 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     mynixpkgs.url = "github:Softsun2/nixpkgs/nixpkgs-22.05-darwin";
@@ -45,7 +45,7 @@
         };
         configuration = ./home.nix;
         username = "softsun2";
-        homeDirectory = "/home/softsun2";
+        homeDirectory = "/Users/softsun2";
       };
     };
 

@@ -16,6 +16,12 @@ template = 'kitty'
 subtemplate = 'default-256'
 hook = 'kitty @ set-colors -a -c $HOME/.dotfiles/theme/kitty/theme.conf'
 
+# zathura
+[[item]]
+file = '$HOME/.dotfiles/theme/zathura/zathurarc'
+template = 'zathura'
+subtemplate = 'recolor'
+
 # 
 # # neovim
 # [[item]]
