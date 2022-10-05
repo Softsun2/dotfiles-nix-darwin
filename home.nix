@@ -1,4 +1,15 @@
 { config, pkgs, mypkgs, ... }:
+let
+  typescript-language-server-fixed = pkgs.symlinkJoin {
+    name = "typescript-language-server";
+    paths = [ pkgs.nodePackages.typescript-language-server ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/typescript-language-server \
+        --add-flags --tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib/
+    '';
+  };
+in
 {
 
   # home-manager configuration appendix:
@@ -27,6 +38,10 @@
 
     # ?
     pkgs.nodejs
+
+    # programming lanuages
+    pkgs.ocaml
+    pkgs.ocamlPackages.utop
   ];
 
   programs.zsh = {
@@ -40,9 +55,6 @@
       # export PATH=$HOME/suckless/dwm/bar:$PATH
       # set vim as default editor
       EDITOR="vim"
-
-      # Single line prompt
-      AGKOZAK_MULTILINE=0
 
       # Basic auto/tab complete
       autoload -U compinit
@@ -91,6 +103,7 @@
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
       s   = "kitty +kitten ssh";
+      dotfiles = "cd ~/.dotfiles";
 
       shell = "nix-shell";
       home = "vim $HOME/.dotfiles/home.nix";
@@ -213,7 +226,7 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
-      ( nvim-treesitter. withPlugins (
+      ( nvim-treesitter.withPlugins (
         plugins: with plugins; [
           tree-sitter-nix
           tree-sitter-lua
@@ -225,6 +238,7 @@
           tree-sitter-html
           tree-sitter-css
           tree-sitter-json
+          tree-sitter-ocaml
         ]
       ))
       nvim-lspconfig          # lsp
@@ -234,6 +248,7 @@
 
       harpoon                 # Tagged files
       nvim-tree-lua           # file tree
+      vim-floaterm                # floating terminal
 
       nvim-web-devicons       # dev icons
       indent-blankline-nvim
@@ -260,7 +275,9 @@
       sumneko-lua-language-server
       nodePackages.pyright
       nodePackages.vscode-langservers-extracted
-      nodePackages.typescript-language-server
+      nodePackages.typescript
+      typescript-language-server-fixed
+      ocamlPackages.ocaml-lsp
 
       # telescope depency
       ripgrep

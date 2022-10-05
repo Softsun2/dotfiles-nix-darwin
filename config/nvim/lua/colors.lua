@@ -45,3 +45,6 @@ vim.cmd('hi link Comment LineNr')
 -- Special
 vim.cmd('hi clear Special')
 
+-- Pmenu (popup menu)
+-- vim.cmd('hi clear Pmenu')
+-- vim.cmd('hi link Pmenu CursorLineFold')

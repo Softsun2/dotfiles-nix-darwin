@@ -57,3 +57,10 @@ lspconfig.html.setup {
 lspconfig.tsserver.setup {
   capabilities = capabilities,
 }
+
+
+-- ocaml
+lspconfig.ocamllsp.setup {
+  capabilities = capabilities,
+}
+
