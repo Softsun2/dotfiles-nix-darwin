@@ -64,3 +64,10 @@ lspconfig.ocamllsp.setup {
   capabilities = capabilities,
 }
 
+
+-- R
+lspconfig.r_language_server.setup {
+  capabilities = capabilities,
+}
+
+

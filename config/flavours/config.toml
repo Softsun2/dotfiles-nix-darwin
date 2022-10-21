@@ -5,6 +5,10 @@ schemes = "https://github.com/Softsun2/base16-schemes-source"
 name = "tarko"
 source = "https://github.com/Softsun2/base16-tarko-scheme"
 
+[[extra_scheme]]
+name = "og-themes"
+source = "https://github.com/Softsun2/base16-og-themes"
+
 [[extra_template]]
 name = "dwm-xrdb"
 source = "https://github.com/Softsun2/base16-dwm-xrdb"

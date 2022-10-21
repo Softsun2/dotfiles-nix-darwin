@@ -35,6 +35,7 @@ in
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      gohufont
     ];
   };
 
@@ -147,10 +148,10 @@ in
         # These are bound to change, I want these to emulate dwm at some point
 
         # focus window
-         alt - h : yabai -m window --focus west
-         alt - j : yabai -m window --focus south
-         alt - k : yabai -m window --focus north
-         alt - l : yabai -m window --focus east
+        alt - h : yabai -m window --focus west
+        alt - j : yabai -m window --focus south
+        alt - k : yabai -m window --focus north
+        alt - l : yabai -m window --focus east
 
         # swap managed window
         shift + alt - h : yabai -m window --swap west
@@ -220,13 +221,12 @@ in
 
         # dmenu type launcher:
         # alt - p :
-
       '';
     };
 
   };
 
-  # homebrew
+
   homebrew = {
     enable = true;
     onActivation = {
@@ -241,8 +241,8 @@ in
       "homebrew/cask-versions"
     ];
     casks = [
+      "unity-hub"
       "gephi"
-      "bartender"
       "discord"
       "firefox"
       "slack"

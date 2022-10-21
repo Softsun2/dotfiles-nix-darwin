@@ -18,6 +18,7 @@ in
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.yt-dlp
     # xd
     pkgs.cmatrix
 
@@ -35,6 +36,7 @@ in
     pkgs.jq
     pkgs.tree
     pkgs.nodePackages.live-server
+    pkgs.inetutils
 
     # ?
     pkgs.nodejs
@@ -42,6 +44,7 @@ in
     # programming lanuages
     pkgs.ocaml
     pkgs.ocamlPackages.utop
+    pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 dplyr xts ]; }
   ];
 
   programs.zsh = {
@@ -63,6 +66,9 @@ in
       compinit
       #include hidden files in completions
       _comp_options+=(globdots)
+
+      # Single line prompt
+      AGKOZAK_MULTILINE=0
 
       # vi mode
       bindkey -v
