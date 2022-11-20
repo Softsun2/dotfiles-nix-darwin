@@ -6,5 +6,5 @@ yt-dlp \
   --audio-format mp3 \
   --embed-thumbnail \
   --no-abort-on-error \
-  --output '~/Music/%(uploader)s/%(album)s/%(title)s.%(ext)s' \
+  --output '~/Music/soundcloud/%(playlist)s/%(title)s.%(ext)s' \
   $1

@@ -11,6 +11,7 @@ let
   };
 in
 {
+  manual.manpages.enable = false;
 
   # home-manager configuration appendix:
   # https://rycee.gitlab.io/home-manager/options.html
@@ -26,6 +27,7 @@ in
     mypkgs.flavours
     pkgs.exa
     pkgs.feh
+    pkgs.htop
 
     # applications
     pkgs.zathura
@@ -35,16 +37,16 @@ in
     pkgs.fzf
     pkgs.jq
     pkgs.tree
-    pkgs.nodePackages.live-server
     pkgs.inetutils
 
-    # ?
+    # node stuff
     pkgs.nodejs
+    pkgs.nodePackages.live-server
 
     # programming lanuages
     pkgs.ocaml
     pkgs.ocamlPackages.utop
-    pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 dplyr xts ]; }
+    # pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 dplyr xts ]; }
   ];
 
   programs.zsh = {
@@ -110,6 +112,7 @@ in
       f   = "cd $(find . -type d | fzf)";
       s   = "kitty +kitten ssh";
       dotfiles = "cd ~/.dotfiles";
+      school = "cd ~/school";
 
       shell = "nix-shell";
       home = "vim $HOME/.dotfiles/home.nix";
@@ -185,14 +188,15 @@ in
     settings = {
       allow_remote_control = true;
       cursor = "none";
-      font_family = "JetBrains Mono";
-      font_size = 20;
+      font_family = "JetBrainsMonoNL Nerd Font Mono";
+      font_size = 16;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
       window_padding_width = 10;
       confirm_os_window_close = 0;
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
+      disable_ligatures = "never";
     };
     extraConfig = ''
       # run time colors
@@ -232,11 +236,12 @@ in
     '';
 
     plugins = with pkgs.vimPlugins; [
+
       ( nvim-treesitter.withPlugins (
         plugins: with plugins; [
           tree-sitter-nix
-          tree-sitter-lua
-          tree-sitter-bash
+          # tree-sitter-lua
+          # tree-sitter-bash
           tree-sitter-c
           tree-sitter-cpp
           tree-sitter-make
@@ -248,22 +253,34 @@ in
         ]
       ))
       nvim-lspconfig          # lsp
+      lspsaga-nvim            # better lsp ui
 
       telescope-nvim          # integrated fuzzy finder
       plenary-nvim
 
       harpoon                 # Tagged files
       nvim-tree-lua           # file tree
-      vim-floaterm                # floating terminal
+      vim-floaterm            # floating terminal
 
       nvim-web-devicons       # dev icons
       indent-blankline-nvim
       vim-nix                 # nix
 
+      # nvim-autopairs
+      nvim-navic
+
+      # snippets
       luasnip                 # snippet engine
       friendly-snippets       # more snippets
-      # nvim-autopairs
 
+      # schemeing
+      nvim-base16             # base16 color schemes w/ lsp & treesitter support
+      vim-monokai
+      nvim-solarized-lua
+      rose-pine
+      everforest
+
+      # completions
       nvim-cmp                # completions
       cmp-buffer              # completion source: buffer
       cmp-path                # completion source: file path
@@ -284,6 +301,7 @@ in
       nodePackages.typescript
       typescript-language-server-fixed
       ocamlPackages.ocaml-lsp
+      rPackages.languageserver
 
       # telescope depency
       ripgrep

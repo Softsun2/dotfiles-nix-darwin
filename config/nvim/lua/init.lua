@@ -8,6 +8,7 @@ end
 
 source('settings')          -- TODO: this must be sourced before colors
 source('keymaps')
+source('navic')
 source('lsp')
 source('luasnip')
 source('completion')
@@ -16,6 +17,7 @@ source('treesitter')
 source('colors')
 source('indent-blankline')
 source('nvim-tree')
+source('lspsaga')
 
 -- todo
 --

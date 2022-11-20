@@ -1,35 +1,35 @@
 # start flavours
-# Base16 Gruvbox light, soft
-# Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# Base16 Everforest
+# Author: Sainnhe Park (https://github.com/sainnhe)
 
-set default-bg                  "#f2e5bc"
-set default-fg                  "#ebdbb2"
+set default-bg                  "#2f383e"
+set default-fg                  "#374247"
 
-set statusbar-fg                "#665c54"
-set statusbar-bg                "#d5c4a1"
+set statusbar-fg                "#9da9a0"
+set statusbar-bg                "#4a555b"
 
-set inputbar-bg                 "#f2e5bc"
-set inputbar-fg                 "#282828"
+set inputbar-bg                 "#2f383e"
+set inputbar-fg                 "#fdf6e3"
 
-set notification-bg             "#f2e5bc"
-set notification-fg             "#282828"
+set notification-bg             "#2f383e"
+set notification-fg             "#fdf6e3"
 
-set notification-error-bg       "#f2e5bc"
-set notification-error-fg       "#9d0006"
+set notification-error-bg       "#2f383e"
+set notification-error-fg       "#7fbbb3"
 
-set notification-warning-bg     "#f2e5bc"
-set notification-warning-fg     "#9d0006"
+set notification-warning-bg     "#2f383e"
+set notification-warning-fg     "#7fbbb3"
 
-set highlight-color             "#b57614"
-set highlight-active-color      "#076678"
+set highlight-color             "#dbbc7f"
+set highlight-active-color      "#a7c080"
 
-set completion-bg               "#ebdbb2"
-set completion-fg               "#076678"
+set completion-bg               "#374247"
+set completion-fg               "#a7c080"
 
-set completion-highlight-fg     "#282828"
-set completion-highlight-bg     "#076678"
+set completion-highlight-fg     "#fdf6e3"
+set completion-highlight-bg     "#a7c080"
 
-set recolor-lightcolor          "#f2e5bc"
-set recolor-darkcolor           "#3c3836"
+set recolor-lightcolor          "#2f383e"
+set recolor-darkcolor           "#e4e1cd"
 # end flavours
 

@@ -6,6 +6,7 @@ require("nvim-treesitter.configs").setup {
   -- ensure_installed = { },
   highlight = { enable = true },
 }
+
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- if running into invalid node errors:

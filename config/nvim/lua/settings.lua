@@ -23,12 +23,10 @@ opt.expandtab = true            -- tab with spaces
 
 -- folding
 opt.foldenable = false          -- open all folds upon entering a file
-opt.foldlevel = 20              -- when folding, fold at the current fold level
 
 -- Misc
 opt.ignorecase = true           -- ignore case when searching
 opt.smartcase = true            -- only ignore case if all lowercase
 opt.autoread = true             -- reread file if external changes are made to such file
 opt.incsearch = true            -- on by default, make sure it's on, search matches what's been typed so far
-opt.shortmess = "aI"
 

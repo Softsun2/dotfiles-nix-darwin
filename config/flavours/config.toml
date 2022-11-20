@@ -6,12 +6,16 @@ name = "tarko"
 source = "https://github.com/Softsun2/base16-tarko-scheme"
 
 [[extra_scheme]]
+name = "everforest"
+source = "https://github.com/Softsun2/base16-everforest"
+
+[[extra_scheme]]
 name = "og-themes"
 source = "https://github.com/Softsun2/base16-og-themes"
 
 [[extra_template]]
-name = "dwm-xrdb"
-source = "https://github.com/Softsun2/base16-dwm-xrdb"
+name = "nvim-base16"
+source = "https://github.com/Softsun2/base16-nvim-base16"
 
 # kitty
 [[item]]
@@ -26,13 +30,10 @@ file = '$HOME/.dotfiles/theme/zathura/zathurarc'
 template = 'zathura'
 subtemplate = 'recolor'
 
-# 
-# # neovim
-# [[item]]
-# file = '$HOME/.dotfiles/config/nvim/lua/colors.lua'
-# template = 'vim'
-# subtemplate = 'nvim'
-# start = '-- start flavours'
-# end = '-- end flavours'
-# # hook = ...
-# # ...
+# neovim
+[[item]]
+file = '$HOME/.dotfiles/config/nvim/lua/colors.lua'
+template = 'nvim-base16'
+start = '-- start flavours'
+end = '-- end flavours'
+# hook = ...

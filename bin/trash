@@ -1,4 +1,4 @@
 #!/bin/sh
 
-TRASHED="$1"
-mv "$TRASHED" ~/.Trash
+TRASHED="$@"
+mv $TRASHED ~/.Trash
