@@ -35,7 +35,7 @@ in
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      gohufont
+      (nerdfonts.override { fonts = [ "Gohu" ]; })
     ];
   };
 
@@ -241,9 +241,9 @@ in
       "homebrew/cask-versions"
     ];
     casks = [
-      "unity-hub"
       "gephi"
       "discord"
+      "hex-fiend"
       "firefox"
       "slack"
       "spotify"

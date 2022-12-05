@@ -38,6 +38,7 @@ in
     pkgs.jq
     pkgs.tree
     pkgs.inetutils
+    pkgs.hexd
 
     # node stuff
     pkgs.nodejs
@@ -46,6 +47,9 @@ in
     # programming lanuages
     pkgs.ocaml
     pkgs.ocamlPackages.utop
+    pkgs.ocamlPackages.findlib
+    pkgs.ocamlPackages.bitstring
+    pkgs.ocamlPackages.ppx_bitstring
     # pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 dplyr xts ]; }
   ];
 
@@ -188,7 +192,7 @@ in
     settings = {
       allow_remote_control = true;
       cursor = "none";
-      font_family = "JetBrainsMonoNL Nerd Font Mono";
+      font_family = "GohuFont Nerd Font";
       font_size = 16;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
@@ -240,8 +244,8 @@ in
       ( nvim-treesitter.withPlugins (
         plugins: with plugins; [
           tree-sitter-nix
-          # tree-sitter-lua
-          # tree-sitter-bash
+          tree-sitter-lua
+          tree-sitter-bash
           tree-sitter-c
           tree-sitter-cpp
           tree-sitter-make
@@ -252,6 +256,11 @@ in
           tree-sitter-ocaml
         ]
       ))
+
+      gitsigns-nvim
+
+      vim-illuminate
+
       nvim-lspconfig          # lsp
       lspsaga-nvim            # better lsp ui
 
@@ -266,8 +275,11 @@ in
       indent-blankline-nvim
       vim-nix                 # nix
 
-      # nvim-autopairs
       nvim-navic
+
+      # nvim-autopairs
+      nvim-autopairs
+      nvim-ts-autotag
 
       # snippets
       luasnip                 # snippet engine
@@ -302,6 +314,7 @@ in
       typescript-language-server-fixed
       ocamlPackages.ocaml-lsp
       rPackages.languageserver
+      ccls
 
       # telescope depency
       ripgrep
@@ -315,6 +328,94 @@ in
     extraConfig = {
       init = { defaultBranch = "main"; };
     };
+  };
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim
+      ms-python.python
+      ms-python.vscode-pylance
+      llvm-vs-code-extensions.vscode-clangd
+      ocamllabs.ocaml-platform
+      timonwong.shellcheck
+      zhuangtongfa.material-theme
+      jnoortheen.nix-ide
+      ms-vscode-remote.remote-ssh
+    ];
+    keybindings = [
+      # window movement
+      {
+          key = "ctrl+h";
+          command = "workbench.action.focusLeftGroup";
+      }
+      {
+          key = "ctrl+l";
+          command = "workbench.action.focusRightGroup";
+      }
+      {
+          key = "ctrl+j";
+          command = "workbench.action.focusBelowGroup";
+      }
+      {
+          key = "ctrl+k";
+          command = "workbench.action.focusAboveGroup";
+      }
+
+      # diagnostics (tbd)
+
+      # quick menu movement
+      {
+          key = "ctrl+j";
+          command = "workbench.action.quickOpenSelectNext";
+          when = "inQuickOpen";
+      }
+      {
+          key = "ctrl+k";
+          command = "workbench.action.quickOpenSelectPrevious";
+          when = "inQuickOpen";
+      }
+      {
+          key = "ctrl+c";
+          command = "workbench.action.closeQuickOpen";
+          when = "inQuickOpen";
+      }
+
+      # suggestions
+      {
+          key = "ctrl+y";
+          command = "acceptSelectedSuggestion";
+          when = "suggestWidgetVisible && textInputFocus";
+      }
+      {
+          key = "ctrl+space";
+          command = "toggleSuggestionDetails";
+          when = "editorTextFocus && suggestWidgetVisible";
+      }
+      {
+          key = "ctrl+j";
+          command = "selectNextSuggestion";
+          when = "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
+      }
+      {
+          key = "ctrl+k";
+          command = "selectPrevSuggestion";
+          when = "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
+      }
+      {
+          key = "ctrl+c";
+          command = "editor.action.inlineSuggest.hide";
+          when = "inlineSuggestionVisible";
+      }
+
+      # terminal
+      {
+          key = "ctrl+shift+j";
+          command = "workbench.action.terminal.toggleTerminal";
+          when = "terminal.active";
+      }
+    ];
+
   };
 
 }

@@ -13,11 +13,14 @@ source('lsp')
 source('luasnip')
 source('completion')
 source('telescope')
-source('treesitter')
 source('colors')
 source('indent-blankline')
 source('nvim-tree')
 source('lspsaga')
+source('treesitter')
+source('autopairs')
+source('illuminate')
+source('gitsigns')
 
 -- todo
 --

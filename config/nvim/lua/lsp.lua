@@ -42,9 +42,10 @@ lspconfig.sumneko_lua.setup {
 
 
 -- c
-
-
--- cpp
+lspconfig.ccls.setup {
+  on_attach = navic_on_attach,
+  capabilities = capabilities,
+}
 
 
 -- python

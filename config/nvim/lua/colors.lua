@@ -1,17 +1,17 @@
 
 -- base16 colors
 -- Start flavours
--- require('base16-colorscheme').setup({
---     base00 = '#2f383e', base01 = '#374247', base02 = '#4a555b', base03 = '#859289',
---     base04 = '#9da9a0', base05 = '#d3c6aa', base06 = '#e4e1cd', base07 = '#fdf6e3',
---     base08 = '#7fbbb3', base09 = '#d699b6', base0A = '#dbbc7f', base0B = '#83c092',
---     base0C = '#e69875', base0D = '#a7c080', base0E = '#e67e80', base0F = '#eaedc8',
--- })
+require('base16-colorscheme').setup({
+    base00 = '#1C2023', base01 = '#393F45', base02 = '#565E65', base03 = '#747C84',
+    base04 = '#ADB3BA', base05 = '#C7CCD1', base06 = '#DFE2E5', base07 = '#F3F4F5',
+    base08 = '#C7AE95', base09 = '#C7C795', base0A = '#AEC795', base0B = '#95C7AE',
+    base0C = '#95AEC7', base0D = '#AE95C7', base0E = '#C795AE', base0F = '#C79595',
+})
 -- End flavours
 
-vim.opt.termguicolors = true;
+-- vim.opt.termguicolors = true;
 
-vim.cmd('colorscheme everforest')
+-- vim.cmd('colorscheme everforest')
 
 -- disable dianostic column bg
 -- vim.cmd('hi SignColumn ctermbg=NONE guibg=NONE')
@@ -20,19 +20,19 @@ vim.cmd('colorscheme everforest')
 -- vim.cmd('hi StatusLine cterm=bold,underline ctermbg=NONE gui=bold,underline guibg=NONE')
 
 -- disable status line for inactive panes
--- vim.cmd('hi StatusLineNC cterm=NONE gui=NONE')
+vim.cmd('hi StatusLineNC cterm=NONE gui=NONE')
 
 -- disable inverse vertsplit bar bg
 -- vim.cmd('hi VertSplit cterm=NONE gui=NONE')
 
 -- disable folded indicator bg
--- vim.cmd('hi Folded ctermbg=NONE guibg=NONE')
+vim.cmd('hi Folded ctermbg=NONE guibg=NONE')
 
 -- disable line number column bg
 -- vim.cmd('hi LineNr ctermbg=NONE guibg=NONE')
 
 -- set minimal cursor line
--- vim.cmd('hi CursorLine ctermfg=NONE cterm=bold,underline ctermbg=NONE guifg=NONE gui=bold,underline guibg=NONE')
+vim.cmd('hi CursorLine ctermfg=NONE cterm=bold,underline ctermbg=NONE guifg=NONE gui=bold,underline guibg=NONE')
 
 -- disable end of buffer tildas
 -- vim.cmd('hi clear EndOfBuffer')

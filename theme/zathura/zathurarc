@@ -1,35 +1,35 @@
 # start flavours
-# Base16 Everforest
-# Author: Sainnhe Park (https://github.com/sainnhe)
+# Base16 Ashes
+# Author: Jannik Siebert (https://github.com/janniks)
 
-set default-bg                  "#2f383e"
-set default-fg                  "#374247"
+set default-bg                  "#1C2023"
+set default-fg                  "#393F45"
 
-set statusbar-fg                "#9da9a0"
-set statusbar-bg                "#4a555b"
+set statusbar-fg                "#ADB3BA"
+set statusbar-bg                "#565E65"
 
-set inputbar-bg                 "#2f383e"
-set inputbar-fg                 "#fdf6e3"
+set inputbar-bg                 "#1C2023"
+set inputbar-fg                 "#F3F4F5"
 
-set notification-bg             "#2f383e"
-set notification-fg             "#fdf6e3"
+set notification-bg             "#1C2023"
+set notification-fg             "#F3F4F5"
 
-set notification-error-bg       "#2f383e"
-set notification-error-fg       "#7fbbb3"
+set notification-error-bg       "#1C2023"
+set notification-error-fg       "#C7AE95"
 
-set notification-warning-bg     "#2f383e"
-set notification-warning-fg     "#7fbbb3"
+set notification-warning-bg     "#1C2023"
+set notification-warning-fg     "#C7AE95"
 
-set highlight-color             "#dbbc7f"
-set highlight-active-color      "#a7c080"
+set highlight-color             "#AEC795"
+set highlight-active-color      "#AE95C7"
 
-set completion-bg               "#374247"
-set completion-fg               "#a7c080"
+set completion-bg               "#393F45"
+set completion-fg               "#AE95C7"
 
-set completion-highlight-fg     "#fdf6e3"
-set completion-highlight-bg     "#a7c080"
+set completion-highlight-fg     "#F3F4F5"
+set completion-highlight-bg     "#AE95C7"
 
-set recolor-lightcolor          "#2f383e"
-set recolor-darkcolor           "#e4e1cd"
+set recolor-lightcolor          "#1C2023"
+set recolor-darkcolor           "#DFE2E5"
 # end flavours
 
