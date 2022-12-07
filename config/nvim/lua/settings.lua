@@ -30,3 +30,5 @@ opt.smartcase = true            -- only ignore case if all lowercase
 opt.autoread = true             -- reread file if external changes are made to such file
 opt.incsearch = true            -- on by default, make sure it's on, search matches what's been typed so far
 
+-- DISABLE OMNI SQL KEYMAPS HOLY FUCK IS THIS ANNOYING
+g.omni_sql_no_default_maps = 1

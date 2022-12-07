@@ -19,6 +19,7 @@ in
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.mysql
     pkgs.yt-dlp
     # xd
     pkgs.cmatrix
@@ -192,7 +193,7 @@ in
     settings = {
       allow_remote_control = true;
       cursor = "none";
-      font_family = "GohuFont Nerd Font";
+      font_family = "SauceCodePro Nerd Font Mono";
       font_size = 16;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
@@ -254,8 +255,11 @@ in
           tree-sitter-css
           tree-sitter-json
           tree-sitter-ocaml
+          tree-sitter-javascript
         ]
       ))
+
+      vim-pug
 
       gitsigns-nvim
 

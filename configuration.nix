@@ -30,12 +30,17 @@ in
   programs.zsh.enable = true;  # default shell on catalina
 
   # system fonts
+  # available nerdfonts: https://github.com/NixOS/nixpkgs/blob/nixos-22.11/pkgs/data/fonts/nerdfonts/shas.nix
   fonts = {
     fontDir.enable = true;     # install fonts to /Library/Fonts
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      (nerdfonts.override { fonts = [ "Gohu" ]; })
+      (nerdfonts.override { fonts = [ 
+        "JetBrainsMono"
+        "FiraCode"
+        "Gohu"
+        "Terminus"
+        "SourceCodePro"
+      ]; })
     ];
   };
 

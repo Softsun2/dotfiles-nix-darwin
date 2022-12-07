@@ -20,7 +20,7 @@ require('base16-colorscheme').setup({
 -- vim.cmd('hi StatusLine cterm=bold,underline ctermbg=NONE gui=bold,underline guibg=NONE')
 
 -- disable status line for inactive panes
-vim.cmd('hi StatusLineNC cterm=NONE gui=NONE')
+-- vim.cmd('hi StatusLineNC cterm=NONE gui=NONE')
 
 -- disable inverse vertsplit bar bg
 -- vim.cmd('hi VertSplit cterm=NONE gui=NONE')
@@ -32,7 +32,7 @@ vim.cmd('hi Folded ctermbg=NONE guibg=NONE')
 -- vim.cmd('hi LineNr ctermbg=NONE guibg=NONE')
 
 -- set minimal cursor line
-vim.cmd('hi CursorLine ctermfg=NONE cterm=bold,underline ctermbg=NONE guifg=NONE gui=bold,underline guibg=NONE')
+-- vim.cmd('hi CursorLine ctermfg=NONE cterm=bold,underline ctermbg=NONE guifg=NONE gui=bold,underline guibg=NONE')
 
 -- disable end of buffer tildas
 -- vim.cmd('hi clear EndOfBuffer')
