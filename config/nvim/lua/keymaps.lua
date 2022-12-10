@@ -22,6 +22,10 @@ nkeymap('<c-l>', '<c-w>l')
 -- don't yank with x
 nkeymap('x', '"_x')
 
+-- better n/N
+nkeymap('n', 'nzz')
+nkeymap('N', 'Nzz')
+
 -- comfy move to top/bottom
 nkeymap('zt', 'ztkkk3j')
 nkeymap('zb', 'zbjjj3k')

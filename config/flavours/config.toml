@@ -37,3 +37,9 @@ template = 'nvim-base16'
 start = '-- start flavours'
 end = '-- end flavours'
 # hook = ...
+
+# fzf
+[[item]]
+file = '$HOME/.dotfiles/theme/fzf/theme'
+template = 'fzf'
+# hook = ...

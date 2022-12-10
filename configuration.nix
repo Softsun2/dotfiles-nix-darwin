@@ -247,7 +247,7 @@ in
     ];
     casks = [
       "gephi"
-      "discord"
+      # "discord"
       "hex-fiend"
       "firefox"
       "slack"

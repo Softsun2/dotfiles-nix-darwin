@@ -24,6 +24,10 @@ opt.expandtab = true            -- tab with spaces
 -- folding
 opt.foldenable = false          -- open all folds upon entering a file
 
+-- splitting
+o.splitright = true
+o.splitbelow = true
+
 -- Misc
 opt.ignorecase = true           -- ignore case when searching
 opt.smartcase = true            -- only ignore case if all lowercase

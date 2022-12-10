@@ -26,5 +26,10 @@ source('gitsigns')
 --
 -- require lua files, don't use a vim cmd
 -- lsp diagnostic interaction/code actions
+-- filter out annoying lsp diagnostics
+-- what to the lspsaga lightbulbs mean?
+-- don't display diagnostic messages, only when jumping to them
 -- mv plugin settings to their own files
 -- mv all keymaps to keymaps.lua
+-- buggy indent line
+-- disable comletions in telescope/vin cmds

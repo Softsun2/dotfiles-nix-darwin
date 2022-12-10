@@ -35,7 +35,6 @@ in
 
     # terminal workflow
     pkgs.tldr
-    pkgs.fzf
     pkgs.jq
     pkgs.tree
     pkgs.inetutils
@@ -80,6 +79,9 @@ in
       # vi mode
       bindkey -v
       export KEYTIMEOUT=2
+      
+      # source fzf colors
+      source ~/.dotfiles/theme/fzf/theme
 
       # Edit line in $EDITOR with ctrl-e:
       autoload edit-command-line; zle -N edit-command-line
@@ -116,8 +118,9 @@ in
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
       s   = "kitty +kitten ssh";
+      cdf = "cd $(find . -type d | fzf)";
       dotfiles = "cd ~/.dotfiles";
-      school = "cd ~/school";
+      school = "cd $(find ~/school -type d | fzf)";
 
       shell = "nix-shell";
       home = "vim $HOME/.dotfiles/home.nix";
@@ -332,6 +335,11 @@ in
     extraConfig = {
       init = { defaultBranch = "main"; };
     };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.vscode = {
