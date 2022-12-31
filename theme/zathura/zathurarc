@@ -1,35 +1,35 @@
 # start flavours
-# Base16 Ashes
-# Author: Jannik Siebert (https://github.com/janniks)
+# Base16 growing-place
+# Author: softsun2
 
-set default-bg                  "#1C2023"
-set default-fg                  "#393F45"
+set default-bg                  "#190b00"
+set default-fg                  "#2d1400"
 
-set statusbar-fg                "#ADB3BA"
-set statusbar-bg                "#565E65"
+set statusbar-fg                "#ffcba2"
+set statusbar-bg                "#401c00"
 
-set inputbar-bg                 "#1C2023"
-set inputbar-fg                 "#F3F4F5"
+set inputbar-bg                 "#190b00"
+set inputbar-fg                 "#ffecdd"
 
-set notification-bg             "#1C2023"
-set notification-fg             "#F3F4F5"
+set notification-bg             "#190b00"
+set notification-fg             "#ffecdd"
 
-set notification-error-bg       "#1C2023"
-set notification-error-fg       "#C7AE95"
+set notification-error-bg       "#190b00"
+set notification-error-fg       "#bc7c76"
 
-set notification-warning-bg     "#1C2023"
-set notification-warning-fg     "#C7AE95"
+set notification-warning-bg     "#190b00"
+set notification-warning-fg     "#bc7c76"
 
-set highlight-color             "#AEC795"
-set highlight-active-color      "#AE95C7"
+set highlight-color             "#c4a96e"
+set highlight-active-color      "#a186ac"
 
-set completion-bg               "#393F45"
-set completion-fg               "#AE95C7"
+set completion-bg               "#2d1400"
+set completion-fg               "#a186ac"
 
-set completion-highlight-fg     "#F3F4F5"
-set completion-highlight-bg     "#AE95C7"
+set completion-highlight-fg     "#ffecdd"
+set completion-highlight-bg     "#a186ac"
 
-set recolor-lightcolor          "#1C2023"
-set recolor-darkcolor           "#DFE2E5"
+set recolor-lightcolor          "#190b00"
+set recolor-darkcolor           "#ffe1ca"
 # end flavours
 

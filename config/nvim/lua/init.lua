@@ -18,9 +18,10 @@ source('indent-blankline')
 source('nvim-tree')
 source('lspsaga')
 source('treesitter')
-source('autopairs')
+-- source('autopairs')
 source('illuminate')
 source('gitsigns')
+source('lualine')
 
 -- todo
 --
@@ -33,3 +34,6 @@ source('gitsigns')
 -- mv all keymaps to keymaps.lua
 -- buggy indent line
 -- disable comletions in telescope/vin cmds
+-- floating window highlight groups are messed up
+-- 80 char highlight col
+-- size windows to 80 col width

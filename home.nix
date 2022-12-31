@@ -19,6 +19,8 @@ in
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.optifine
+
     pkgs.mysql
     pkgs.yt-dlp
     # xd
@@ -43,6 +45,7 @@ in
     # node stuff
     pkgs.nodejs
     pkgs.nodePackages.live-server
+    pkgs.nodePackages.nodemon
 
     # programming lanuages
     pkgs.ocaml
@@ -205,6 +208,7 @@ in
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
+      background_opacity = "0.93";
     };
     extraConfig = ''
       # run time colors
@@ -261,6 +265,7 @@ in
           tree-sitter-javascript
         ]
       ))
+      lualine-nvim
 
       vim-pug
 

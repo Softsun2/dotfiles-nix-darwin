@@ -55,14 +55,18 @@ lspconfig.pyright.setup {
 }
 
 
--- html ?
+-- html
 lspconfig.html.setup {
   on_attach = navic.on_attach,
   capabilities = capabilities,
 }
 
 
--- css ?
+-- css
+lspconfig.cssls.setup {
+  on_attach = navic.on_attach,
+  capabilities = capabilities,
+}
 
 
 -- js/ts

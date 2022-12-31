@@ -29,6 +29,11 @@ telescope.setup {
       },
     },
     live_grep = {
+      theme = 'ivy',
+      previewer = false,
+      layout_config = {
+        height = 9,
+      },
     },
   },
 }

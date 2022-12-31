@@ -2,10 +2,10 @@
 -- base16 colors
 -- Start flavours
 require('base16-colorscheme').setup({
-    base00 = '#1C2023', base01 = '#393F45', base02 = '#565E65', base03 = '#747C84',
-    base04 = '#ADB3BA', base05 = '#C7CCD1', base06 = '#DFE2E5', base07 = '#F3F4F5',
-    base08 = '#C7AE95', base09 = '#C7C795', base0A = '#AEC795', base0B = '#95C7AE',
-    base0C = '#95AEC7', base0D = '#AE95C7', base0E = '#C795AE', base0F = '#C79595',
+    base00 = '#190b00', base01 = '#2d1400', base02 = '#401c00', base03 = '#542500',
+    base04 = '#ffcba2', base05 = '#ffd6b6', base06 = '#ffe1ca', base07 = '#ffecdd',
+    base08 = '#bc7c76', base09 = '#bc9476', base0A = '#c4a96e', base0B = '#a7b47e',
+    base0C = '#7e98b4', base0D = '#a186ac', base0E = '#7eb4a3', base0F = '#c5c8c6',
 })
 -- End flavours
 
@@ -27,6 +27,9 @@ require('base16-colorscheme').setup({
 
 -- disable folded indicator bg
 vim.cmd('hi Folded ctermbg=NONE guibg=NONE')
+
+vim.cmd('hi clear TelescopeBorder')
+vim.cmd('hi link TelescopeBorder VertSplit')
 
 -- disable line number column bg
 -- vim.cmd('hi LineNr ctermbg=NONE guibg=NONE')
