@@ -44,7 +44,12 @@ in
     ];
   };
 
+
   system.defaults = {
+
+    # mouse
+    ".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";    # disable mouse acceleration
+
     NSGlobalDomain = {
       # keybord
       ApplePressAndHoldEnabled = false;               # enable key repeating

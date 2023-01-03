@@ -2,10 +2,10 @@
 -- base16 colors
 -- Start flavours
 require('base16-colorscheme').setup({
-    base00 = '#190b00', base01 = '#2d1400', base02 = '#401c00', base03 = '#542500',
-    base04 = '#ffcba2', base05 = '#ffd6b6', base06 = '#ffe1ca', base07 = '#ffecdd',
-    base08 = '#bc7c76', base09 = '#bc9476', base0A = '#c4a96e', base0B = '#a7b47e',
-    base0C = '#7e98b4', base0D = '#a186ac', base0E = '#7eb4a3', base0F = '#c5c8c6',
+    base00 = '#262626', base01 = '#3a3a3a', base02 = '#4e4e4e', base03 = '#8a8a8a',
+    base04 = '#949494', base05 = '#dab997', base06 = '#d5c4a1', base07 = '#ebdbb2',
+    base08 = '#d75f5f', base09 = '#ff8700', base0A = '#ffaf00', base0B = '#afaf00',
+    base0C = '#85ad85', base0D = '#83adad', base0E = '#d485ad', base0F = '#d65d0e',
 })
 -- End flavours
 
