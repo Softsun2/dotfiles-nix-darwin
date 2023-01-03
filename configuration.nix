@@ -1,12 +1,4 @@
 { config, pkgs, ... }:
-let
-  yabai = pkgs.yabai.overrideAttrs (old: rec {
-    src = builtins.fetchTarball {
-      url = https://github.com/koekeishiya/yabai/files/7915231/yabai-v4.0.0.tar.gz;
-      sha256 = "sha256:0rs6ibygqqzwsx4mfdx8h1dqmpkrsfig8hi37rdmlcx46i3hv74k";
-    };
-  });
-in
 {
   # nix-darwin options: https://daiderd.com/nix-darwin/manual/index.html
   # https://github.com/LnL7/nix-darwin/blob/master/tests/system-defaults-write.nix
@@ -106,29 +98,33 @@ in
 
     yabai = {
       enable = true;
-      package = yabai;
       config = {
         # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#config
 
         # global settings
         mouse_follows_focus = "off";          # don't move mouse to focused window
-        focus_follows_mouse = "autofocus";    # focus but don't raise window under mouse
-        window_origin_display = "default";    # new windows are managed by active display
+        focus_follows_mouse = "autoraise";    # focus but don't raise window under mouse
         window_placement = "second_child";    # new windows become second-leaf node
-        window_topmost = "off";               # don't make floating windows stay on top
-        window_shadow  = "on";
+
+        window_topmost = "on";               # don't make floating windows stay on top
         window_opacity = "off";               # disable opacity for windows
-        window_opacity_duration = 0.0;        # duration of opacity transition
+
+        # window_opacity_duration = 0.0;        # duration of opacity transition
+
+        window_shadow  = "float";
+        window_border = "on";                # draw window borders, this doesn't seem to be working anyway
+        window_border_width = 4;
+
+        active_window_border_color = "0xff8E83B8";
+        normal_window_border_color = "0xff51425C";
+        insert_window_border_color = "0xff8E83B8";
+
         active_window_opacity = 1.0;
         normal_window_opacity = 0.90;
-        window_border = "off";                # draw window borders, this doesn't seem to be working anyway
-        # window_border_width = 5;
-        # active_window_border_color = "0xff775759";
-        # normal_window_border_color = "0xff555555";
-        # insert_feedback_color = "0xffd75f5f";
         split_ratio = 0.50;
-        auto_balance = "off";                 # disable all windows occupying the same amount of area
-        mouse_modifier = "fn";                # mod key for mouse actions
+
+        auto_balance = "on";                 # disable all windows occupying the same amount of area
+        mouse_modifier = "option";                # mod key for mouse actions
         mouse_action1 = "move";               # mod + left-click -> move window
         mouse_action2 = "resize";             # mod + right-click -> resize mindow
         mouse_drop_action = "swap";           # dropping a window onto the center of another window swaps the two windows

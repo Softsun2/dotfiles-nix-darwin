@@ -208,7 +208,7 @@ in
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
-      background_opacity = "0.93";
+      background_opacity = "1.0";
     };
     extraConfig = ''
       # run time colors
