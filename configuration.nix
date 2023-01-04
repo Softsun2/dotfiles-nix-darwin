@@ -103,28 +103,24 @@
 
         # global settings
         mouse_follows_focus = "off";          # don't move mouse to focused window
-        focus_follows_mouse = "autoraise";    # focus but don't raise window under mouse
+        focus_follows_mouse = "autofocus";    # focus but don't raise window under mouse
+        window_origin_display = "default";    # new windows are managed by active display
         window_placement = "second_child";    # new windows become second-leaf node
-
-        window_topmost = "on";               # don't make floating windows stay on top
-        window_opacity = "off";               # disable opacity for windows
-
-        # window_opacity_duration = 0.0;        # duration of opacity transition
-
+        window_topmost = "off";               # don't make floating windows stay on top
         window_shadow  = "float";
-        window_border = "on";                # draw window borders, this doesn't seem to be working anyway
-        window_border_width = 4;
-
-        active_window_border_color = "0xff8E83B8";
-        normal_window_border_color = "0xff51425C";
-        insert_window_border_color = "0xff8E83B8";
-
+        window_opacity = "off";               # disable opacity for windows
+        window_opacity_duration = 0.0;        # duration of opacity transition
         active_window_opacity = 1.0;
         normal_window_opacity = 0.90;
-        split_ratio = 0.50;
 
-        auto_balance = "on";                 # disable all windows occupying the same amount of area
-        mouse_modifier = "option";                # mod key for mouse actions
+        window_border = "on";                # draw window borders, this doesn't seem to be working anyway
+        window_border_width = 5;
+        active_window_border_color = "0xff83a598";
+        normal_window_border_color = "0xff665c54";
+
+        split_ratio = 0.50;
+        auto_balance = "off";                 # disable all windows occupying the same amount of area
+        mouse_modifier = "fn";                # mod key for mouse actions
         mouse_action1 = "move";               # mod + left-click -> move window
         mouse_action2 = "resize";             # mod + right-click -> resize mindow
         mouse_drop_action = "swap";           # dropping a window onto the center of another window swaps the two windows

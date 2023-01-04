@@ -20,6 +20,7 @@ in
 
   home.packages = [
     pkgs.optifine
+    pkgs.neofetch
 
     pkgs.mysql
     pkgs.yt-dlp
@@ -208,7 +209,7 @@ in
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
-      background_opacity = "1.0";
+      background_opacity = "0.96";
     };
     extraConfig = ''
       # run time colors
@@ -265,6 +266,7 @@ in
           tree-sitter-javascript
         ]
       ))
+      nvim-ts-rainbow
       lualine-nvim
 
       vim-pug
