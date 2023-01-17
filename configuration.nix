@@ -1,4 +1,10 @@
 { config, pkgs, ... }:
+# TODO: package my image-go-nord filtering package for portibility
+let
+  my-python-packages = p: with p; [
+    image-go-nord
+  ];
+in
 {
   # nix-darwin options: https://daiderd.com/nix-darwin/manual/index.html
   # https://github.com/LnL7/nix-darwin/blob/master/tests/system-defaults-write.nix
@@ -6,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    (python3.withPackages my-python-packages)
   ];
 
   # enable flakes
@@ -26,12 +33,16 @@
   fonts = {
     fontDir.enable = true;     # install fonts to /Library/Fonts
     fonts = with pkgs; [
+      scientifica
+      efont-unicode
+      cozette
       (nerdfonts.override { fonts = [ 
         "JetBrainsMono"
         "FiraCode"
         "Gohu"
         "Terminus"
         "SourceCodePro"
+        "Iosevka"
       ]; })
     ];
   };
@@ -70,6 +81,7 @@
       Clicking = true;                 # enable tap to click
     };
 
+    # TODO: implement defaults write com.apple.dock workspaces-auto-swoosh -bool NO
     dock = {
       autohide = true;
       mru-spaces = false;              # disable rearranging spaces based on most recent use
@@ -107,7 +119,7 @@
         window_origin_display = "default";    # new windows are managed by active display
         window_placement = "second_child";    # new windows become second-leaf node
         window_topmost = "off";               # don't make floating windows stay on top
-        window_shadow  = "float";
+        window_shadow  = "off";
         window_opacity = "off";               # disable opacity for windows
         window_opacity_duration = 0.0;        # duration of opacity transition
         active_window_opacity = 1.0;
@@ -115,8 +127,8 @@
 
         window_border = "on";                # draw window borders, this doesn't seem to be working anyway
         window_border_width = 5;
-        active_window_border_color = "0xff83a598";
-        normal_window_border_color = "0xff665c54";
+        active_window_border_color = "0xff81A1C1";
+        normal_window_border_color = "0xff4C566A";
 
         split_ratio = 0.50;
         auto_balance = "off";                 # disable all windows occupying the same amount of area
@@ -243,14 +255,9 @@
       "homebrew/cask-versions"
     ];
     casks = [
-      "gephi"
-      "discord"
-      "minecraft"
       "hex-fiend"
       "firefox"
-      "slack"
-      "spotify"
-      "zoom"
+      "discord"
     ];
   };
 

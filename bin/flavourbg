@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+python3 ~/personal/base16/bg-gen/filterBg.py &&
+setbg ~/personal/base16/bg-gen/images/$(flavours current)/$(head -n 1 ~/.dotfiles/theme/bg | cut -d'/' -f6)

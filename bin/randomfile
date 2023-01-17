@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "$1/$(
+  paste <(jot -r $(ls $1 | wc -l) 1) <(ls $1) |
+  sort -n |
+  cut -f 2- |
+  head -n 1
+)"

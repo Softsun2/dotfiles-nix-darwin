@@ -19,8 +19,12 @@ in
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.shellcheck
+    pkgs.fontconfig
     pkgs.optifine
     pkgs.neofetch
+
+    pkgs.taskwarrior
 
     pkgs.mysql
     pkgs.yt-dlp
@@ -101,6 +105,8 @@ in
       gd () {
         cd "$(git rev-parse --show-toplevel)"/"$1"
       }
+
+      solar-system
     '';
 
     profileExtra = ''
@@ -200,7 +206,7 @@ in
     settings = {
       allow_remote_control = true;
       cursor = "none";
-      font_family = "SauceCodePro Nerd Font Mono";
+      font_family = "Iosevka Nerd Font Mono";
       font_size = 16;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;

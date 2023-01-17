@@ -1,0 +1,9 @@
+#!/bin/sh
+
+BG_PATH="$HOME/.dotfiles/theme/bg.txt"
+SEARCH=$(head -n 1 "$BG_PATH")
+AMELIA_PATH="$HOME/Pictures/amelia"
+AMELIA_BG=$(randomfile "$AMELIA_PATH")
+
+sed -i '' "s:$SEARCH:$AMELIA_BG:" "$BG_PATH"
+flavours apply material-palenight
