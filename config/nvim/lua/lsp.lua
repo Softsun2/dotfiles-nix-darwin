@@ -14,6 +14,12 @@ end
 -- There is certainly a design for better implementing the my desired
 -- defaults per lsp config. Another time...
 
+-- spelling/grammer
+lspconfig.ltex.setup {
+  on_attach = navic_on_attach,
+  capabilities = capabilities,
+}
+
 -- nix
 lspconfig.rnix.setup {
   on_attach = navic_on_attach,

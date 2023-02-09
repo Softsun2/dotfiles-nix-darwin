@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# cp using fuzzy finding to locate target files
+
+ROOT_PATH="$1"
+DEST="$2"
+IFS=$'\n'
+FILES=$(find "$ROOT_PATH" -type f | fzf --multi)
+for file in $FILES
+do
+  cp -v "$file" "$DEST"
+done
+

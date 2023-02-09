@@ -7,5 +7,5 @@ yt-dlp \
   --xattrs \
   --embed-thumbnail \
   --no-abort-on-error \
-  --output '~/Music/%(uploader)s/%(album)s/%(title)s.%(ext)s' \
+  --output '~/Music/my-music/%(uploader)s/%(album)s/%(title)s.%(ext)s' \
   $1

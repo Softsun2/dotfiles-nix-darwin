@@ -36,14 +36,15 @@ in
       scientifica
       efont-unicode
       cozette
-      (nerdfonts.override { fonts = [ 
-        "JetBrainsMono"
-        "FiraCode"
-        "Gohu"
-        "Terminus"
-        "SourceCodePro"
-        "Iosevka"
-      ]; })
+      nerdfonts
+      # (nerdfonts.override { fonts = [ 
+      #   "JetBrainsMono"
+      #   "FiraCode"
+      #   "Gohu"
+      #   "Terminus"
+      #   "SourceCodePro"
+      #   "Iosevka"
+      # ]; })
     ];
   };
 
@@ -115,7 +116,7 @@ in
 
         # global settings
         mouse_follows_focus = "off";          # don't move mouse to focused window
-        focus_follows_mouse = "autofocus";    # focus but don't raise window under mouse
+        focus_follows_mouse = "autoraise";    # focus but don't raise window under mouse
         window_origin_display = "default";    # new windows are managed by active display
         window_placement = "second_child";    # new windows become second-leaf node
         window_topmost = "off";               # don't make floating windows stay on top
@@ -126,7 +127,7 @@ in
         normal_window_opacity = 0.90;
 
         window_border = "on";                # draw window borders, this doesn't seem to be working anyway
-        window_border_width = 5;
+        window_border_width = 3;
         active_window_border_color = "0xff81A1C1";
         normal_window_border_color = "0xff4C566A";
 
@@ -258,6 +259,8 @@ in
       "hex-fiend"
       "firefox"
       "discord"
+      "vcv-rack"
+      "supercollider"
     ];
   };
 

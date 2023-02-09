@@ -1,4 +1,4 @@
-{ config, pkgs, mypkgs, ... }:
+{ config, pkgs, ... }:
 let
   typescript-language-server-fixed = pkgs.symlinkJoin {
     name = "typescript-language-server";
@@ -24,15 +24,16 @@ in
     pkgs.optifine
     pkgs.neofetch
 
-    pkgs.taskwarrior
+    pkgs.ffmpeg
 
     pkgs.mysql
     pkgs.yt-dlp
     # xd
     pkgs.cmatrix
+    pkgs.orca-c
 
     # eye candy
-    mypkgs.flavours
+    pkgs.flavours
     pkgs.exa
     pkgs.feh
     pkgs.htop
@@ -44,7 +45,6 @@ in
     pkgs.tldr
     pkgs.jq
     pkgs.tree
-    pkgs.inetutils
     pkgs.hexd
 
     # node stuff
@@ -206,7 +206,7 @@ in
     settings = {
       allow_remote_control = true;
       cursor = "none";
-      font_family = "Iosevka Nerd Font Mono";
+      font_family = "mononoki Nerd Font Mono";
       font_size = 16;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
@@ -335,6 +335,7 @@ in
       ocamlPackages.ocaml-lsp
       rPackages.languageserver
       ccls
+      ltex-ls
 
       # telescope depency
       ripgrep
@@ -353,94 +354,6 @@ in
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-  };
-
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      ms-python.python
-      ms-python.vscode-pylance
-      llvm-vs-code-extensions.vscode-clangd
-      ocamllabs.ocaml-platform
-      timonwong.shellcheck
-      zhuangtongfa.material-theme
-      jnoortheen.nix-ide
-      ms-vscode-remote.remote-ssh
-    ];
-    keybindings = [
-      # window movement
-      {
-          key = "ctrl+h";
-          command = "workbench.action.focusLeftGroup";
-      }
-      {
-          key = "ctrl+l";
-          command = "workbench.action.focusRightGroup";
-      }
-      {
-          key = "ctrl+j";
-          command = "workbench.action.focusBelowGroup";
-      }
-      {
-          key = "ctrl+k";
-          command = "workbench.action.focusAboveGroup";
-      }
-
-      # diagnostics (tbd)
-
-      # quick menu movement
-      {
-          key = "ctrl+j";
-          command = "workbench.action.quickOpenSelectNext";
-          when = "inQuickOpen";
-      }
-      {
-          key = "ctrl+k";
-          command = "workbench.action.quickOpenSelectPrevious";
-          when = "inQuickOpen";
-      }
-      {
-          key = "ctrl+c";
-          command = "workbench.action.closeQuickOpen";
-          when = "inQuickOpen";
-      }
-
-      # suggestions
-      {
-          key = "ctrl+y";
-          command = "acceptSelectedSuggestion";
-          when = "suggestWidgetVisible && textInputFocus";
-      }
-      {
-          key = "ctrl+space";
-          command = "toggleSuggestionDetails";
-          when = "editorTextFocus && suggestWidgetVisible";
-      }
-      {
-          key = "ctrl+j";
-          command = "selectNextSuggestion";
-          when = "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
-      }
-      {
-          key = "ctrl+k";
-          command = "selectPrevSuggestion";
-          when = "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
-      }
-      {
-          key = "ctrl+c";
-          command = "editor.action.inlineSuggest.hide";
-          when = "inlineSuggestionVisible";
-      }
-
-      # terminal
-      {
-          key = "ctrl+shift+j";
-          command = "workbench.action.terminal.toggleTerminal";
-          when = "terminal.active";
-      }
-    ];
-
   };
 
 }

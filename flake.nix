@@ -10,42 +10,38 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    mynixpkgs.url = "github:Softsun2/nixpkgs/nixpkgs-22.05-darwin";
-
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
 
-  outputs = inputs @ { self, darwin, nixpkgs, mynixpkgs, home-manager, ... }:
-    # need to include x86 packages that can't be built on arm yet
-    let
-      system = "aarch64-darwin";
+  outputs = inputs @ { self, darwin, nixpkgs, home-manager, ... }:
+  # need to include x86 packages that can't be built on arm yet
+  let
+    system = "aarch64-darwin";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
-      mypkgs = import mynixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-      lib = nixpkgs.lib;
-    in {
+    lib = nixpkgs.lib;
+  in {
     homeManagerConfigurations = {
       softsun2 = home-manager.lib.homeManagerConfiguration {
-        inherit system;
         inherit pkgs;
-        extraSpecialArgs = {
-            inherit mypkgs;
-        };
-        configuration = ./home.nix;
-        username = "softsun2";
-        homeDirectory = "/Users/softsun2";
+        modules = [
+          ./home.nix
+          {
+            home = {
+              username = "softsun2";
+              homeDirectory = "/Users/softsun2";
+              stateVersion = "22.11";
+            };
+          }
+        ];
       };
     };
 
@@ -56,5 +52,5 @@
       };
     };
 
-    };
+  };
 }
