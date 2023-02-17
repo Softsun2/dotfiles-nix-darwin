@@ -15,6 +15,8 @@ telescope.setup {
         ['<c-j>'] = actions.move_selection_next,
         ['<c-k>'] = actions.move_selection_previous,
         ['<c-y>'] = actions.select_default,
+        ['<c-u>'] = actions.preview_scrolling_up,
+        ['<c-d>'] = actions.preview_scrolling_down,
         ['<c-n>'] = false,
         ['<c-p>'] = false,
       },
@@ -22,15 +24,15 @@ telescope.setup {
   },
   pickers = {
     find_files = {
-      theme = 'ivy',
-      previewer = false,
+      theme = 'cursor',
+      -- previewer = 'vim_buffer_cat.new',
       layout_config = {
         height = 9,
       },
     },
     live_grep = {
-      theme = 'ivy',
-      previewer = false,
+      theme = 'cursor',
+      -- previewer = false,
       layout_config = {
         height = 9,
       },
