@@ -1,6 +1,0 @@
-[submodule "nixpkgs"]
-	path = nixpkgs
-	url = https://github.com/Softsun2/nixpkgs
-[submodule "config/nvim/vim-monotone"]
-	path = config/nvim/vim-monotone
-	url = git@github.com:Softsun2/vim-monotone.git
