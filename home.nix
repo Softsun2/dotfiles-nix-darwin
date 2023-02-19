@@ -9,6 +9,8 @@ let
         --add-flags --tsserver-path=${pkgs.nodePackages.typescript}/lib/node_modules/typescript/lib/
     '';
   };
+
+  no-clown-fiesta-nvim = pkgs.callPackage ./nixpkgs/no-clown-fiesta-nvim.nix { inherit pkgs; };
 in
 {
   manual.manpages.enable = false;
@@ -244,9 +246,9 @@ in
       luafile ~/.dotfiles/config/nvim/lua/init.lua
     '';
 
-    plugins = with pkgs.vimPlugins; [
+    plugins = [
 
-      ( nvim-treesitter.withPlugins (
+      ( pkgs.vimPlugins.nvim-treesitter.withPlugins (
         plugins: with plugins; [
           tree-sitter-nix
           tree-sitter-lua
@@ -262,58 +264,56 @@ in
           tree-sitter-javascript
         ]
       ))
-      nvim-ts-rainbow
-      lualine-nvim
 
-      vim-pug
+      no-clown-fiesta-nvim
+      pkgs.vimPlugins.nvim-ts-rainbow
+      pkgs.vimPlugins.lualine-nvim
 
-      vim-clang-format
+      pkgs.vimPlugins.vim-pug
 
-      gitsigns-nvim
+      pkgs.vimPlugins.vim-clang-format
 
-      vim-illuminate
+      pkgs.vimPlugins.gitsigns-nvim
 
-      nvim-lspconfig          # lsp
-      lspsaga-nvim            # better lsp ui
+      pkgs.vimPlugins.vim-illuminate
 
-      telescope-nvim          # integrated fuzzy finder
-      plenary-nvim
+      pkgs.vimPlugins.nvim-lspconfig          # lsp
+      pkgs.vimPlugins.lspsaga-nvim            # better lsp ui
 
-      harpoon                 # Tagged files
-      nvim-tree-lua           # file tree
-      vim-floaterm            # floating terminal
+      pkgs.vimPlugins.telescope-nvim          # integrated fuzzy finder
+      pkgs.vimPlugins.plenary-nvim
 
-      nvim-web-devicons       # dev icons
-      indent-blankline-nvim
-      vim-nix                 # nix
+      pkgs.vimPlugins.harpoon                 # Tagged files
+      pkgs.vimPlugins.nvim-tree-lua           # file tree
+      pkgs.vimPlugins.vim-floaterm            # floating terminal
 
-      nvim-navic
+      pkgs.vimPlugins.nvim-web-devicons       # dev icons
+      pkgs.vimPlugins.indent-blankline-nvim
+      pkgs.vimPlugins.vim-nix                 # nix
 
-      # nvim-autopairs
-      nvim-autopairs
-      nvim-ts-autotag
+      pkgs.vimPlugins.nvim-navic
 
-      # snippets
-      luasnip                 # snippet engine
-      friendly-snippets       # more snippets
+      pkgs.vimPlugins.nvim-autopairs
+      pkgs.vimPlugins.nvim-ts-autotag
 
-      # schemeing
-      nvim-base16             # base16 color schemes w/ lsp & treesitter support
-      vim-monokai
-      nvim-solarized-lua
-      rose-pine
-      everforest
+      pkgs.vimPlugins.luasnip                 # snippet engine
+      pkgs.vimPlugins.friendly-snippets       # more snippets
 
-      # completions
-      nvim-cmp                # completions
-      cmp-buffer              # completion source: buffer
-      cmp-path                # completion source: file path
-      cmp-nvim-lua            # completion source: nvim config aware lua
-      cmp-nvim-lsp            # completion source: lsp
-      cmp-cmdline             # completion source: cmdline
-      cmp_luasnip             # completion source: luasnip snippets
-      lspkind-nvim            # pictograms for completion suggestions
-      colorizer               # color name highlighter
+      pkgs.vimPlugins.nvim-base16             # base16 color schemes w/ lsp & treesitter support
+      pkgs.vimPlugins.vim-monokai
+      pkgs.vimPlugins.nvim-solarized-lua
+      pkgs.vimPlugins.rose-pine
+      pkgs.vimPlugins.everforest
+
+      pkgs.vimPlugins.nvim-cmp                # completions
+      pkgs.vimPlugins.cmp-buffer              # completion source: buffer
+      pkgs.vimPlugins.cmp-path                # completion source: file path
+      pkgs.vimPlugins.cmp-nvim-lua            # completion source: nvim config aware lua
+      pkgs.vimPlugins.cmp-nvim-lsp            # completion source: lsp
+      pkgs.vimPlugins.cmp-cmdline             # completion source: cmdline
+      pkgs.vimPlugins.cmp_luasnip             # completion source: luasnip snippets
+      pkgs.vimPlugins.lspkind-nvim            # pictograms for completion suggestions
+      pkgs.vimPlugins.colorizer               # color name highlighter
     ];
 
     extraPackages = with pkgs; [
