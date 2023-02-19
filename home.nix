@@ -87,9 +87,6 @@ in
       bindkey -v
       export KEYTIMEOUT=2
       
-      # source fzf colors
-      source ~/.dotfiles/theme/fzf/theme
-
       # Edit line in $EDITOR with ctrl-e:
       autoload edit-command-line; zle -N edit-command-line
       bindkey '^e' edit-command-line
@@ -214,9 +211,6 @@ in
       background_opacity = "0.70";
     };
     extraConfig = ''
-      # run time colors
-      include ~/.dotfiles/theme/kitty/theme.conf
-
       # minimize functionality
       # clear_all_shortcuts yes
       # clear_all_mouse_actions yes
