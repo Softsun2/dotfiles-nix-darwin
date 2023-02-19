@@ -1,11 +1,19 @@
 #!/bin/sh
+OUTPUT='~/Music/my-music/%(uploader)s/%(album)s/%(title)s.%(ext)s'
 
 # $1 -- the audio url
-yt-dlp \
-  --extract-audio \
-  --audio-format mp3 \
-  --xattrs \
-  --embed-thumbnail \
-  --no-abort-on-error \
-  --output '~/Music/my-music/%(uploader)s/%(album)s/%(title)s.%(ext)s' \
-  $1
+audio_dl() {
+  yt-dlp \
+    --extract-audio \
+    --audio-format mp3 \
+    --xattrs \
+    --embed-thumbnail \
+    --no-abort-on-error \
+    --output "$OUTPUT" \
+    $1
+}
+
+case "$1" in
+  playlist) OUTPUT='~/Music/my-music/%(playlist)s/%(title)s.%(ext)s' && audio_dl "$2" ;;
+  *) audio_dl "$1" ;;
+esac

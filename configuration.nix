@@ -37,6 +37,7 @@ in
       efont-unicode
       cozette
       nerdfonts
+      liberation_ttf
       # (nerdfonts.override { fonts = [ 
       #   "JetBrainsMono"
       #   "FiraCode"
@@ -53,6 +54,7 @@ in
 
     # mouse
     ".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";    # disable mouse acceleration
+    universalaccess.reduceTransparency = true;                  # reduce transparency (purple glitch)
 
     NSGlobalDomain = {
       # keybord
@@ -127,7 +129,8 @@ in
         normal_window_opacity = 0.90;
 
         window_border = "on";                # draw window borders, this doesn't seem to be working anyway
-        window_border_width = 3;
+        window_border_blur = "on";
+        window_border_width = 1;
         active_window_border_color = "0xff81A1C1";
         normal_window_border_color = "0xff4C566A";
 

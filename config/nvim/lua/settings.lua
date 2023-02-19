@@ -12,7 +12,7 @@ opt.cursorline = true
 opt.colorcolumn = "80"
 
 -- History
-g.noswapfile = true
+opt.swapfile = false
 opt.undofile = true
 opt.undodir = "/Users/softsun2/.cache/"
 

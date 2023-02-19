@@ -19,6 +19,7 @@ in
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.go
     pkgs.shellcheck
     pkgs.fontconfig
     pkgs.optifine
@@ -32,8 +33,6 @@ in
     pkgs.cmatrix
     pkgs.orca-c
 
-    # eye candy
-    pkgs.flavours
     pkgs.exa
     pkgs.feh
     pkgs.htop
@@ -53,11 +52,11 @@ in
     pkgs.nodePackages.nodemon
 
     # programming lanuages
-    pkgs.ocaml
-    pkgs.ocamlPackages.utop
-    pkgs.ocamlPackages.findlib
-    pkgs.ocamlPackages.bitstring
-    pkgs.ocamlPackages.ppx_bitstring
+    # pkgs.ocaml
+    # pkgs.ocamlPackages.utop
+    # pkgs.ocamlPackages.findlib
+    # pkgs.ocamlPackages.bitstring
+    # pkgs.ocamlPackages.ppx_bitstring
     # pkgs.rWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 dplyr xts ]; }
   ];
 
@@ -94,9 +93,6 @@ in
       # Edit line in $EDITOR with ctrl-e:
       autoload edit-command-line; zle -N edit-command-line
       bindkey '^e' edit-command-line
-
-      # falvours config location
-      export FLAVOURS_CONFIG_FILE=$HOME/.dotfiles/config/flavours/config.toml
 
       bindkey '^y' autosuggest-accept
       bindkey -s '^f' 'f\n'
@@ -206,7 +202,7 @@ in
     settings = {
       allow_remote_control = true;
       cursor = "none";
-      font_family = "mononoki Nerd Font Mono";
+      font_family = "LiterationMono Nerd Font Mono";
       font_size = 16;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
@@ -215,7 +211,7 @@ in
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
-      background_opacity = "0.96";
+      background_opacity = "0.70";
     };
     extraConfig = ''
       # run time colors
@@ -277,6 +273,8 @@ in
 
       vim-pug
 
+      vim-clang-format
+
       gitsigns-nvim
 
       vim-illuminate
@@ -332,7 +330,7 @@ in
       nodePackages.vscode-langservers-extracted
       nodePackages.typescript
       typescript-language-server-fixed
-      ocamlPackages.ocaml-lsp
+      # ocamlPackages.ocaml-lsp
       rPackages.languageserver
       ccls
       ltex-ls

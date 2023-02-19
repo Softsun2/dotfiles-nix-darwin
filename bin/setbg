@@ -1,9 +1,5 @@
 #!/bin/sh
 
 IMAGE="$1"
-BG_PATH="$HOME/.dotfiles/theme/bg.txt"
-SEARCH=$(head -n 1 "$BG_PATH")
-
-sed -i '' "s:$SEARCH:$1:" "$BG_PATH"
-flavours apply $(flavours current)
-
+sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = \"$IMAGE\""
+killall Dock
