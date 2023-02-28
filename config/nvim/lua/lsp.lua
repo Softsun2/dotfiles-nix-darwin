@@ -7,7 +7,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 
 -- Note: nvim-navic can attach to only one server per buffer.
 local navic = require("nvim-navic")
-navic_on_attach = function (client, bufnr)
+local navic_on_attach = function (client, bufnr)
   navic.attach(client, bufnr)
 end
 

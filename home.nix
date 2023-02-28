@@ -10,7 +10,9 @@ let
     '';
   };
 
-  no-clown-fiesta-nvim = pkgs.callPackage ./nixpkgs/no-clown-fiesta-nvim.nix { inherit pkgs; };
+  no-clown-fiesta-nvim = pkgs.callPackage ./pkgs/no-clown-fiesta-nvim.nix { inherit pkgs; };
+  rasmus-nvim = pkgs.callPackage ./pkgs/rasmus-nvim.nix { inherit pkgs; };
+  menguless-nvim = pkgs.callPackage ./pkgs/menguless-nvim.nix.nix { inherit pkgs; };
 in
 {
   manual.manpages.enable = false;
@@ -26,6 +28,7 @@ in
     pkgs.fontconfig
     pkgs.optifine
     pkgs.neofetch
+    pkgs.cowsay
 
     pkgs.ffmpeg
 
@@ -35,6 +38,7 @@ in
     pkgs.cmatrix
     pkgs.orca-c
 
+    pkgs.flavours
     pkgs.exa
     pkgs.feh
     pkgs.htop
@@ -93,6 +97,9 @@ in
       autoload edit-command-line; zle -N edit-command-line
       bindkey '^e' edit-command-line
 
+      # falvours config location
+      export FLAVOURS_CONFIG_FILE=$HOME/.dotfiles/config/flavours/config.toml
+
       bindkey '^y' autosuggest-accept
       bindkey -s '^f' 'f\n'
 
@@ -123,7 +130,6 @@ in
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
       s   = "kitty +kitten ssh";
-      cdf = "cd $(find . -type d | fzf)";
       dotfiles = "cd ~/.dotfiles";
       school = "cd $(find ~/school -type d | fzf)";
 
@@ -210,9 +216,12 @@ in
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
-      background_opacity = "0.70";
+      background_opacity = "1.0";
     };
     extraConfig = ''
+      # run time colors
+      include ~/.dotfiles/theme/kitty/theme.conf
+
       # minimize functionality
       # clear_all_shortcuts yes
       # clear_all_mouse_actions yes
@@ -265,7 +274,6 @@ in
         ]
       ))
 
-      no-clown-fiesta-nvim
       pkgs.vimPlugins.nvim-ts-rainbow
       pkgs.vimPlugins.lualine-nvim
 
@@ -299,11 +307,9 @@ in
       pkgs.vimPlugins.luasnip                 # snippet engine
       pkgs.vimPlugins.friendly-snippets       # more snippets
 
-      pkgs.vimPlugins.nvim-base16             # base16 color schemes w/ lsp & treesitter support
-      pkgs.vimPlugins.vim-monokai
-      pkgs.vimPlugins.nvim-solarized-lua
-      pkgs.vimPlugins.rose-pine
-      pkgs.vimPlugins.everforest
+      menguless-nvim
+      no-clown-fiesta-nvim
+      rasmus-nvim
 
       pkgs.vimPlugins.nvim-cmp                # completions
       pkgs.vimPlugins.cmp-buffer              # completion source: buffer

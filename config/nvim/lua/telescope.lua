@@ -24,14 +24,14 @@ telescope.setup {
   },
   pickers = {
     find_files = {
-      theme = 'cursor',
+      theme = 'dropdown',
       -- previewer = 'vim_buffer_cat.new',
       layout_config = {
         height = 9,
       },
     },
     live_grep = {
-      theme = 'cursor',
+      theme = 'dropdown',
       -- previewer = false,
       layout_config = {
         height = 9,
