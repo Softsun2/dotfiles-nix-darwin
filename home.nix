@@ -12,7 +12,7 @@ let
 
   no-clown-fiesta-nvim = pkgs.callPackage ./pkgs/no-clown-fiesta-nvim.nix { inherit pkgs; };
   rasmus-nvim = pkgs.callPackage ./pkgs/rasmus-nvim.nix { inherit pkgs; };
-  menguless-nvim = pkgs.callPackage ./pkgs/menguless-nvim.nix.nix { inherit pkgs; };
+  menguless-nvim = pkgs.callPackage ./pkgs/menguless-nvim.nix { inherit pkgs; };
 in
 {
   manual.manpages.enable = false;
@@ -56,6 +56,7 @@ in
     pkgs.nodejs
     pkgs.nodePackages.live-server
     pkgs.nodePackages.nodemon
+    pkgs.nodePackages.ts-node
 
     # programming lanuages
     # pkgs.ocaml
@@ -130,8 +131,11 @@ in
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
       s   = "kitty +kitten ssh";
+      better = "vim ~/better.md";
       dotfiles = "cd ~/.dotfiles";
       school = "cd $(find ~/school -type d | fzf)";
+      # emacs = "/opt/homebrew/opt/emacs-plus@28/bin/emacs";
+      # emacsclient = "/opt/homebrew/opt/emacs-plus@28/bin/emacsclient";
 
       shell = "nix-shell";
       home = "vim $HOME/.dotfiles/home.nix";
@@ -183,8 +187,6 @@ in
     terminal = "screen-256color";
     extraConfig = ''
       set-option -g status-position bottom
-      set -g status-bg black 
-      set -g status-fg blue 
     '';
     plugins =  with pkgs; [
       tmuxPlugins.cpu
@@ -205,7 +207,8 @@ in
   programs.kitty = {
     enable = true;
     settings = {
-      allow_remote_control = true;
+      allow_remote_control = "socket-only";
+      listen_on = "unix:/tmp/kitty";
       cursor = "none";
       font_family = "LiterationMono Nerd Font Mono";
       font_size = 16;
@@ -216,7 +219,7 @@ in
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
-      background_opacity = "1.0";
+      background_opacity = "0.80";
     };
     extraConfig = ''
       # run time colors
@@ -274,9 +277,11 @@ in
         ]
       ))
 
+      pkgs.vimPlugins.zen-mode-nvim
       pkgs.vimPlugins.nvim-ts-rainbow
       pkgs.vimPlugins.lualine-nvim
 
+      pkgs.vimPlugins.nvim-base16
       pkgs.vimPlugins.vim-pug
 
       pkgs.vimPlugins.vim-clang-format
@@ -307,6 +312,8 @@ in
       pkgs.vimPlugins.luasnip                 # snippet engine
       pkgs.vimPlugins.friendly-snippets       # more snippets
 
+      pkgs.vimPlugins.kanagawa-nvim
+      pkgs.vimPlugins.rose-pine
       menguless-nvim
       no-clown-fiesta-nvim
       rasmus-nvim
@@ -329,6 +336,7 @@ in
       nodePackages.pyright
       nodePackages.vscode-langservers-extracted
       nodePackages.typescript
+      nodePackages.eslint
       typescript-language-server-fixed
       # ocamlPackages.ocaml-lsp
       rPackages.languageserver

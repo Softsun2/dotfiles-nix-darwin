@@ -22,6 +22,7 @@ source('treesitter')
 source('illuminate')
 source('gitsigns')
 source('lualine')
+source('zen-mode')
 
 -- todo
 --

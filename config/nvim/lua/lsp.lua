@@ -81,6 +81,18 @@ lspconfig.tsserver.setup {
   on_attach = navic.on_attach,
   capabilities = capabilities,
 }
+-- js/ts linting
+lspconfig.eslint.setup {
+  on_attach = navic.on_attach,
+  capabilities = capabilities,
+  settings = {
+    codeActionOnSave = {
+      enable = true,
+      mode = "all"
+    },
+    format = true,
+  }
+}
 
 
 -- ocaml

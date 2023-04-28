@@ -7,7 +7,7 @@ local o = vim.o
 wo.number = true                -- line numbers
 wo.relativenumber = true        -- relative line numbers
 wo.wrap = false                 -- no wrap
-o.termguicolors = true          -- use terminal colors
+o.termguicolors = true -- use terminal colors
 opt.cursorline = true
 opt.colorcolumn = "80"
 
