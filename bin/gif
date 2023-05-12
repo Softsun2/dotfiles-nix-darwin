@@ -1,0 +1,6 @@
+#!/bin/sh
+
+INPUT="$1"
+OUTPUT="$2"
+
+ffmpeg -i "$INPUT" -r 15 -vf "scale=1280:720, setpts=0.5*PTS" -f gif "$2"

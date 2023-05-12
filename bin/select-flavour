@@ -1,0 +1,6 @@
+#!/bin/sh
+
+old="$(flavours current)"
+flavours list -l | fzf --preview='flavours apply -l {}' || \
+flavours apply "${old}" && \
+flavours apply "$(flavours current)"

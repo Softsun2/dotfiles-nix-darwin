@@ -1,0 +1,9 @@
+#!/bin/sh
+
+MODE="$1"
+IMAGE="$2"
+flavours generate "$MODE" "$IMAGE"
+sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = \"$IMAGE\""
+killall Dock
+flavours apply generated
+

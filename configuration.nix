@@ -122,15 +122,15 @@ in
         window_origin_display = "default";    # new windows are managed by active display
         window_placement = "second_child";    # new windows become second-leaf node
         window_topmost = "off";               # don't make floating windows stay on top
-        window_shadow  = "off";
+        window_shadow  = "on";
         window_opacity = "off";               # disable opacity for windows
         window_opacity_duration = 0.0;        # duration of opacity transition
         active_window_opacity = 1.0;
-        normal_window_opacity = 0.90;
+        normal_window_opacity = 1.0;
 
-        window_border = "on";                # draw window borders, this doesn't seem to be working anyway
+        window_border = "off";                # draw window borders, this doesn't seem to be working anyway
         window_border_blur = "on";
-        window_border_width = 1;
+        window_border_width = 0;
         active_window_border_color = "0xff81A1C1";
         normal_window_border_color = "0xff4C566A";
 
@@ -257,14 +257,16 @@ in
     taps = [
       "homebrew/cask"
       "homebrew/cask-versions"
+      "d12frosted/emacs-plus"
     ];
     casks = [
       "hex-fiend"
       "firefox"
       "discord"
-      "vcv-rack"
-      "supercollider"
-      "emacs"
+      "vscodium"
+    ];
+    brews = [
+      "emacs-plus"
     ];
   };
 

@@ -23,6 +23,7 @@ in
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.neovim-remote
     pkgs.go
     pkgs.shellcheck
     pkgs.fontconfig
@@ -131,17 +132,18 @@ in
       c   = "clear";
       f   = "cd $(find . -type d | fzf)";
       s   = "kitty +kitten ssh";
-      better = "vim ~/better.md";
+      better = "$EDITOR ~/better.md";
+      jo = "$EDITOR ~/Documents/ditsy/jo.md";
       dotfiles = "cd ~/.dotfiles";
       school = "cd $(find ~/school -type d | fzf)";
       # emacs = "/opt/homebrew/opt/emacs-plus@28/bin/emacs";
       # emacsclient = "/opt/homebrew/opt/emacs-plus@28/bin/emacsclient";
 
       shell = "nix-shell";
-      home = "vim $HOME/.dotfiles/home.nix";
+      home = "$EDITOR $HOME/.dotfiles/home.nix";
       build-home = "nix build -o ~/.dotfiles/result ~/.dotfiles/.#homeManagerConfigurations.softsun2.activationPackage && $HOME/.dotfiles/result/activate";
-      flake = "vim $HOME/.dotfiles/flake.nix";
-      config = "vim $HOME/.dotfiles/configuration.nix";
+      flake = "$EDITOR $HOME/.dotfiles/flake.nix";
+      config = "$EDITOR $HOME/.dotfiles/configuration.nix";
     };
 
     plugins = [
@@ -360,6 +362,7 @@ in
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    defaultOptions = [ "--color=16" ];
   };
 
 }

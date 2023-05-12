@@ -1,0 +1,5 @@
+#!/bin/sh
+
+IMAGE="$1"
+sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = \"$IMAGE\""
+killall Dock

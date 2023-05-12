@@ -36,23 +36,17 @@ hook = 'kitty @ set-colors -a -c $HOME/.dotfiles/theme/kitty/theme.conf'
 # subtemplate = 'recolor'
 
 # neovim
-# [[item]]
-# file = '$HOME/.dotfiles/config/nvim/lua/colors.lua'
-# template = 'nvim-base16'
-# start = '-- start flavours'
-# end = '-- end flavours'
-# hook = ...
-
-# fzf
 [[item]]
-file = '$HOME/.dotfiles/theme/fzf/theme'
-template = 'fzf'
-# hook = ...
+file = '$HOME/.dotfiles/config/nvim/lua/colors.lua'
+template = 'nvim-base16'
+start = '-- start flavours'
+end = '-- end flavours'
+hook = 'reloadnvim'
 
 # MacOS background
-# [[item]]
-# file = '$HOME/.dotfiles/theme/bg.txt'
-# template = 'macos-bg'
-# hook = 'python3 ~/personal/base-16/macos/bg-wm-hook.py'
-
+[[item]]
+file = '$HOME/.dotfiles/theme/bg.txt'
+template = 'macos-bg'
+hook = 'python3 ~/personal/base-16/macos/bg-wm-hook.py'
+light = false
 

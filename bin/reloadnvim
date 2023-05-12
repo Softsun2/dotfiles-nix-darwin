@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# author: misterio77
+
+nvr --serverlist | \
+while read line; do
+    nvr --nostart -cc ':source ~/.dotfiles/config/nvim/lua/colors.lua' --servername $line & \
+done
