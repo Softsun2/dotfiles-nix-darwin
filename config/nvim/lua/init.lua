@@ -23,6 +23,8 @@ source('illuminate')
 source('gitsigns')
 source('lualine')
 source('zen-mode')
+source('twilight')
+source('prettier')
 
 -- todo
 --

@@ -57,11 +57,11 @@ require('illuminate').configure({
 
 
 -- highlights
-vim.cmd('hi clear IlluminatedWordText')
-vim.cmd('hi link IlluminatedWordText CursorLineNr')
-
-vim.cmd('hi clear IlluminatedWordRead')
-vim.cmd('hi link IlluminatedWordRead CursorLineNr')
-
-vim.cmd('hi clear IlluminatedWordWrite')
-vim.cmd('hi link IlluminatedWordWrite CursorLineNr')
+-- vim.cmd('hi clear IlluminatedWordText')
+-- vim.cmd('hi link IlluminatedWordText CursorLineNr')
+-- 
+-- vim.cmd('hi clear IlluminatedWordRead')
+-- vim.cmd('hi link IlluminatedWordRead CursorLineNr')
+-- 
+-- vim.cmd('hi clear IlluminatedWordWrite')
+-- vim.cmd('hi link IlluminatedWordWrite CursorLineNr')

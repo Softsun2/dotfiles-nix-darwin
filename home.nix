@@ -179,6 +179,16 @@ in
           rev = "57bdda68e52a09075352b18fa3ca21abd31df4cb";
         };
       }
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.5.0";
+          sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+        };
+      }
     ];
   };
 
@@ -211,7 +221,6 @@ in
     settings = {
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty";
-      cursor = "none";
       font_family = "LiterationMono Nerd Font Mono";
       font_size = 16;
       scrollback_lines = 5000;
@@ -242,7 +251,8 @@ in
       # fix paste
       # map cmd+v paste
 
-      # clicking links
+      # this needs to be last!
+      cursor none
     '';
   };
 
@@ -280,6 +290,7 @@ in
       ))
 
       pkgs.vimPlugins.zen-mode-nvim
+      pkgs.vimPlugins.twilight-nvim
       pkgs.vimPlugins.nvim-ts-rainbow
       pkgs.vimPlugins.lualine-nvim
 
@@ -300,7 +311,6 @@ in
 
       pkgs.vimPlugins.harpoon                 # Tagged files
       pkgs.vimPlugins.nvim-tree-lua           # file tree
-      pkgs.vimPlugins.vim-floaterm            # floating terminal
 
       pkgs.vimPlugins.nvim-web-devicons       # dev icons
       pkgs.vimPlugins.indent-blankline-nvim
@@ -314,12 +324,6 @@ in
       pkgs.vimPlugins.luasnip                 # snippet engine
       pkgs.vimPlugins.friendly-snippets       # more snippets
 
-      pkgs.vimPlugins.kanagawa-nvim
-      pkgs.vimPlugins.rose-pine
-      menguless-nvim
-      no-clown-fiesta-nvim
-      rasmus-nvim
-
       pkgs.vimPlugins.nvim-cmp                # completions
       pkgs.vimPlugins.cmp-buffer              # completion source: buffer
       pkgs.vimPlugins.cmp-path                # completion source: file path
@@ -329,6 +333,7 @@ in
       pkgs.vimPlugins.cmp_luasnip             # completion source: luasnip snippets
       pkgs.vimPlugins.lspkind-nvim            # pictograms for completion suggestions
       pkgs.vimPlugins.colorizer               # color name highlighter
+      pkgs.vimPlugins.vim-prettier
     ];
 
     extraPackages = with pkgs; [
@@ -339,6 +344,7 @@ in
       nodePackages.vscode-langservers-extracted
       nodePackages.typescript
       nodePackages.eslint
+      nodePackages.prettier
       typescript-language-server-fixed
       # ocamlPackages.ocaml-lsp
       rPackages.languageserver
