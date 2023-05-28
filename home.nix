@@ -221,7 +221,7 @@ in
     settings = {
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty";
-      font_family = "LiterationMono Nerd Font Mono";
+      font_family = "Lilex Nerd Font Mono";
       font_size = 16;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
@@ -230,7 +230,7 @@ in
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
-      background_opacity = "0.80";
+      background_opacity = "0.90";
     };
     extraConfig = ''
       # run time colors
@@ -253,8 +253,15 @@ in
 
       # this needs to be last!
       cursor none
-    '';
-  };
+
+      map cmd+plus change_font_size all +0.5
+      map cmd+equal change_font_size all +0.5
+      map shift+cmd+equal change_font_size all +0.5
+
+      map cmd+minus change_font_size all -0.5
+      map shift+cmd+minus change_font_size all -0.5
+      '';
+    };
 
   programs.neovim = {
     enable = true;

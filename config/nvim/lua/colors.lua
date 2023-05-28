@@ -1,9 +1,9 @@
 -- start flavours
 require('base16-colorscheme').setup({
-    base00 = '#1d2021', base01 = '#3c3836', base02 = '#504945', base03 = '#665c54',
-    base04 = '#bdae93', base05 = '#d5c4a1', base06 = '#ebdbb2', base07 = '#fbf1c7',
-    base08 = '#fb4934', base09 = '#fe8019', base0A = '#fabd2f', base0B = '#b8bb26',
-    base0C = '#8ec07c', base0D = '#83a598', base0E = '#d3869b', base0F = '#d65d0e',
+    base00 = '#f7f7f7', base01 = '#e3e3e3', base02 = '#b9b9b9', base03 = '#ababab',
+    base04 = '#525252', base05 = '#464646', base06 = '#252525', base07 = '#101010',
+    base08 = '#7c7c7c', base09 = '#999999', base0A = '#a0a0a0', base0B = '#8e8e8e',
+    base0C = '#868686', base0D = '#686868', base0E = '#747474', base0F = '#5e5e5e',
 })
 -- end flavours
 

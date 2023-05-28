@@ -13,6 +13,26 @@ source = "https://github.com/Softsun2/base16-everforest"
 name = "og-themes"
 source = "https://github.com/Softsun2/base16-og-themes"
 
+[[extra_scheme]]
+name = "solarized"
+source = "https://github.com/Softsun2/base16-solarized-scheme"
+
+[[extra_scheme]]
+name = "moonlight"
+source = "https://github.com/jswinarton/base16-moonlight-scheme"
+
+[[extra_scheme]]
+name = "catpuccin"
+source = "https://github.com/augustebaum/base16-catppuccin-schemes"
+
+[[extra_scheme]]
+name = "nono"
+source = "https://github.com/elmotec/base16-nono-scheme"
+
+[[extra_scheme]]
+name = "paint"
+source = "https://github.com/dark-beep-boop/base16-painted-scheme"
+
 [[extra_template]]
 name = "nvim-base16"
 source = "https://github.com/Softsun2/base16-nvim-base16"
