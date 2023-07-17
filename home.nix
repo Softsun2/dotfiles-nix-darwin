@@ -136,6 +136,7 @@ in
       jo = "$EDITOR ~/Documents/ditsy/jo.md";
       dotfiles = "cd ~/.dotfiles";
       school = "cd $(find ~/school -type d | fzf)";
+      select-flavour = "select-flavour ; disable-window-shadow";
       # emacs = "/opt/homebrew/opt/emacs-plus@28/bin/emacs";
       # emacsclient = "/opt/homebrew/opt/emacs-plus@28/bin/emacsclient";
 
@@ -221,7 +222,6 @@ in
     settings = {
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty";
-      font_family = "Lilex Nerd Font Mono";
       font_size = 16;
       scrollback_lines = 5000;
       wheel_scroll_multiplier = 3;
@@ -230,7 +230,7 @@ in
       enable_audio_bell = "no";
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
-      background_opacity = "0.90";
+      background_opacity = "1";
     };
     extraConfig = ''
       # run time colors
@@ -361,6 +361,21 @@ in
       # telescope depency
       ripgrep
     ];
+  };
+
+  programs.firefox = {
+    enable = true;
+    package = pkgs.runCommand "firefox-0.0.0" { } "mkdir $out";
+    profiles = {
+      softsun2 = {
+        id = 0;
+        userChrome = builtins.readFile ./conf.d/userChrome.css;
+        # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        #   ublock-origin
+        #   youtube-nonstop
+        # ];
+      };
+    };
   };
 
   programs.git = {

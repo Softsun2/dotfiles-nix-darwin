@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo yabai --load-sa
+yabai -m config window_shadow off

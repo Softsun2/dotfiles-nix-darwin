@@ -1,3 +1,5 @@
+shell = "zsh -c '{}'"
+
 schemes = "https://github.com/Softsun2/base16-schemes-source"
 # templates = "my-templates"
 
@@ -69,4 +71,3 @@ file = '$HOME/.dotfiles/theme/bg.txt'
 template = 'macos-bg'
 hook = 'python3 ~/personal/base-16/macos/bg-wm-hook.py'
 light = false
-

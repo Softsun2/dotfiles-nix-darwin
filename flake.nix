@@ -4,11 +4,12 @@
   inputs = {
 
     darwin = {
-      url = "github:lnl7/nix-darwin/master";
+      url = github:lnl7/nix-darwin/master;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
+    nur.url = github:nix-community/NUR;
 
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
@@ -17,7 +18,7 @@
 
   };
 
-  outputs = inputs @ { self, darwin, nixpkgs, home-manager, ... }:
+  outputs = inputs @ { self, darwin, nixpkgs, nur, home-manager, ... }:
   # need to include x86 packages that can't be built on arm yet
   let
     system = "aarch64-darwin";
@@ -25,6 +26,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      overlays = [ nur.overlay ];
     };
 
     lib = nixpkgs.lib;

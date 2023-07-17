@@ -1,6 +1,6 @@
 require("zen-mode").setup {
   window = {
-    backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+    backdrop = 1.0, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
     -- height and width can be:
     -- * an absolute number of cells when > 1
     -- * a percentage of the width / height of the editor when <= 1
@@ -23,16 +23,16 @@ require("zen-mode").setup {
     -- disable some global vim options (vim.o...)
     -- comment the lines to not apply the options
     options = { enabled = true, },
-    twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+    twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
     kitty = {
-      enabled = true,
+      enabled = false,
       font = "+4", -- font size increment
     },
   },
   -- callback where you can add custom code when the Zen window closes
-  on_close = function()
-    vim.cmd('silent !kitty @ set-font-size -- 16')
-  end,
+  -- on_close = function()
+  --   vim.cmd('silent !kitty @ set-font-size -- 12')
+  -- end,
 }
 
 vim.keymap.set('n', '<leader>z', require('zen-mode').toggle, { silent = true })

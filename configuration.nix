@@ -4,6 +4,12 @@ let
   my-python-packages = p: with p; [
     image-go-nord
   ];
+  yabai = pkgs.yabai.overrideAttrs (old: rec {
+    src = builtins.fetchTarball {
+      url = https://github.com/koekeishiya/yabai/releases/download/v4.0.4/yabai-v4.0.4.tar.gz;
+      sha256 = "sha256:0rfg6kqhnsryclny5drj85h442kz5bc9rks60c3lz0a842yvi1c2";
+    };
+  });
 in
 {
   # nix-darwin options: https://daiderd.com/nix-darwin/manual/index.html
@@ -111,8 +117,51 @@ in
   # services
   services = {
 
+    spacebar = {
+      enable = true;
+      package = pkgs.spacebar;
+      config = {
+        position                   = "bottom";
+        display                    = "main";
+        height                     = 26;
+        title                      = "on";
+        spaces                     = "on";
+        clock                      = "on";
+        power                      = "on";
+        dnd                        = "off";
+        padding_left               = 20;
+        padding_right              = 20;
+        spacing_left               = 25;
+        spacing_right              = 25;
+        text_font                  = ''"Menlo:Regular:12.0"'';
+        icon_font                  = ''"MesloLGL Nerd Font Mono:Regular:12.0"'';
+        background_color           = "0xff202020";
+        foreground_color           = "0xffa8a8a8";
+        power_icon_color           = "0xffcd950c";
+        battery_icon_color         = "0xffd75f5f";
+        dnd_icon_color             = "0xffa8a8a8";
+        clock_icon_color           = "0xffa8a8a8";
+        power_icon_strip           = "󰚥";
+        space_icon                 = "•";
+        space_icon_strip           = "1 2 3 4 5 6 7 8 9 10";
+        spaces_for_all_displays    = "on";
+        display_separator          = "on";
+        display_separator_icon     = "";
+        space_icon_color           = "0xff458588";
+        space_icon_color_secondary = "0xff78c4d4";
+        space_icon_color_tertiary  = "0xfffff9b0";
+        clock_icon                 = "‎";
+        dnd_icon                   = "";
+        clock_format               = ''"%b %d %I:%M %p"'';
+        right_shell                = "on";
+        right_shell_icon           = "‎";
+        right_shell_command        = "whoami";
+      };
+    };
+
     yabai = {
       enable = true;
+      package = yabai;
       config = {
         # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#config
 
@@ -122,15 +171,15 @@ in
         window_origin_display = "default";    # new windows are managed by active display
         window_placement = "second_child";    # new windows become second-leaf node
         window_topmost = "off";               # don't make floating windows stay on top
-        window_shadow  = "on";
+        window_shadow  = "off";
         window_opacity = "off";               # disable opacity for windows
         window_opacity_duration = 0.0;        # duration of opacity transition
         active_window_opacity = 1.0;
         normal_window_opacity = 1.0;
 
-        window_border = "off";                # draw window borders, this doesn't seem to be working anyway
+        window_border = "on";                # draw window borders, this doesn't seem to be working anyway
         window_border_blur = "on";
-        window_border_width = 0;
+        window_border_width = 5;
         active_window_border_color = "0xff81A1C1";
         normal_window_border_color = "0xff4C566A";
 
@@ -155,6 +204,7 @@ in
         yabai -m rule --add app="^System Preferences$" manage=off
         yabai -m rule --add app="^Archive Utility$" manage=off
         yabai -m rule --add app="^zoom.us$" manage=off
+        yabai -m config external_bar all:0:26
       '';
 
     };
@@ -263,7 +313,8 @@ in
       "hex-fiend"
       "firefox"
       "discord"
-      "vscodium"
+      "docker"
+      "zoom"
     ];
     brews = [
       "emacs-plus"
