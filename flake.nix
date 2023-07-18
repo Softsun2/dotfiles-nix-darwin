@@ -3,16 +3,14 @@
 
   inputs = {
 
-    darwin = {
-      url = github:lnl7/nix-darwin/master;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
     nur.url = github:nix-community/NUR;
-
+    darwin = {
+      url = github:lnl7/nix-darwin;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

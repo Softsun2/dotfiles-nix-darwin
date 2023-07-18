@@ -231,6 +231,7 @@ in
       hide_window_decorations = "titlebar-only";
       disable_ligatures = "never";
       background_opacity = "1";
+      shell_integration = "no-cursor";
     };
     extraConfig = ''
       # run time colors
@@ -370,10 +371,43 @@ in
       softsun2 = {
         id = 0;
         userChrome = builtins.readFile ./conf.d/userChrome.css;
-        # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        #   ublock-origin
-        #   youtube-nonstop
-        # ];
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          darkreader
+          grammarly
+          ublock-origin
+          df-youtube
+          h264ify
+          youtube-nonstop
+          vimium
+        ];
+        settings = {
+          "app.update.auto" = false;
+          # "browser.startup.homepage" = "https://lobste.rs";
+          # "browser.search.region" = "GB";
+          # "browser.search.countryCode" = "GB";
+          # "browser.search.isUS" = false;
+          # "browser.ctrlTab.recentlyUsedOrder" = false;
+          "browser.newtabpage.enabled" = false;
+          # "browser.bookmarks.showMobileBookmarks" = true;
+          "browser.uidensity" = 1;
+          "browser.urlbar.placeholderName" = "DuckDuckGo";
+          "browser.urlbar.update1" = true;
+          # "distribution.searchplugins.defaultLocale" = "en-GB";
+          # "general.useragent.locale" = "en-GB";
+          # "identity.fxaccounts.account.device.name" = config.networking.hostName;
+          "privacy.trackingprotection.enabled" = true;
+          "privacy.trackingprotection.socialtracking.enabled" = true;
+          "privacy.trackingprotection.socialtracking.annotate.enabled" = true;
+          "reader.color_scheme" = "auto";
+          # "services.sync.declinedEngines" = "addons,passwords,prefs";
+          # "services.sync.engine.addons" = false;
+          # "services.sync.engineStatusChanged.addons" = true;
+          # "services.sync.engine.passwords" = false;
+          # "services.sync.engine.prefs" = false;
+          # "services.sync.engineStatusChanged.prefs" = true;
+          # "signon.rememberSignons" = false;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        };
       };
     };
   };

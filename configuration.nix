@@ -114,54 +114,65 @@ in
 
   };
 
+  launchd.user.agents.spacebar.serviceConfig.StandardErrorPath = "/tmp/spacebar.err.log";
+  launchd.user.agents.spacebar.serviceConfig.StandardOutPath = "/tmp/spacebar.out.log";
+
   # services
   services = {
 
-    spacebar = {
-      enable = true;
-      package = pkgs.spacebar;
-      config = {
-        position                   = "bottom";
-        display                    = "main";
-        height                     = 26;
-        title                      = "on";
-        spaces                     = "on";
-        clock                      = "on";
-        power                      = "on";
-        dnd                        = "off";
-        padding_left               = 20;
-        padding_right              = 20;
-        spacing_left               = 25;
-        spacing_right              = 25;
-        text_font                  = ''"Menlo:Regular:12.0"'';
-        icon_font                  = ''"MesloLGL Nerd Font Mono:Regular:12.0"'';
-        background_color           = "0xff202020";
-        foreground_color           = "0xffa8a8a8";
-        power_icon_color           = "0xffcd950c";
-        battery_icon_color         = "0xffd75f5f";
-        dnd_icon_color             = "0xffa8a8a8";
-        clock_icon_color           = "0xffa8a8a8";
-        power_icon_strip           = "󰚥";
-        space_icon                 = "•";
-        space_icon_strip           = "1 2 3 4 5 6 7 8 9 10";
-        spaces_for_all_displays    = "on";
-        display_separator          = "on";
-        display_separator_icon     = "";
-        space_icon_color           = "0xff458588";
-        space_icon_color_secondary = "0xff78c4d4";
-        space_icon_color_tertiary  = "0xfffff9b0";
-        clock_icon                 = "‎";
-        dnd_icon                   = "";
-        clock_format               = ''"%b %d %I:%M %p"'';
-        right_shell                = "on";
-        right_shell_icon           = "‎";
-        right_shell_command        = "whoami";
-      };
-    };
+#     spacebar = {
+#       enable = true;
+#       package = pkgs.spacebar;
+#       config = {
+#         # debugging
+#         debug_output = "on";
+#         position                   = "bottom";
+#         display                    = "main";
+#         height                     = 26;
+#         title                      = "on";
+#         spaces                     = "on";
+#         clock                      = "on";
+#         power                      = "on";
+#         dnd                        = "off";
+#         padding_left               = 20;
+#         padding_right              = 20;
+#         spacing_left               = 25;
+#         spacing_right              = 25;
+#         text_font                  = ''"Menlo:Regular:12.0"'';
+#         icon_font                  = ''"MesloLGL Nerd Font Mono:Regular:12.0"'';
+#         background_color           = "0xff202020";
+#         foreground_color           = "0xffa8a8a8";
+#         power_icon_color           = "0xffcd950c";
+#         battery_icon_color         = "0xffd75f5f";
+#         dnd_icon_color             = "0xffa8a8a8";
+#         clock_icon_color           = "0xffa8a8a8";
+#         power_icon_strip           = "‎ 󰚥";
+#         space_icon                 = "*";
+#         space_icon_strip           = "1 2 3 4 5 6 7 8 9 10";
+#         spaces_for_all_displays    = "on";
+#         display_separator          = "on";
+#         display_separator_icon     = "";
+#         space_icon_color           = "0xff458588";
+#         space_icon_color_secondary = "0xff78c4d4";
+#         space_icon_color_tertiary  = "0xfffff9b0";
+#         clock_icon                 = "‎";
+#         dnd_icon                   = "";
+#         clock_format               = ''"%a, %b %d %I:%M%p"'';
+#         right_shell                = "on";
+#         right_shell_icon           = "‎";
+#         right_shell_command        = "whoami";
+#       };
+#     };
 
     yabai = {
       enable = true;
-      package = yabai;
+      package = (pkgs.yabai.overrideAttrs (o: rec {
+        version = "5.0.3";
+        src = builtins.fetchTarball {
+          url = "https://github.com/koekeishiya/yabai/releases/download/v${version}/yabai-v${version}.tar.gz";
+          sha256 = "1l306siwdv84m4az40dg30jrmrh4apjy0dhhmdqmgqg9p3z74f77";
+        };
+      }));
       config = {
         # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#config
 
@@ -178,8 +189,9 @@ in
         normal_window_opacity = 1.0;
 
         window_border = "on";                # draw window borders, this doesn't seem to be working anyway
-        window_border_blur = "on";
-        window_border_width = 5;
+        window_border_hidpi = "on";
+        window_border_blur = "off";
+        window_border_width = 2;
         active_window_border_color = "0xff81A1C1";
         normal_window_border_color = "0xff4C566A";
 
@@ -315,6 +327,7 @@ in
       "discord"
       "docker"
       "zoom"
+      "qutebrowser"
     ];
     brews = [
       "emacs-plus"
