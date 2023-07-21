@@ -28,7 +28,7 @@ I spend way too much time configuring unstable applications. I have little knowl
 
 My current workflow is a manifestation of my state of being. Fragile, distracted, and shallow.
 
-I desire an intentional and static development environment. Where the feeling of incompleteness spawns from actual unfinished work and not a slew of applications with configurations slightly conflict with my mood.
+I desire an intentional and static development environment. Where the feeling of incompleteness spawns from actual unfinished work and not a slew of applications with configurations slightly misaligned to my mood.
 
 ## Todo
 
