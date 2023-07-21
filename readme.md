@@ -1,59 +1,54 @@
-# M1 Nix Darwin Todo List
+# M1 Nix Darwin (pure) Todo List
 
-## Docs
-`Aarch` branch readme, go over bootstrapping steps including brew setup.
+## Philosophy
 
-## Packages
-Override nix pkgs to include x86 builds of packages not available on aarch.
+I spend way too much time configuring unstable applications. I have little knowledge about the technologies I'm actually using...
 
-❓ I looked into this, doesn't make a whole lot of sense to me how the override works and I wasn't able to get it to work. Just going to control brew for these packages instead.
+### Software
 
-## MacOS
-* Make a pr to add [this](https://www.mackungfu.org/UsabilityhackClickdraganywhereinmacOSwindowstomovethem) to nix-darwin?
-* yabai wm
-  * very slow
-* hotkey daemon (skhd)
-  * dwm like yabai keybinds
-* program launcher or figure out nix & ~/Applications
-* ✅ figure out system-wide fonts
+-   No distracting/tedious/configuration-sink-hole software.
+-   Practice using robust software.
+-   Practice understanding software.
+-   Practice maximizing the capabilities of software.
 
-### Command Line Env
-* zsh
-  * fix "no file or dir: hm-session-vars.sh" when opening new zsh
-* tmux
-  * fix tmux longlived sessions or script a sessionizer
-  * fzf into tmux session
-    * use case: less frequent workspaces
-  * tmux sessionizer
-    * use case: frequent workspaces i.e., dotfiles, current projects, research, etc...
-    * pin sessions to tags like dwm
-  * custom key binds (learn use cases first)
-  * learn tmux cmds and config
-    * vi mode for cmd line
-* ✅ fzf
-* setup [kitty](https://sw.kovidgoyal.net/kitty/#)
-  * unmap annoying binds
-  * startup options
-  * additional config
-    * buildtime and runtime config files are cool!
-* cheat sheet script?
+### System
 
-### Home Environment
-* fix rebuild alias (leaving result link in working dir)
-* Cringe themeing:
-  * theme script utilizing flavours
-    * kitty
-    * base16 neovim
-    * firefox
-    * zathura
-    * tmux
-    * ...
+-   Learn how to administer a system.
+    -   Networking
+    -   Security
+    -   Ssh
+-   Modular, intuitive, understand nix management.
+-   Respect operating system capabilities, especially UI capabilities.
+-   Practice stability.
+-   Practice extendability.
+-   Practice simplicity.
+-   Practice management/control.
 
-### NeoVim
-* Banish vs-code to the shadow realm
-* simple, functional, minimal mental overhead
-  * ✅ fzf
-  * ✅ telescope
-  * ✅ treesitter
-  * faster lsp-s?
-  * harpoon
+## Workflow
+
+My current workflow is a manifestation of my state of being. Fragile, distracted, and shallow.
+
+I desire an intentional and static development environment. Where the feeling of incompleteness spawns from actual unfinished work and not a slew of applications with configurations slightly conflict with my mood.
+
+## Todo
+
+-   [ ] Submit to MacOS
+    -   [ ] Single theme (for apps where the theming is trivial) with light/dark variant. The **only** runtime theming should be [toggling light and dark mode system wide](https://grrr.tech/posts/2020/switch-dark-mode-os/), if possible.
+    -   [ ] One persistent bg.
+    -   [ ] Satisfactory nix-darwin system configurations. Attempt to eliminate any imperative system configurations.
+    -   [ ] Use MacOS applications for non-cross-platform applications whenever possible.
+    -   [ ] Investigate least effort effective multitasking (might fallback to a minimal yabai conf).
+-   [ ] Implement philosophies with Nix.
+    -   [ ] Understand the ecosystem better.
+    -   [ ] Modular config.
+    -   [ ] Understand network and ssh options.
+    -   [ ] Configurations shouldn't rely on flakes or home-manager unless I truly believe in and understand their benefits.
+    -   [ ] Stable inputs.
+    -   [ ] Manage/clean profiles and versions.
+-   [ ] Effective, stable development tools.
+    -   [ ] Learn emacs. Org mode!
+    -   [ ] Core cross-platform tools.
+    -   [ ] Core cross-platform productivity software.
+    -   [ ] In editor learning (copilot/tldr alternative)
+    -   [ ] Intentional browser experience.
+    -   [ ] Investigate syncing vs version control (keep mobile devices in mind).
