@@ -69,5 +69,5 @@ hook = 'reloadnvim'
 [[item]]
 file = '$HOME/.dotfiles/theme/bg.txt'
 template = 'macos-bg'
-hook = 'python3 ~/personal/base-16/macos/bg-wm-hook.py'
+hook = 'python3 ~/personal/base-16/macos/flavour-macos.py'
 light = false

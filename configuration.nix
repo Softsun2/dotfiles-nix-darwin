@@ -4,12 +4,6 @@ let
   my-python-packages = p: with p; [
     image-go-nord
   ];
-  yabai = pkgs.yabai.overrideAttrs (old: rec {
-    src = builtins.fetchTarball {
-      url = https://github.com/koekeishiya/yabai/releases/download/v4.0.4/yabai-v4.0.4.tar.gz;
-      sha256 = "sha256:0rfg6kqhnsryclny5drj85h442kz5bc9rks60c3lz0a842yvi1c2";
-    };
-  });
 in
 {
   # nix-darwin options: https://daiderd.com/nix-darwin/manual/index.html
@@ -166,22 +160,17 @@ in
 
     yabai = {
       enable = true;
-      package = (pkgs.yabai.overrideAttrs (o: rec {
-        version = "5.0.3";
-        src = builtins.fetchTarball {
-          url = "https://github.com/koekeishiya/yabai/releases/download/v${version}/yabai-v${version}.tar.gz";
-          sha256 = "1l306siwdv84m4az40dg30jrmrh4apjy0dhhmdqmgqg9p3z74f77";
-        };
-      }));
+      enableScriptingAddition = true;
+      package = pkgs.yabai;
       config = {
         # https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc#config
 
         # global settings
         mouse_follows_focus = "off";          # don't move mouse to focused window
-        focus_follows_mouse = "autoraise";    # focus but don't raise window under mouse
+        focus_follows_mouse = "off";    # focus but don't raise window under mouse
         window_origin_display = "default";    # new windows are managed by active display
         window_placement = "second_child";    # new windows become second-leaf node
-        window_topmost = "off";               # don't make floating windows stay on top
+        window_topmost = "on";               # don't make floating windows stay on top
         window_shadow  = "off";
         window_opacity = "off";               # disable opacity for windows
         window_opacity_duration = 0.0;        # duration of opacity transition
@@ -213,10 +202,14 @@ in
       };
 
       extraConfig = ''
+        # configure user to run yabai as root w/o password: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+        yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa && sleep 1 && yabai -m config window_shadow off"
+
+        yabai -m config debug_output on
+
         yabai -m rule --add app="^System Preferences$" manage=off
         yabai -m rule --add app="^Archive Utility$" manage=off
         yabai -m rule --add app="^zoom.us$" manage=off
-        yabai -m config external_bar all:0:26
       '';
 
     };

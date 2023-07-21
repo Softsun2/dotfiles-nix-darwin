@@ -342,6 +342,7 @@ in
       pkgs.vimPlugins.lspkind-nvim            # pictograms for completion suggestions
       pkgs.vimPlugins.colorizer               # color name highlighter
       pkgs.vimPlugins.vim-prettier
+      pkgs.vimPlugins.copilot-vim
     ];
 
     extraPackages = with pkgs; [
@@ -378,7 +379,6 @@ in
           df-youtube
           h264ify
           youtube-nonstop
-          vimium
         ];
         settings = {
           "app.update.auto" = false;
