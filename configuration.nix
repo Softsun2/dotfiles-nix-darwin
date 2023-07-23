@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    perl
   ];
 
   # enable flakes
@@ -54,6 +55,7 @@
       NSGlobalDomain.AppleAquaColorVariant = 6;
       # graphite highlight color
       NSGlobalDomain.AppleHighlightColor = "0.847059 0.847059 0.862745 Graphite";
+      NSGlobalDomain.CGDisableCursorLocationMagnification = 1;
     };
 
     # menu bar clock
@@ -67,24 +69,18 @@
     ".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";    # disable mouse acceleration
     universalaccess.reduceTransparency = false;                  # reduce transparency (purple glitch)
     NSGlobalDomain = {
-      # keybord
       ApplePressAndHoldEnabled = false;               # enable key repeating
-      # value references for the following options
-      # https://apple.stackexchange.com/questions/261163/default-value-for-nsglobaldomain-initialkeyrepeat
       InitialKeyRepeat = 15;                          # delay before repeats begin
-      KeyRepeat = 3;                                  # delay between repeats
-      # TODO: Do I really need these?
+      KeyRepeat = 2;                                  # delay between repeats
       NSAutomaticCapitalizationEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
 
-      # trackpad
       "com.apple.swipescrolldirection" = false;     # mouse-wheel-like scrolling
       AppleEnableSwipeNavigateWithScrolls = false;  # disable two finger navigation gesture
 
-      # misc
       "com.apple.sound.beep.feedback" = 0;                # enable audio feedback when adjusting volume
     };
 
@@ -115,6 +111,26 @@
     };
 
   };
+
+  # https://developer.apple.com/library/archive/technotes/tn2450/_index.html#//apple_ref/doc/uid/DTS40017618-CH1-KEY_TABLE_USAGES
+  # python3 -c '(lambda srcId, dstId: print(0x700000000^srcId, 0x700000000^dstId))'
+  system.keyboard = {
+    enableKeyMapping = true;
+    userKeyMapping = [
+      # swap option and command modifiers
+      ({
+        # for example swap left alt and left mod key:
+        # python3 -c '(lambda srcId, dstId: print(0x700000000^srcId, 0x700000000^dstId))(0xE2, 0xE3)'
+        HIDKeyboardModifierMappingSrc = 30064771298;
+        HIDKeyboardModifierMappingDst = 30064771299;
+      })
+      ({
+        HIDKeyboardModifierMappingSrc = 30064771299;
+        HIDKeyboardModifierMappingDst = 30064771298;
+      })
+    ];
+  };
+
 
   # services
   services = {
