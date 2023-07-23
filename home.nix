@@ -3,15 +3,23 @@
   manual.manpages.enable = false;
   programs.home-manager.enable = true;
 
-  home.packages = [
-    pkgs.shellcheck
-    pkgs.ffmpeg
-    pkgs.yt-dlp
-
-    # terminal workflow
-    pkgs.tldr
-    pkgs.tree
+  home.packages = with pkgs; [
+    shellcheck
+    ffmpeg
+    yt-dlp
+    tldr
+    tree
+    plistwatch
   ];
+
+  programs.vim = {
+    enable = true;
+    extraConfig = ''
+      set nowrap
+      set number
+      set noswapfile
+    '';
+  };
 
   programs.tmux = {
     enable = true;

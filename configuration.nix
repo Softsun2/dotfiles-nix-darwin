@@ -21,10 +21,51 @@
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
 
+  # https://github.com/LnL7/nix-darwin/blob/master/modules/system/activation-scripts.nix:
+  # A set of shell script fragments that are executed when a NixOS system configuration is activated.
+  system.activationScripts.postActivation.text = ''
+    # same as "Prevent your Mac from automatically sleeping when the display is off"
+    # means that require password after sleep is not triggered
+    sudo pmset -c sleep 0  
+    # disable reboot sound effect
+    sudo nvram SystemAudioVolume=" "
+  '';
   system.defaults = {
-    # mouse
+
+    # TODO:
+    # external keyboard settings
+    CustomUserPreferences = {
+      # set menu bar clock format, lol this is the most complete docs I could find for the format https://www.manageengine.com/au/products/desktop-central/script-templates/scripts/SetDateFormat.txt
+      # "com.apple.menuextra.clock".DateFormat = "EEE d MMM h:mm a";
+      # show battery percentage
+      "com.apple.menuextra.battery".ShowPercent = true;
+      # enabled menu bar icons
+      "com.apple.controlcenter"."NSStatusItem Visible Sound" = 1;
+      "com.apple.controlcenter"."NSStatusItem Visible Battery" = 1;
+      "com.apple.controlcenter"."NSStatusItem Visible Bluetooth" = 1;
+      "com.apple.controlcenter"."NSStatusItem Visible FocusModes" = 1;
+      "com.apple.controlcenter"."NSStatusItem Visible UserSwitcher" = 1;
+      # disabled menu bar icons
+      "com.apple.controlcenter"."NSStatusItem Visible NowPlaying" = 0;
+      "com.apple.controlcenter"."NSStatusItem Visible BentoBox" = 0;
+      "com.apple.Spotlight"."NSStatusItem Visible Item-0" = 0;
+      # grey accent color
+      NSGlobalDomain.AppleAccentColor = -1;
+      NSGlobalDomain.AppleAquaColorVariant = 6;
+      # graphite highlight color
+      NSGlobalDomain.AppleHighlightColor = "0.847059 0.847059 0.862745 Graphite";
+    };
+
+    # menu bar clock
+    menuExtraClock.IsAnalog = false;
+    menuExtraClock.Show24Hour = false;
+    menuExtraClock.ShowAMPM = true;
+    menuExtraClock.ShowDayOfMonth = true;
+    menuExtraClock.ShowDayOfWeek = true;
+    menuExtraClock.ShowSeconds = false;
+
     ".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";    # disable mouse acceleration
-    universalaccess.reduceTransparency = true;                  # reduce transparency (purple glitch)
+    universalaccess.reduceTransparency = false;                  # reduce transparency (purple glitch)
     NSGlobalDomain = {
       # keybord
       ApplePressAndHoldEnabled = false;               # enable key repeating
@@ -44,8 +85,6 @@
       AppleEnableSwipeNavigateWithScrolls = false;  # disable two finger navigation gesture
 
       # misc
-      AppleInterfaceStyle = "Dark";                       # dark mode
-      AppleInterfaceStyleSwitchesAutomatically = false;   # disable auto dark/light mode
       "com.apple.sound.beep.feedback" = 0;                # enable audio feedback when adjusting volume
     };
 
@@ -72,7 +111,7 @@
 
     loginwindow = {
       GuestEnabled = false;   # no guests on my watch
-      SHOWFULLNAME = true;    # display name and password field instead of userlist
+      SHOWFULLNAME = false;    # display name and password field instead of userlist
     };
 
   };
@@ -86,7 +125,6 @@
       skhdConfig = ''
         # Terminal
         alt - return : /System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal
-
 	# Firefox
 	alt - f : open  -n -a /Applications/Firefox.app --args -P home
       '';
@@ -106,7 +144,6 @@
     taps = [
       "homebrew/cask"
       "homebrew/cask-versions"
-      "d12frosted/emacs-plus"
     ];
     casks = [
       "firefox"
@@ -116,7 +153,7 @@
       "qutebrowser"
     ];
     brews = [
-      "emacs-plus"
+      "emacs"
     ];
   };
 

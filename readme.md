@@ -35,7 +35,7 @@ I desire an intentional and static development environment. Where the feeling of
 -   [ ] Submit to MacOS
     -   [ ] Single theme (for apps where the theming is trivial) with light/dark variant. The **only** runtime theming should be [toggling light and dark mode system wide](https://grrr.tech/posts/2020/switch-dark-mode-os/), if possible.
     -   [ ] One persistent bg.
-    -   [ ] Satisfactory nix-darwin system configurations. Attempt to eliminate any imperative system configurations.
+    -   [ ] Satisfactory nix-darwin system configurations ([See notes](./notes/nix-darwin-system-defaults.md)). Attempt to eliminate any imperative system configurations.
     -   [ ] Use MacOS applications for non-cross-platform applications whenever possible.
     -   [ ] Investigate least effort effective multitasking (might fallback to a minimal yabai conf).
 -   [ ] Implement philosophies with Nix.
@@ -52,3 +52,7 @@ I desire an intentional and static development environment. Where the feeling of
     -   [ ] In editor learning (copilot/tldr alternative)
     -   [ ] Intentional browser experience.
     -   [ ] Investigate syncing vs version control (keep mobile devices in mind).
+
+## Notes
+
+-   [Nix-darwin system defaults (preferences)](./notes/nix-darwin-system-defaults.md)
