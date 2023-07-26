@@ -10,6 +10,7 @@
     tldr
     tree
     plistwatch
+    neofetch
   ];
 
   programs.vim = {

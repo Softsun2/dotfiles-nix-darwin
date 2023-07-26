@@ -114,21 +114,13 @@
 
   # https://developer.apple.com/library/archive/technotes/tn2450/_index.html#//apple_ref/doc/uid/DTS40017618-CH1-KEY_TABLE_USAGES
   # python3 -c '(lambda srcId, dstId: print(0x700000000^srcId, 0x700000000^dstId))'
+  # hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000065,"HIDKeyboardModifierMappingDst":0x7000000E7}]}'
   system.keyboard = {
     enableKeyMapping = true;
-    userKeyMapping = [
-      # swap option and command modifiers
-      ({
-        # for example swap left alt and left mod key:
-        # python3 -c '(lambda srcId, dstId: print(0x700000000^srcId, 0x700000000^dstId))(0xE2, 0xE3)'
-        HIDKeyboardModifierMappingSrc = 30064771298;
-        HIDKeyboardModifierMappingDst = 30064771299;
-      })
-      ({
-        HIDKeyboardModifierMappingSrc = 30064771299;
-        HIDKeyboardModifierMappingDst = 30064771298;
-      })
-    ];
+    # keyboard product name = {
+    #   keyboard options
+    #   swapLeftCommandAndLeftAlt = true;
+    # };
   };
 
 

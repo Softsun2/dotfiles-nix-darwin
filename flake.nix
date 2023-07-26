@@ -5,10 +5,11 @@
 
     nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
     nur.url = github:nix-community/NUR;
-    darwin = {
-      url = github:lnl7/nix-darwin;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # darwin = {
+    #   url = github:lnl7/nix-darwin;
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    darwin.url = "path:./nix-darwin";
     home-manager = {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
