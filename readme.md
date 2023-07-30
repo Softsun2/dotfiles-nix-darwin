@@ -45,6 +45,7 @@ I desire an intentional and static development environment. Where the feeling of
     -   [ ] Configurations shouldn't rely on flakes or home-manager unless I truly believe in and understand their benefits.
     -   [X] Stable inputs. **Need a way to stay up to date with new releases though...**
     -   [ ] Manage/clean profiles and versions.
+    -   [ ] Test sytem/user builds.
 -   [ ] Effective, stable development tools.
     -   [ ] Learn emacs. Org-mode!
     -   [ ] Core cross-platform tools.
