@@ -43,7 +43,7 @@ I desire an intentional and static development environment. Where the feeling of
     -   [ ] Modular/Importable config.
     -   [ ] Understand network and ssh options.
     -   [ ] Configurations shouldn't rely on flakes or home-manager unless I truly believe in and understand their benefits.
-    -   [ ] Stable inputs.
+    -   [X] Stable inputs. **Need a way to stay up to date with new releases though...**
     -   [ ] Manage/clean profiles and versions.
 -   [ ] Effective, stable development tools.
     -   [ ] Learn emacs. Org-mode!
