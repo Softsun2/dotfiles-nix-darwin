@@ -36,11 +36,11 @@ I desire an intentional and static development environment. Where the feeling of
     -   [ ] Single theme (for apps where the theming is trivial) with light/dark variant. The **only** runtime theming should be [toggling light and dark mode system-wide](https://grrr.tech/posts/2020/switch-dark-mode-os/), if possible.
     -   [X] One persistent bg.
     -   [X] Satisfactory nix-darwin system configurations ([See notes](./notes/nix-darwin-system-defaults.md)). Attempt to eliminate any imperative system configurations.
-    -   [ ] Use MacOS applications for non-cross-platform applications whenever possible.
-    -   [ ] Investigate the least effort effective multitasking (looks like yabai is better than no yabai :/)
+    -   [X] Use MacOS applications for non-cross-platform applications whenever possible. The built-in terminal app is terrible...
+    -   [X] Investigate the least effort-effective multitasking (looks like yabai is better than no yabai :/) -- using yabai.
 -   [ ] Implement philosophies with Nix.
     -   [ ] Understand the ecosystem better.
-    -   [ ] Modular config.
+    -   [ ] Modular/Importable config.
     -   [ ] Understand network and ssh options.
     -   [ ] Configurations shouldn't rely on flakes or home-manager unless I truly believe in and understand their benefits.
     -   [ ] Stable inputs.
