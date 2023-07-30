@@ -76,6 +76,6 @@
     shift + alt - a : yabai -m window --resize top:0:20
 
     # Terminal
-    # The macos terminal does NOT like to be invoked programmatically...
+    # The macos terminal does like to be invoked programmatically...
   '';
 }

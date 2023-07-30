@@ -3,47 +3,30 @@
 
   inputs = {
 
-    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
-    nur.url = github:nix-community/NUR;
+    nixpkgs.url = github:nixos/nixpkgs/nixos-23.05;
     darwin = {
-      # url = github:lnl7/nix-darwin;
-      url = github:softsun2/nix-darwin;
+      url = github:lnl7/nix-darwin;
+      # url = github:softsun2/nix-darwin;
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
 
-  outputs = inputs @ { self, darwin, nixpkgs, nur, home-manager, ... }:
-  # need to include x86 packages that can't be built on arm yet
+  outputs = inputs @ { self, nixpkgs, darwin, home-manager, ... }:
   let
+
     system = "aarch64-darwin";
+    pkgs = nixpkgs.legacyPackages.${system};
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [ nur.overlay ];
-    };
-
-    lib = nixpkgs.lib;
   in {
-    homeManagerConfigurations = {
-      softsun2 = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home.nix
-          {
-            home = {
-              username = "softsun2";
-              homeDirectory = "/Users/softsun2";
-              stateVersion = "22.11";
-            };
-          }
-        ];
-      };
+
+    homeConfigurations.softsun2 = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [ ./home.nix ];
     };
 
     darwinConfigurations = {

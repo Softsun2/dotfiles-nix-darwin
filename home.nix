@@ -3,6 +3,9 @@
   manual.manpages.enable = false;
   programs.home-manager.enable = true;
 
+  home.stateVersion = "23.05";
+  home.username = "softsun2";
+  home.homeDirectory = /Users/softsun2;
   home.packages = with pkgs; [
     shellcheck
     ffmpeg
