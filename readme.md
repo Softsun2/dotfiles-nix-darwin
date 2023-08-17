@@ -47,13 +47,15 @@ I desire an intentional and static development environment. Where the feeling of
     -   [ ] Manage/clean profiles and versions.
     -   [ ] Test sytem/user builds.
 -   [ ] Effective, stable development tools.
-    -   [ ] Learn emacs. Org-mode!
+    -   [ ] Learn emacs. Org-mode with org-roam.
     -   [ ] Core cross-platform tools.
     -   [ ] Core cross-platform productivity software.
     -   [ ] In editor learning (copilot/tldr alternative).
     -   [ ] Intentional browser experience.
+    -   [ ] Manage user **data** (file) structure with Nix
     -   [ ] Investigate syncing vs version control (keep mobile devices in mind).
 
 ## Notes
 
 -   [Nix-darwin system defaults (preferences)](./notes/nix-darwin-system-defaults.md)
+-   [Home Manager and Home Dir](./notes/home-manager-home-dir.md)

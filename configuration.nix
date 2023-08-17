@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     vim
     git
-    perl
   ];
 
   # enable flakes
@@ -66,6 +65,7 @@
     taps = [
       "homebrew/cask"
       "homebrew/cask-versions"
+      "d12frosted/emacs-plus"
     ];
     casks = [
       "firefox"
@@ -73,7 +73,11 @@
       "docker"
       "zoom"
       "qutebrowser"
-      "emacs"
+      "minecraft"
+      "olive"
+    ];
+    brews = [
+      "emacs-plus"
     ];
   };
 

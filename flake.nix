@@ -26,6 +26,7 @@
 
     homeConfigurations.softsun2 = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
+      lib = pkgs.lib;
       modules = [ ./home.nix ];
     };
 

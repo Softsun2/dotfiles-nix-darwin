@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   manual.manpages.enable = false;
   programs.home-manager.enable = true;
 
+  # pin home manager modules/packages to the latest nix-stable channel
   home.stateVersion = "23.05";
+
   home.username = "softsun2";
   home.homeDirectory = /Users/softsun2;
   home.packages = with pkgs; [
@@ -15,6 +17,24 @@
     plistwatch
     neofetch
   ];
+
+  # TODO: reduce code resuse with some sort of higher order function
+  home.file."${config.home.username}/archive/.keep".text = "";
+  home.file."${config.home.username}/dev/.keep".text = "";
+  home.file."${config.home.username}/documents/.keep".text = "";
+  home.file."${config.home.username}/literature/.keep".text = "";
+  home.file."${config.home.username}/music/.keep".text = "";
+  home.file."${config.home.username}/pictures/.keep".text = "";
+  home.file."${config.home.username}/projects/.keep".text = "";
+  home.file."${config.home.username}/school/.keep".text = "";
+  home.file."${config.home.username}/videos/.keep".text = "";
+  home.file."${config.home.username}/writing/.keep".text = "";
+
+  # link emacs config
+  # home.file.".emacs.d" = {
+  #   source = ./home/emacs.d;
+  #   recursive = true;
+  # };
 
   programs.vim = {
     enable = true;
