@@ -30,9 +30,16 @@
   home.file."${config.home.username}/videos/.keep".text = "";
   home.file."${config.home.username}/writing/.keep".text = "";
 
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ss2 = "cd ~/softsun2";
+    };
+  };
+
   # link emacs config
   # home.file.".emacs.d" = {
-  #   source = ./home/emacs.d;
+  #   source = ./modules/home/emacs.d;
   #   recursive = true;
   # };
 

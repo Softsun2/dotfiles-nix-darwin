@@ -51,6 +51,7 @@
 
     yabai -m rule --add app="^System Preferences$" manage=off
     yabai -m rule --add app="^zoom.us$" manage=off
+    yabai -m rule --add app="^Steam Helper$" manage=off
   '';
 
 }

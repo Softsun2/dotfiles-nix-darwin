@@ -35,11 +35,11 @@
   menuExtraClock.ShowSeconds = false;
 
   ".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";    # disable mouse acceleration
-  universalaccess.reduceTransparency = false;                  # reduce transparency (purple glitch)
+  universalaccess.reduceTransparency = true;                  # reduce transparency (purple glitch)
   NSGlobalDomain = {
     ApplePressAndHoldEnabled = false;               # enable key repeating
     InitialKeyRepeat = 15;                          # delay before repeats begin
-    KeyRepeat = 2;                                  # delay between repeats
+    KeyRepeat = 3;                                  # delay between repeats
     NSAutomaticCapitalizationEnabled = false;
     NSAutomaticDashSubstitutionEnabled = false;
     NSAutomaticPeriodSubstitutionEnabled = false;
