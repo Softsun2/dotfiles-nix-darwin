@@ -39,10 +39,12 @@
   };
 
   # link emacs config
-  # home.file.".emacs.d" = {
-  #   source = ./config/emacs.d;
-  #   recursive = true;
-  # };
+  home.file.".emacs.d/init.el".text = ''
+    (setq user-init-file "${config.home.homeDirectory}/.dotfiles/config/emacs.d/init.el")
+
+    ;; Load the custom configuration file
+    (load user-init-file)
+  '';
 
   programs.vim = {
     enable = true;

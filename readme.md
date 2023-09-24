@@ -36,6 +36,7 @@ I desire an intentional and static development environment.
     -   [X] Satisfactory nix-darwin system configurations ([See notes](./notes/nix-darwin-system-defaults.md)). Attempt to eliminate any imperative system configurations.
     -   [X] Use MacOS applications for non-cross-platform applications whenever possible. The built-in terminal app is terrible *but* it does enough. If it comes to it alacritty looks like a simple alternative.
     -   [X] Investigate the least effort-effective multitasking (looks like yabai is better than no yabai) -- using yabai.
+    -   [X] Isolate user data from program/"uncontrolled" areas of my home directory ([See notes](./notes/nix-darwin-xdg.md)).
 -   [ ] Implement philosophies with Nix.
     -   [ ] Understand the ecosystem better.
     -   [X] Modular/Importable config.
