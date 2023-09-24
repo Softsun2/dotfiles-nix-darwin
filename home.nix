@@ -9,7 +9,6 @@
   home.username = "softsun2";
   home.homeDirectory = /Users/softsun2;
   home.packages = with pkgs; [
-    shellcheck
     ffmpeg
     yt-dlp
     tldr
@@ -33,13 +32,15 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
+      l = "ls -l";
+      ll = "ls -al";
       ss2 = "cd ~/softsun2";
     };
   };
 
   # link emacs config
   # home.file.".emacs.d" = {
-  #   source = ./modules/home/emacs.d;
+  #   source = ./config/emacs.d;
   #   recursive = true;
   # };
 

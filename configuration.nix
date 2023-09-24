@@ -32,7 +32,7 @@
     sudo nvram SystemAudioVolume=" "
   '';
 
-  system.defaults = import ./modules/config/defaults.nix;
+  system.defaults = import ./config/nix/defaults.nix;
 
   # https://developer.apple.com/library/archive/technotes/tn2450/_index.html#//apple_ref/doc/uid/DTS40017618-CH1-KEY_TABLE_USAGES
   # python3 -c '(lambda srcId, dstId: print(0x700000000^srcId, 0x700000000^dstId))'
@@ -49,8 +49,8 @@
   # services
   services = {
 
-    skhd = import ./modules/config/skhd.nix { enable = true; package = pkgs.skhd; };
-    yabai = import ./modules/config/yabai.nix { enable = true; package = pkgs.yabai; };
+    skhd = import ./config/nix/skhd.nix { enable = true; package = pkgs.skhd; };
+    yabai = import ./config/nix/yabai.nix { enable = true; package = pkgs.yabai; };
 
   };
 
