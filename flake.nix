@@ -12,7 +12,6 @@
       url = github:nix-community/home-manager/release-23.05;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    buffalo.url = github:Softsun2/dotfiles-NixOS;
 
   };
 
@@ -38,16 +37,6 @@
       woollymammoth = darwin.lib.darwinSystem {
         inherit system;
         modules = [ ./configuration.nix ];
-      };
-    };
-
-    packages."x86_64-linux" = {
-      srcds =
-      let
-        system = "x86_64-linux";
-        pkgs = nixpkgs.legacyPackages.${system};
-      in import containers/srcds.nix {
-        inherit pkgs;
       };
     };
 
