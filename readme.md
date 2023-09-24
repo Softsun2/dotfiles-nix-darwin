@@ -57,4 +57,4 @@ I desire an intentional and static development environment.
 ## Notes
 
 -   [Nix-darwin system defaults (preferences)](./notes/nix-darwin-system-defaults.md)
--   [Home Manager and Home Dir](./notes/home-manager-home-dir.md)
+-   [Home Manager and Home Dir](./notes/nix-darwin-xdg.md)

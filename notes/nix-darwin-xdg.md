@@ -1,8 +1,7 @@
 # Home Manager and the Home Directory
 
-My home directory has been a mess and recently I've desired some organization with the following properties:
+My home directory has been a mess and recently I've desired some organization with the following property:
 -   Isolate (by location not access) personal data from program data. Clear seperation of my data and program data means less clutter and more focused file syncing if I decide to do so.
--   A garbage collected downloads directory
 
 ## XDG
 
