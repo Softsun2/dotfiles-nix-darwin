@@ -35,16 +35,47 @@
       l = "ls -l";
       ll = "ls -al";
       ss2 = "cd ~/softsun2";
+      emacs = "${config.programs.emacs.finalPackage}/Applications/Emacs.app/Contents/MacOS/Emacs";
     };
   };
 
   # link emacs config
-  home.file.".emacs.d/init.el".text = ''
-    (setq user-init-file "${config.home.homeDirectory}/.dotfiles/config/emacs.d/init.el")
+  # home.file.".emacs.d/init.el".text = ''
+  #   (setq 
+  #     user-init-file
+  #     "${config.home.homeDirectory}/.dotfiles/config/emacs/ss2-init.el"
+  #   )
 
-    ;; Load the custom configuration file
-    (load user-init-file)
-  '';
+  #   ;; Load the custom configuration file
+  #   (load user-init-file)
+  # '';
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk.overrideAttrs (o: {
+      patches = o.patches ++ [
+        ./config/emacs/patches/fix-window-role.patch
+        ./config/emacs/patches/round-undecorated-frame.patch
+        ./config/emacs/patches/system-appearance.patch
+      ];
+    });
+    extraConfig = ''
+      (setq 
+        user-init-file
+        "${config.home.homeDirectory}/.dotfiles/config/emacs/ss2-init.el"
+      )
+
+      ;; Load the custom configuration file
+      (load user-init-file)
+    '';
+
+    # declare emacs packages with nix
+    extraPackages = epkgs: with epkgs; [ 
+      use-package
+      org-roam
+    ];
+  };
+
 
   programs.vim = {
     enable = true;

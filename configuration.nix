@@ -66,7 +66,6 @@
     taps = [
       "homebrew/cask"
       "homebrew/cask-versions"
-      "d12frosted/emacs-plus"
     ];
     casks = [
       "firefox"
@@ -77,9 +76,6 @@
       "minecraft"
       "olive"
       "steam"
-    ];
-    brews = [
-      "emacs-plus"
     ];
   };
 

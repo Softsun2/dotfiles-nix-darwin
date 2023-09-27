@@ -36,6 +36,7 @@
     darwinConfigurations = {
       woollymammoth = darwin.lib.darwinSystem {
         inherit system;
+        inherit pkgs;
         modules = [ ./configuration.nix ];
       };
     };
