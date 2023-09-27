@@ -37,7 +37,7 @@
               yabai -m window --grid 4:4:1:1:2:2
 
     # toggle window split type
-    alt - e : yabai -m window --toggle split
+    # alt - e : yabai -m window --toggle split
 
     # balance size of windows
     shift + alt - 0 : yabai -m space --balance
@@ -74,7 +74,7 @@
     shift + alt - s : yabai -m window --resize bottom:0:-20
     shift + alt - a : yabai -m window --resize top:0:20
 
-    # Terminal
-    # The macos terminal does like to be invoked programmatically...
+    # Emacs
+    alt - e : ~/.nix-profile/Applications/Emacs.app/Contents/MacOS/Emacs
   '';
 }

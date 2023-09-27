@@ -11,15 +11,8 @@
    :map org-mode-map
    ("C-M-i" . completion-at-point)
    :map org-roam-dailies-map
-   ; explicity map org-roam-dailies-map
-   ("n" . org-roam-dailies-capture-today)
    ("Y" . org-roam-dailies-capture-yesterday)
-   ("T" . org-roam-dailies-capture-tomorrow)
-   ("f" . org-roam-dailies-goto-next-note)
-   ("b" . org-roam-dailies-goto-previous-note)
-   ("c" . org-roam-dailies-goto-date)
-   ("v" . org-roam-dailies-capture-date)
-   ("." . org-roam-dailies-find-directory))
+   ("T" . org-roam-dailies-capture-tomorrow))
   :bind-keymap
   ("C-c n d" . org-roam-dailies-map)
   :config
