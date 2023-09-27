@@ -47,6 +47,7 @@ I desire an intentional and static development environment.
     -   [ ] Test sytem/user builds.
 -   [ ] Effective, stable development tools.
     -   [ ] Learn emacs. Org-mode with org-roam.
+        -    [X] Build configurations and package management via nix, runtime configurations via elisp.
     -   [ ] Core cross-platform tools.
     -   [ ] Core cross-platform productivity software.
     -   [ ] In editor learning (copilot/tldr alternative).
