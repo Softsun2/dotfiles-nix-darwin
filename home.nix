@@ -35,20 +35,12 @@
       l = "ls -l";
       ll = "ls -al";
       ss2 = "cd ~/softsun2";
+
+      # window role patch support
+      # https://nixos.wiki/wiki/Emacs#Window_manager_integration
       emacs = "${config.programs.emacs.finalPackage}/Applications/Emacs.app/Contents/MacOS/Emacs";
     };
   };
-
-  # link emacs config
-  # home.file.".emacs.d/init.el".text = ''
-  #   (setq 
-  #     user-init-file
-  #     "${config.home.homeDirectory}/.dotfiles/config/emacs/ss2-init.el"
-  #   )
-
-  #   ;; Load the custom configuration file
-  #   (load user-init-file)
-  # '';
 
   programs.emacs = {
     enable = true;
@@ -60,22 +52,16 @@
       ];
     });
     extraConfig = ''
-      (setq 
-        user-init-file
-        "${config.home.homeDirectory}/.dotfiles/config/emacs/ss2-init.el"
-      )
-
-      ;; Load the custom configuration file
+      (setq user-init-file
+        "${config.home.homeDirectory}/.dotfiles/config/emacs/ss2-init.el")
       (load user-init-file)
     '';
-
     # declare emacs packages with nix
     extraPackages = epkgs: with epkgs; [ 
       use-package
       org-roam
     ];
   };
-
 
   programs.vim = {
     enable = true;
