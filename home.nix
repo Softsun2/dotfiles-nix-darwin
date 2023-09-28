@@ -18,13 +18,13 @@
   ];
 
   # TODO: reduce code resuse with some sort of higher order function
+  home.file."${config.home.username}/agenda/.keep".text = "";
   home.file."${config.home.username}/archive/.keep".text = "";
   home.file."${config.home.username}/dev/.keep".text = "";
   home.file."${config.home.username}/documents/.keep".text = "";
   home.file."${config.home.username}/literature/.keep".text = "";
   home.file."${config.home.username}/music/.keep".text = "";
   home.file."${config.home.username}/pictures/.keep".text = "";
-  home.file."${config.home.username}/projects/.keep".text = "";
   home.file."${config.home.username}/school/.keep".text = "";
   home.file."${config.home.username}/videos/.keep".text = "";
   home.file."${config.home.username}/writing/.keep".text = "";
