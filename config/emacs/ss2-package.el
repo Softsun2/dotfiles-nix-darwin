@@ -4,7 +4,7 @@
 
 (require 'use-package)
 
-(require 'org)
+(require 'ss2-org)
 (require 'ss2-org-roam)
 
 (provide 'ss2-package)

@@ -20,5 +20,7 @@
 (setq custom-file (make-temp-file ""))
 ; use 'y' and 'n' instead of 'yes' and 'no'
 (fset 'yes-or-no-p 'y-or-n-p)
+; paragraph filling
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 (provide 'ss2-settings)
