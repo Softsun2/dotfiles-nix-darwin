@@ -23,4 +23,14 @@
 ; paragraph filling
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
+;; custom functions
+(defun ss2-edit-init ()
+  "Opens ss2's init.el file"
+  (interactive)
+  (find-file "~/.dotfiles/config/emacs/ss2-init.el"))
+(defun ss2-open-config-dir ()
+  "Opens ss2's configuration directory"
+  (interactive)
+  (find-file "~/.dotfiles/config/emacs/"))
+
 (provide 'ss2-settings)

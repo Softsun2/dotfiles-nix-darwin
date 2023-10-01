@@ -60,6 +60,8 @@
     extraPackages = epkgs: with epkgs; [ 
       use-package
       org-roam
+      eglot
+      nix-mode
     ];
   };
 
