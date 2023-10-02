@@ -5,7 +5,7 @@
 
   # pin home manager modules/packages to the latest nix-stable channel
   home.stateVersion = "23.05";
-
+  
   home.username = "softsun2";
   home.homeDirectory = /Users/softsun2;
   home.packages = with pkgs; [
@@ -16,9 +16,10 @@
     plistwatch
     neofetch
 
-    # TODO: fork home-manager and provide extraPackages option to emacs
-    # emacs extra packages (non epkgs)
     rnix-lsp
+    pyright
+    ccls
+    ocamlPackages.ocaml-lsp
   ];
 
   # TODO: reduce code resuse with some sort of higher order function
@@ -65,7 +66,10 @@
       use-package
       org-roam
       eglot
+
+      # language modes
       nix-mode
+      tuareg # ocaml mode
     ];
   };
 

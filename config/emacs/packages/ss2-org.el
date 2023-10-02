@@ -1,7 +1,7 @@
 ;;; org mode config
 
 (use-package org
-  :ensure t
+  :ensure nil
 
   :commands
   (org-agenda-file-find)

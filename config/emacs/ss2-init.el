@@ -7,3 +7,4 @@
 (add-to-list 'load-path "~/.dotfiles/config/emacs")
 (require 'ss2-settings)
 (require 'ss2-package)
+(require 'ss2-lsp)

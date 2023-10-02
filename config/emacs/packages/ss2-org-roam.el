@@ -1,5 +1,5 @@
 (use-package org-roam
-  :ensure t
+  :ensure nil
   :custom
   (org-roam-directory "~/softsun2/writing/org-roam")
   (org-roam-completion-everywhere t)
