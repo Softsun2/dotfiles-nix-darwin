@@ -25,5 +25,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ; paragraph filling
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+;; enable icomplete mode
+(fido-vertical-mode 1)
+
 
 (provide 'ss2-settings)

@@ -66,6 +66,7 @@
       use-package
       org-roam
       eglot
+      company
 
       # language modes
       nix-mode
