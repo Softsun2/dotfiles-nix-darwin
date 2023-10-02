@@ -15,6 +15,10 @@
     tree
     plistwatch
     neofetch
+
+    # TODO: fork home-manager and provide extraPackages option to emacs
+    # emacs extra packages (non epkgs)
+    rnix-lsp
   ];
 
   # TODO: reduce code resuse with some sort of higher order function
@@ -57,7 +61,7 @@
       (load user-init-file)
     '';
     # declare emacs packages with nix
-    extraPackages = epkgs: with epkgs; [ 
+    extraPackages = pkgs: with pkgs; [ 
       use-package
       org-roam
       eglot
