@@ -7,7 +7,10 @@
 ; enable line numbers
 (global-display-line-numbers-mode 1)
 ; set theme
-(load-theme 'modus-vivendi nil)
+(setq ss2-dark-theme-mode t)
+(setq ss2-light-theme 'modus-operandi)
+(setq ss2-dark-theme 'modus-vivendi)
+(ss2-load-theme)
 ; disable audio bell
 (setq ring-bell-function 'ignore)
 ; disable backup files
@@ -22,15 +25,5 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ; paragraph filling
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-
-;; custom functions
-(defun ss2-edit-init ()
-  "Opens ss2's init.el file"
-  (interactive)
-  (find-file "~/.dotfiles/config/emacs/ss2-init.el"))
-(defun ss2-open-config-dir ()
-  "Opens ss2's configuration directory"
-  (interactive)
-  (find-file "~/.dotfiles/config/emacs/"))
 
 (provide 'ss2-settings)
