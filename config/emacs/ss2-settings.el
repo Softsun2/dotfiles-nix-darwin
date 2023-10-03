@@ -4,13 +4,9 @@
 
 ; disable scroll bar
 (scroll-bar-mode -1)
-; enable line numbers
-(global-display-line-numbers-mode 1)
-; set theme
-(setq ss2-dark-theme-mode t)
-(setq ss2-light-theme 'modus-operandi)
-(setq ss2-dark-theme 'modus-vivendi)
-(ss2-load-theme)
+; enable line numbers where appropriate
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
 ; disable audio bell
 (setq ring-bell-function 'ignore)
 ; disable backup files

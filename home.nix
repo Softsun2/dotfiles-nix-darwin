@@ -16,6 +16,7 @@
     plistwatch
     neofetch
 
+    # emacs extra packages
     rnix-lsp
     pyright
     ccls
@@ -67,6 +68,7 @@
       org-roam
       eglot
       company
+      modus-themes
 
       # language modes
       nix-mode
