@@ -29,7 +29,8 @@ I spend too much time configuring unstable applications. I require more knowledg
 I desire an intentional and static development environment.
 
 ## Todo
-
+-   [ ] Document full boostrap process
+    - 	[ ] [Pinning flake inputs to channels](https://ayats.org/blog/channels-to-flakes/)
 -   [ ] Submit to MacOS
     -   [ ] Single theme (for apps where the theming is trivial) with light/dark variant. If possible, the **only** runtime theming should be [toggling light and dark mode system-wide](https://grrr.tech/posts/2020/switch-dark-mode-os/).
     -   [X] One persistent bg.
@@ -43,7 +44,12 @@ I desire an intentional and static development environment.
     -   [ ] Understand network and ssh options.
     -   [ ] Configurations shouldn't rely on flakes or home-manager unless I genuinely believe in and understand their benefits.
     -   [X] Stable inputs. **Need a way to stay up to date with new releases though...**
-    -   [X] Manage/clean profiles and versions; optimize the nix-store.
+    -   [X] Optimize the nix-store.
+    -   [ ] Understand difference between Nix managed rollbacks and git managed rollbacks (flakes).
+    	-   [ ] What can safely be garbage collected from the nix store?
+	-   [ ] Nix-Darwin vs. Home-manager generations.
+	-   [ ] What are profiles? Which ones can I garbage collect?
+	-   [ ] Potentially automate git "snapshots" of my flake.
     -   [ ] Test sytem/user builds.
 -   [ ] Effective, stable development tools.
     -   [ ] Learn emacs. Org-mode with org-roam.

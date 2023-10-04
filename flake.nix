@@ -21,9 +21,12 @@
     let
       
       system = "aarch64-darwin";
+      
+      # yabai usually breaks every MacOS update; pull in yabai updates asap
       yabai-unstable-overlay = (final: prev: {
         yabai = nixpkgs-unstable.legacyPackages.${system}.yabai;
       });
+      
       pkgs = import nixpkgs {
         inherit system;
         overlays = [ yabai-unstable-overlay ];
@@ -42,7 +45,9 @@
         woollymammoth = darwin.lib.darwinSystem {
           inherit system;
           inherit pkgs;
-          modules = [ ./configuration.nix ];
+          modules = [
+            ./configuration.nix
+          ];
         };
       };
 

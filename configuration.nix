@@ -10,14 +10,25 @@
   ];
 
   # enable flakes
-  nix.package = pkgs.nixVersions.stable;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
-    extra-platforms = aarch64-darwin x86_64-darwin
   '';
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
+
+  nix.gc = {
+    automatic = true;
+    # This isn't documented well
+    # https://crontab.guru has close to the same semantics
+    interval = {
+      # gc every monday at 4:15 AM
+      Weekday = 1;
+      Hour = 4;
+      Minute = 15;
+    };
+    options = "--delete-older-than 1w";
+  };
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
