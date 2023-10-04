@@ -9,7 +9,7 @@
   (company-idle-delay 0)
   (company-minimum-prefix-length 1)
   :config
-  ;; disAble buffer completion candidates
+  ;; disable buffer completion candidates
   (setq company-backends
 	(delete 'company-dabbrev company-backends))
   (setq company-backends

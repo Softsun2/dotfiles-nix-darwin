@@ -2,11 +2,7 @@
 ;; Sentences delimeted by ".  " instead of ". "
 ;; org mode move headlines with M-n and M-p ?
 
-; disable scroll bar
-(scroll-bar-mode -1)
-; enable line numbers where appropriate
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(add-hook 'text-mode-hook 'display-line-numbers-mode)
+
 ; disable audio bell
 (setq ring-bell-function 'ignore)
 ; disable backup files

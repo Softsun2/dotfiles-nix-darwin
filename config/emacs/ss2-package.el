@@ -4,7 +4,6 @@
 
 (require 'use-package)
 
-(require 'ss2-ef-themes)
 (require 'ss2-org)
 (require 'ss2-org-roam)
 (require 'ss2-company)

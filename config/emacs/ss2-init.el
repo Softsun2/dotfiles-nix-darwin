@@ -14,5 +14,6 @@
 (require 'ss2-lib) ; needs to be loaded first
 
 (require 'ss2-settings)
+(require 'ss2-appearance)
 (require 'ss2-package)
 (require 'ss2-lsp)
