@@ -37,15 +37,16 @@
 
   programs.zsh = {
     enable = true;
+    initExtra = "${config.home.homeDirectory}/.dotfiles/bin/solar-system";
     shellAliases = {
       l = "ls -l";
       ll = "ls -al";
-      ss2 = "cd ~/softsun2";
 
       # window role patch support
       # https://nixos.wiki/wiki/Emacs#Window_manager_integration
       emacs = "${config.programs.emacs.finalPackage}/Applications/Emacs.app/Contents/MacOS/Emacs";
     };
+    cdpath = [ "${config.home.homeDirectory}/softsun2" ];
   };
 
   programs.emacs = {
