@@ -1,7 +1,7 @@
 ;;; Modus Themes
 
 (use-package modus-themes
-  :ensure t
+  :ensure nil
   :custom
   modus-themes-to-toggle '(modus-operandi-tinted modus-vivendi-tinted)
   :config

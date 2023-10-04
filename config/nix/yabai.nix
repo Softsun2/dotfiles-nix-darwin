@@ -39,6 +39,7 @@
 
   extraConfig = ''
     # configure user to run yabai as root w/o password: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+    # this will need to be done every macos update
     # reload scripting additions on dock restart
     yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 

@@ -68,7 +68,7 @@
       org-roam
       eglot
       company
-      modus-themes
+      ef-themes
 
       # language modes
       nix-mode
