@@ -15,6 +15,7 @@
     tree
     plistwatch
     neofetch
+    jq
 
     # emacs extra packages
     rnix-lsp

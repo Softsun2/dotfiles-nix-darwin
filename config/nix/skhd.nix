@@ -4,6 +4,10 @@
   package = package;
   skhdConfig = ''
     # These are bound to change, I want these to emulate dwm at some point
+    # Alt corresponds to option
+
+    # Emacs
+    alt - e : ~/.nix-profile/Applications/Emacs.app/Contents/MacOS/Emacs
 
     # focus window
     alt - h : yabai -m window --focus west
@@ -37,7 +41,7 @@
               yabai -m window --grid 4:4:1:1:2:2
 
     # toggle window split type
-    # alt - e : yabai -m window --toggle split
+    shift + alt - e : yabai -m window --toggle split
 
     # balance size of windows
     shift + alt - 0 : yabai -m space --balance
@@ -52,12 +56,6 @@
     shift + alt - 7 : yabai -m window --space 7
     shift + alt - 8 : yabai -m window --space 8
     shift + alt - 9 : yabai -m window --space 9
-
-    # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-    shift + alt - n : yabai -m space --create && \
-                       index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                       yabai -m window --space "$\{index}" && \
-                       yabai -m space --focus "$\{index}"
 
     # fast focus desktop
     cmd - 0 : yabai -m space --focus recent
@@ -74,7 +72,17 @@
     shift + alt - s : yabai -m window --resize bottom:0:-20
     shift + alt - a : yabai -m window --resize top:0:20
 
-    # Emacs
-    alt - e : ~/.nix-profile/Applications/Emacs.app/Contents/MacOS/Emacs
+    # toggle center window on screen in an orientation fit for reading/writing
+    alt - space : export CURRENT_SPACE=$(yabai -m query --spaces | jq -r '.[]|select(."has-focus" == true)') ; \
+                                 export INDEX=$(echo $CURRENT_SPACE | jq -r '.index') ; \
+                                 export DISPLAY=$(echo $CURRENT_SPACE | jq -r '.display') ; \
+                                 export PADDING=$(($(yabai -m query --displays --display $DISPLAY | jq -r '.frame.w') / 4)) ; \
+                                 if [[ "$(yabai -m config --space $INDEX left_padding)" != $PADDING ]]; then \
+                                   { yabai -m config --space $INDEX left_padding $PADDING && \
+                                     yabai -m config --space $INDEX right_padding $PADDING } \
+                                 else \
+                                   { yabai -m config --space $INDEX left_padding 10 &&  \
+                                     yabai -m config --space $INDEX right_padding 10  } \
+                                 fi
   '';
 }

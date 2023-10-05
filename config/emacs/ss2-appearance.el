@@ -29,8 +29,6 @@
   :bind
   (("<f5>" . ef-themes-toggle)))
 
-(provide 'ss2-ef-themes)
-
 
 ;;; Visual Settigns
 
@@ -38,6 +36,10 @@
 (setq ns-system-appearance-change-functions
       '(ns-system-appearance-change-load-ss2-theme))
 
+;; enable modes
+(column-number-mode 1)
+
+;; disable modes
 (scroll-bar-mode -1)    ; disable scroll bar
 (tool-bar-mode -1)      ; disable tool bar
 

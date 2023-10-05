@@ -7,8 +7,9 @@
 (setq ring-bell-function 'ignore)
 ; disable backup files
 (setq make-backup-files nil)
-; set command-key to meta
-(setq mac-command-modifier 'meta)
+;; set modifier keys
+(setq mac-command-modifier 'meta) ; command should be meta
+(setq mac-option-modifier 'none)  ; option is reserved as the "windows key"
 ; disable auto-save
 (setq auto-save-default nil)
 ; discard imperative configuration
