@@ -13,7 +13,7 @@
      (sequence "|" "CANCELLED(c@)")))
   ;; TODO: Make rest of cancelled text red
   (org-todo-keyword-faces
-  '("CANCELLED" . (:foreground "red" :weight bold)))
+   '(("CANCELLED" . (:foreground "red" :weight bold))))
   (org-habit-graph-column 60)
   (org-log-into-drawer t)
   
