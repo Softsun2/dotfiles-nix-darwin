@@ -84,11 +84,11 @@
       "firefox"
       "discord"
       "docker"
-      "zoom"
       "qutebrowser"
       "minecraft"
       "olive"
       "steam"
+      "vlc"
     ];
   };
 

@@ -8,7 +8,14 @@
   
   :custom
   (org-agenda-files '("~/softsun2/agenda/"))
+  (org-todo-keywords
+   '((sequence "TODO(t)" "|" "DONE(d!)")
+     (sequence "|" "CANCELLED(c@)")))
+  ;; TODO: Make rest of cancelled text red
+  (org-todo-keyword-faces
+  '("CANCELLED" . (:foreground "red" :weight bold)))
   (org-habit-graph-column 60)
+  (org-log-into-drawer t)
   
   :config
   ;; TODO: Capture template for new agenda files?
@@ -27,7 +34,6 @@
 
   ;; TODO: Make an option to view agenda by file
   
-  (require 'org-habit)
   (add-to-list 'org-modules 'org-habit)
   
   :bind
