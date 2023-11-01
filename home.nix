@@ -9,6 +9,7 @@
   home.username = "softsun2";
   home.homeDirectory = /Users/softsun2;
   home.packages = with pkgs; [
+    # dev
     ffmpeg
     yt-dlp
     tldr
@@ -20,8 +21,11 @@
     # emacs extra packages
     rnix-lsp
     pyright
-    ccls
     ocamlPackages.ocaml-lsp
+    nixfmt
+
+    # misc
+    optifinePackages.optifine_1_19_2
   ];
 
   # TODO: reduce code resuse with some sort of higher order function
@@ -38,7 +42,9 @@
 
   programs.zsh = {
     enable = true;
-    initExtra = "${config.home.homeDirectory}/.dotfiles/bin/solar-system";
+    initExtra = ''
+      ${config.home.homeDirectory}/.dotfiles/bin/solar-system
+    '';
     shellAliases = {
       l = "ls -l";
       ll = "ls -al";
@@ -71,6 +77,7 @@
       eglot
       company
       ef-themes
+      expand-region
 
       # language modes
       nix-mode

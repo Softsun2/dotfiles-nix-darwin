@@ -20,6 +20,8 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 ;; enable icomplete mode
 (fido-vertical-mode 1)
+;; disable auto-newline
+(setq c-auto-newline nil)
 
 
 (provide 'ss2-settings)

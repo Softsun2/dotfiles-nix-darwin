@@ -27,7 +27,7 @@
 		 ("pyright-langserver" "--stdio")))
   
   (add-to-list 'eglot-server-programs
-	       '((c-mode c-ts-mode c++-mode c++-ts-mode) . ("ccls")))
+	       '((c-mode c-ts-mode c++-mode c++-ts-mode) . ("ccls" "-log-file=/tmp/ccls.log" "-v=1")))
   
   (add-to-list 'eglot-server-programs
 	       '(tuareg-mode . ("ocamllsp"))))

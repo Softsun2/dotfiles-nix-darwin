@@ -7,7 +7,7 @@
     # Alt corresponds to option
 
     # Emacs
-    alt - e : ~/.nix-profile/Applications/Emacs.app/Contents/MacOS/Emacs
+    alt - e : open -a ~/.nix-profile/Applications/Emacs.app
 
     # focus window
     alt - h : yabai -m window --focus west

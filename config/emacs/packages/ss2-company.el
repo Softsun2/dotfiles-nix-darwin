@@ -7,7 +7,7 @@
   (text-mode . company-mode)
   :custom
   (company-idle-delay 0)
-  (company-minimum-prefix-length 3)
+  (company-minimum-prefix-length 1)
   :config
   ;; disable buffer completion candidates
   ;; (setq company-backends
