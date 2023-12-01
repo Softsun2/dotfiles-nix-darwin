@@ -40,6 +40,10 @@
   home.file."${config.home.username}/videos/.keep".text = "";
   home.file."${config.home.username}/writing/.keep".text = "";
 
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
+
   programs.zsh = {
     enable = true;
     initExtra = ''
@@ -81,6 +85,7 @@
 
       # language modes
       nix-mode
+      haskell-mode
       tuareg # ocaml mode
     ];
   };

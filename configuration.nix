@@ -7,6 +7,7 @@
     vim
     git
     nix-prefetch-docker
+    xquartz
   ];
 
   # enable flakes

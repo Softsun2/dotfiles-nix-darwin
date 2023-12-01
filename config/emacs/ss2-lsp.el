@@ -1,8 +1,10 @@
 ;;; LSP Configuration
 
 ;;; Language Modes
-(use-package tuareg :ensure nil)
 (use-package nix-mode :ensure nil :mode "\\.nix\\'")
+(use-package haskell-mode :ensure nil)
+(use-package tuareg :ensure nil)
+
 
 ;;; LSP
 (use-package eglot
@@ -28,6 +30,9 @@
   
   (add-to-list 'eglot-server-programs
 	       '((c-mode c-ts-mode c++-mode c++-ts-mode) . ("ccls" "-log-file=/tmp/ccls.log" "-v=1")))
+
+  (add-to-list 'eglot-server-programs
+	       '((haskell-mode) . ("haskell-language-server-wrapper" "lsp")))
   
   (add-to-list 'eglot-server-programs
 	       '(tuareg-mode . ("ocamllsp"))))

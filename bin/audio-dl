@@ -1,5 +1,5 @@
 #!/bin/sh
-OUTPUT='~/Music/my-music/%(uploader)s/%(album)s/%(title)s.%(ext)s'
+OUTPUT='~/softsun2/music/my-music/%(uploader)s/%(album)s/%(title)s.%(ext)s'
 
 # $1 -- the audio url
 audio_dl() {
@@ -14,6 +14,6 @@ audio_dl() {
 }
 
 case "$1" in
-  playlist) OUTPUT='~/Music/my-music/%(playlist)s/%(title)s.%(ext)s' && audio_dl "$2" ;;
+  playlist) OUTPUT='~/softsun2/music/my-music/%(playlist)s/%(title)s.%(ext)s' && audio_dl "$2" ;;
   *) audio_dl "$1" ;;
 esac

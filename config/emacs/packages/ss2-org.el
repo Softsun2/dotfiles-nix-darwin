@@ -16,6 +16,7 @@
    '(("CANCELLED" . (:foreground "red" :weight bold))))
   (org-habit-graph-column 60)
   (org-log-into-drawer t)
+  (org-enforce-todo-dependencies t)
   
   :config
   ;; TODO: Capture template for new agenda files?

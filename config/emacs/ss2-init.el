@@ -12,6 +12,7 @@
 (add-to-list 'load-path "~/.dotfiles/config/emacs")
 
 (require 'ss2-lib) ; needs to be loaded first
+;; (require 'ss2-projects)
 
 (require 'ss2-settings)
 (require 'ss2-appearance)

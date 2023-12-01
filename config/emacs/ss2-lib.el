@@ -10,7 +10,7 @@
 ;; Commands
 
 (defun ss2-edit-init ()
-  "Opens ss2's init.el file"
+  "Opens ss2's init.el file."
   (interactive)
   (find-file "~/.dotfiles/config/emacs/ss2-init.el"))
 (defun ss2-open-emacs-dir ()
