@@ -51,12 +51,8 @@
   # hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000065,"HIDKeyboardModifierMappingDst":0x7000000E7}]}'
   system.keyboard = {
     enableKeyMapping = true;
-    # keyboard product name = {
-    #   keyboard options
-    #   swapLeftCommandAndLeftAlt = true;
-    # };
+    remapCapsLockToControl = true;
   };
-
 
   # services
   services = {

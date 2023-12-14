@@ -1,0 +1,31 @@
+-- require('ss2-lib')
+
+-- initialize packer
+-- local ensurePacker = function()
+--   local installPath = 
+--     vim.fn.stdpath('data') ..
+--       not vim.fn.has('win64')
+--         and '/site/pack/packer/start/packer.nvim'
+--         or ss2.unixToWin64Path('/site/pack/packer/start/packer.nvim')
+--   if vim.fn.empty(vim.fn.glob(installPath)) ~= 0 then
+--     vim.fn.system({
+--       'git',
+--       'clone',
+--       '--depth',
+--       '1',
+--       'https://github.com/wbthomason/packer.nvim',
+--       installPath
+--     })
+--     vim.cmd [[ packadd packer.nvim ]]
+--     return true
+--   end
+--   return false
+-- end
+-- 
+-- local packer = ensure_packer()
+-- 
+-- return require('packer').startup(function(use)
+--   if packer then
+--     require('packer').sync()
+--   end
+-- end)

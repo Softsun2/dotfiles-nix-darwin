@@ -14,7 +14,9 @@
   (python-mode . eglot-ensure)
   (c-mode . eglot-ensure)
   (c++-mode . eglot-ensure)
+  (haskell-mode . eglot-ensure)
   (tuareg-mode . eglot-ensure)
+  (fortran-mode . eglot-ensure)
 
   :config
   ;; explicitly declare which language servers to use
@@ -35,7 +37,11 @@
 	       '((haskell-mode) . ("haskell-language-server-wrapper" "lsp")))
   
   (add-to-list 'eglot-server-programs
-	       '(tuareg-mode . ("ocamllsp"))))
+	       '(tuareg-mode . ("ocamllsp")))
+
+  (add-to-list 'eglot-server-programs
+	       '((fortran-mode f90-mode) . ("fortls" "--notify_init"))))
+  
 
 
 (provide 'ss2-lsp)

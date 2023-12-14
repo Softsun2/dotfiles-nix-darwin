@@ -19,10 +19,9 @@
     jq
 
     # emacs extra packages
-    rnix-lsp
-    pyright
-    ocamlPackages.ocaml-lsp
-    nixfmt
+    # rnix-lsp
+    # pyright
+    # nixfmt
 
     # misc
     optifinePackages.optifine_1_19_2
@@ -40,10 +39,6 @@
   home.file."${config.home.username}/videos/.keep".text = "";
   home.file."${config.home.username}/writing/.keep".text = "";
 
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
-
   programs.zsh = {
     enable = true;
     initExtra = ''
@@ -58,6 +53,49 @@
       emacs = "${config.programs.emacs.finalPackage}/Applications/Emacs.app/Contents/MacOS/Emacs";
     };
     cdpath = [ "${config.home.homeDirectory}/softsun2" ];
+  };
+
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    viAlias = true;
+    vimdiffAlias = true;
+    defaultEditor = true;
+    extraLuaConfig = ''
+      -- source my config
+      vim.opt.runtimepath:prepend('${config.home.homeDirectory}/.dotfiles/config/nvim')
+      require('ss2-init')
+    '';
+    plugins = with pkgs.vimPlugins; [
+      nvim-lspconfig          # community maintained lsp configurations
+      lspkind-nvim            # lsp suggestion pictograms
+
+      nvim-cmp                # completion engine
+      cmp-nvim-lsp            # lsp completion source
+      cmp-path                # file system completion source
+
+      # am I lazy enough to use snippets?
+      # luasnip
+      # friendly-snippets
+
+      # treesitter with grammars
+      (nvim-treesitter.withPlugins (g: with g; [
+        nix
+        lua
+        bash
+        c cpp
+        haskell
+      ]))
+
+      vim-nix                 # nix
+      gitsigns-nvim           # gutter git info
+      telescope-nvim          # integrated fuzzy finder
+    ];
+    extraPackages = with pkgs; [
+      rnix-lsp
+      sumneko-lua-language-server
+      ripgrep
+    ];
   };
 
   programs.emacs = {
@@ -77,10 +115,11 @@
     # declare emacs packages with nix
     extraPackages = pkgs: with pkgs; [ 
       use-package
-      org-roam
+      meow
+      ef-themes
       eglot
       company
-      ef-themes
+      org-roam
       expand-region
 
       # language modes
@@ -88,15 +127,6 @@
       haskell-mode
       tuareg # ocaml mode
     ];
-  };
-
-  programs.vim = {
-    enable = true;
-    extraConfig = ''
-      set nowrap
-      set number
-      set noswapfile
-    '';
   };
 
   programs.tmux = {
