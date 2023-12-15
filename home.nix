@@ -73,6 +73,8 @@
       nvim-cmp                # completion engine
       cmp-nvim-lsp            # lsp completion source
       cmp-path                # file system completion source
+      cmp-nvim-lua            # lua (for nvim) completion source
+      # cmp-spell/cmp-dictionary
 
       # am I lazy enough to use snippets?
       # luasnip

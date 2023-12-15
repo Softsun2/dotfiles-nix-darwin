@@ -14,6 +14,7 @@ return {
     return string.gsub(unixPath, "/", "\\")
   end,
 
+  -- TODO: parse for module dependencies
   bootstrapModule = function (m)
     if not m.name then
       error("No module specified.")
