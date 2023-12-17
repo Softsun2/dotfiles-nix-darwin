@@ -1,5 +1,5 @@
 -- language server configurations
-require("ss2-lib").bootstrapModule({
+Ss2.bootstrapModule({
   name = "lspconfig",
   configure = function (lspconfig)
     -- configure with neovim in mind
@@ -21,12 +21,17 @@ require("ss2-lib").bootstrapModule({
 })
 
 -- completion engine
-require("ss2-lib").bootstrapModule({
+Ss2.bootstrapModule({
   name = "cmp",
   -- dependencies = {
   -- },
   configure = function (cmp)
     cmp.setup({
+      snippet = {
+        expand = function(args)
+          Ss2.safeLoadModule("luasnip").lsp_expand(args.body)
+        end
+      },
       mapping = cmp.mapping.preset.insert({
         ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -42,7 +47,7 @@ require("ss2-lib").bootstrapModule({
         { name = "nvim_lsp", keyword_length = 3, entry_filter =
           -- don't suggest buffer text or snippet completions
           function (entry, _)
-            local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
+            local kind = Ss2.safeLoadModule("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
             return kind ~= "Text" and kind ~= "Snippet"
           end
         },

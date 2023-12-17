@@ -77,7 +77,7 @@
       # cmp-spell/cmp-dictionary
 
       # am I lazy enough to use snippets?
-      # luasnip
+      luasnip
       # friendly-snippets
 
       # treesitter with grammars

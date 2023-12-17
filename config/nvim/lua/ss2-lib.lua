@@ -1,5 +1,18 @@
+-- hoist util so they can be used in the module
 local printf = function (formatString, ...)
   print(string.format(formatString, ...))
+end
+local safeLoadModule = function (mName)
+  if not mName then
+    error("No module specified.")
+  end
+  local success, module = pcall(require, mName)
+  if success then
+    return module
+  else
+    printf("Module %s failed to load.\n%s", mName, module)
+    return nil
+  end
 end
 
 return {
@@ -14,25 +27,28 @@ return {
     return string.gsub(unixPath, "/", "\\")
   end,
 
+  printf = printf,
+  safeLoadModule = safeLoadModule,
+
   -- TODO: parse for module dependencies
   bootstrapModule = function (m)
     if not m.name then
       error("No module specified.")
     end
 
-    local installed, _ = pcall(require, m.name)
-    if not installed and not m.install then
+    local module = safeLoadModule(m.name)
+    if not module and not m.install then
       printf("No installer for %s, skipping installation.", m.name)
       return
-    elseif not installed then
+    elseif not module then
       m.install()
     end
 
-    installed, module = pcall(require, m.name)
-    if not installed then
+    local module = safeLoadModule(m.name)
+    if not module then
       printf("Installation of %s failed, skipping configuration.", m.name)
       return
-    elseif installed and not m.configure then
+    elseif module and not m.configure then
       printf("No configurer for %s, skipping configuration.", m.name)
       return
     else

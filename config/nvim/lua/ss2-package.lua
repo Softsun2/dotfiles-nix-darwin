@@ -1,3 +1,3 @@
 -- requiring packages
 
-require('packages.ss2-treesitter')
+Ss2.safeLoadModule('packages.ss2-treesitter')

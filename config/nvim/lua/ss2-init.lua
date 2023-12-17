@@ -1,8 +1,12 @@
-require('ss2-bootstrap')  -- bootstrapper
-require('ss2-settings')   -- neovim options
--- require('ss2-keymaps')   -- global keymaps
-require('ss2-lsp')        -- lsp
-require('ss2-package')    -- packages
+-- this should be the only require, so it's global
+Ss2 = require("ss2-lib")
+
+-- Ss2.safeLoadModule('ss2-bootstrap')  -- bootstrapper
+Ss2.safeLoadModule('ss2-settings')      -- neovim options
+Ss2.safeLoadModule('ss2-colors')        -- neovim options
+-- Ss2.safeLoadModule('ss2-keymaps')    -- global keymaps
+Ss2.safeLoadModule('ss2-lsp')           -- lsp
+Ss2.safeLoadModule('ss2-package')       -- packages
 
 -- require('luasnip')
 -- require('completion')
