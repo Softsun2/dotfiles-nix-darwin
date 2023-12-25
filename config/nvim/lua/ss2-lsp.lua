@@ -23,8 +23,6 @@ Ss2.bootstrapModule({
 -- completion engine
 Ss2.bootstrapModule({
   name = "cmp",
-  -- dependencies = {
-  -- },
   configure = function (cmp)
     cmp.setup({
       snippet = {

@@ -1,15 +1,13 @@
 -- this should be the only require, so it's global
 Ss2 = require("ss2-lib")
 
--- Ss2.safeLoadModule('ss2-bootstrap')  -- bootstrapper
-Ss2.safeLoadModule('ss2-settings')      -- neovim options
-Ss2.safeLoadModule('ss2-colors')        -- neovim options
--- Ss2.safeLoadModule('ss2-keymaps')    -- global keymaps
-Ss2.safeLoadModule('ss2-lsp')           -- lsp
-Ss2.safeLoadModule('ss2-package')       -- packages
+Ss2.safeLoadModule("ss2-bootstrap")     -- bootstrapper
+Ss2.safeLoadModule("ss2-settings")      -- neovim options
+Ss2.safeLoadModule("ss2-colors")        -- neovim options
+Ss2.safeLoadModule("ss2-keybinds")      -- global keymaps
+Ss2.safeLoadModule("ss2-lsp")           -- lsp
+Ss2.safeLoadModule("ss2-package")       -- packages
 
--- require('luasnip')
--- require('completion')
 -- require('telescope')
 -- require('treesitter')
 -- require('gitsigns')
@@ -25,4 +23,3 @@ Ss2.safeLoadModule('ss2-package')       -- packages
 -- disable completions in telescope/vin cmds
 -- floating window highlight groups are messed up
 -- size windows to 80 col width
-

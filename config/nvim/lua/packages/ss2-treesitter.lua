@@ -1,6 +1,5 @@
 -- richer language parsing features
-
-require('ss2-lib').bootstrapModule({
+Ss2.bootstrapModule({
   name = 'nvim-treesitter.configs',
   install = function ()
     -- TODO: plug/packer install

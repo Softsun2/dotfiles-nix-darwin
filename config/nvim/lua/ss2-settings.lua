@@ -14,12 +14,12 @@ opt.colorcolumn = "80"
 -- History
 opt.swapfile = false
 opt.undofile = true
-opt.undodir = os.getenv('HOME') .. "/.cache"
+opt.undodir = os.getenv("HOME") .. "/.cache"
 
 -- Indentation
 opt.autoindent = true           -- copy current indent level when starting a new line
-opt.tabstop = 2                 -- number of spaces a tab when tabbing
-opt.shiftwidth = 2              -- denotes width of a level of indentation
+opt.tabstop = 4                 -- number of spaces a tab when tabbing
+opt.shiftwidth = 4              -- denotes width of a level of indentation
 opt.expandtab = true            -- tab with spaces
 
 -- folding
@@ -37,4 +37,3 @@ opt.incsearch = true
 
 -- disable this abomination
 g.omni_sql_no_default_maps = 1
-
