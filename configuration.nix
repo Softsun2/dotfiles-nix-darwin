@@ -32,7 +32,7 @@
   };
 
   # Create /etc/bashrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;  # default shell on catalina
+  programs.zsh.enable = true; # default shell on catalina
 
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/activation-scripts.nix:
   # A set of shell script fragments that are executed when a NixOS system configuration is activated.
@@ -49,19 +49,19 @@
   # https://developer.apple.com/library/archive/technotes/tn2450/_index.html#//apple_ref/doc/uid/DTS40017618-CH1-KEY_TABLE_USAGES
   # python3 -c '(lambda srcId, dstId: print(0x700000000^srcId, 0x700000000^dstId))'
   # hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000065,"HIDKeyboardModifierMappingDst":0x7000000E7}]}'
-  # system.keyboard = {
-  #  enableKeyMapping = true;
-  #  remapCapsLockToControl = true;
-  #  userKeyMapping = [
-  #    # remap left control to escape
-  #    ({
-  #      # for example swap left alt and left mod key:
-  #      # python3 -c '(lambda srcId, dstId: print(0x700000000^srcId, 0x700000000^dstId))(0xE2, 0xE3)'
-  #      HIDKeyboardModifierMappingSrc = 30064771296;
-  #      HIDKeyboardModifierMappingDst = 30064771113;
-  #    })
-  #  ];
-  #};
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToControl = true;
+    userKeyMapping = [
+      # remap left control to escape
+      ({
+        # for example swap left alt and left mod key:
+        # python3 -c '(lambda srcId, dstId: print(0x700000000^srcId, 0x700000000^dstId))(0xE2, 0xE3)'
+        HIDKeyboardModifierMappingSrc = 30064771296;
+        HIDKeyboardModifierMappingDst = 30064771113;
+      })
+    ];
+  };
 
   # services
   services = {
@@ -83,15 +83,18 @@
       lockfiles = false;
     };
     taps = [
-      "homebrew/cask"
       "homebrew/cask-versions"
     ];
     casks = [
       "docker"
       "via"
-      "firefox" "tor-browser"
-      "discord" "steam" "minecraft"
-      "olive" "vlc"
+      "firefox"
+      "tor-browser"
+      "discord"
+      "steam"
+      "minecraft"
+      "olive"
+      "vlc"
     ];
   };
 

@@ -38,17 +38,21 @@ Ss2.useModule({
         })
         -- lspconfig.clangd.setup({ on_attach = supportLspOverloads })
 
-        -- configure lsp ui frames
+        -- configure lsp ui
+        Ss2.safeLoadModule('lspconfig.ui.windows').default_options = {
+            border = "single"
+        }
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-            vim.lsp.handlers.hover, {
-                border = "single",
-            }
+            vim.lsp.handlers.hover,
+            { border = "single", }
         )
         vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-            vim.lsp.handlers.signature_help, {
-                border = "single"
-            }
+            vim.lsp.handlers.signature_help,
+            { border = "single" }
         )
+
+        -- disable diagnostic noise
+        vim.diagnostic.config({ virtual_text = false })
 
         -- odd workaround w/r to https://github.com/Issafalcon/lsp-overloads.nvim/issues/35
         vim.keymap.set("n", "<C-k>", function()
@@ -64,14 +68,18 @@ Ss2.useModule({
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
             callback = function(ev)
                 -- Buffer local mappings.
-                -- See `:help vim.lsp.*` for documentation on any of the below functions
-                local opts = { buffer = ev.buf }
-                local telescopeBuiltin = Ss2.safeLoadModule("telescope.builtin")
+                local opts = { buffer = ev.buf, noremap = true }
                 vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-                vim.keymap.set('n', 'gd', vim.lsp.buf.type_definition, opts)
+                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
                 vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
                 vim.keymap.set('n', 'gi', vim.lsp.buf.incoming_calls, opts)
-                vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
+                vim.keymap.set('n', '<leader>e', function()
+                    vim.diagnostic.open_float({ border = "single" })
+                end, opts)
+                vim.keymap.set('n', '<leader>qe', vim.diagnostic.setqflist, opts)
+                vim.keymap.set('n', '<leader>f', function()
+                    vim.lsp.buf.format({ async = true })
+                end, opts)
                 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
                 vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
             end,
