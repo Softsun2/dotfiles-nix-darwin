@@ -7,9 +7,9 @@ local o = vim.o
 wo.number = true                -- line numbers
 wo.relativenumber = true        -- relative line numbers
 wo.wrap = false                 -- no wrap
-o.termguicolors = false
 opt.cursorline = true
 opt.colorcolumn = "80"
+opt.pumheight = 10              -- maximum number of lines a popup can span
 
 -- History
 opt.swapfile = false

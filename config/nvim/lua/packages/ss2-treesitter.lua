@@ -1,16 +1,12 @@
 -- richer language parsing features
-Ss2.bootstrapModule({
+Ss2.useModule({
   name = 'nvim-treesitter.configs',
-  install = function ()
-    -- TODO: plug/packer install
-  end,
+  required = true,
   configure = function (nvimTreesitter)
-    -- local parserInstallDir = nix vs non-nix
     nvimTreesitter.setup({
+      ensure_installed = Ss2.isNixUser() and {} or { "lua" },
       auto_install = false,
-        -- parser_install_dir = parserInstallDir
-        -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-      highlights = { enable = true }
+      highlight = { enable = true }
     })
     -- TODO: use treesitter for folding
   end

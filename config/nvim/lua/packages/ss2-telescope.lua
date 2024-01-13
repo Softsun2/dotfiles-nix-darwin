@@ -1,6 +1,6 @@
-Ss2.bootstrapModule({
+Ss2.useModule({
   name = 'telescope',
-  install = function () end,
+  required = true,
   configure = function (telescope)
     -- setup telescope
     local actions = Ss2.safeLoadModule('telescope.actions')

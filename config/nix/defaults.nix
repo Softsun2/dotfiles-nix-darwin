@@ -34,7 +34,7 @@
   menuExtraClock.ShowDayOfWeek = true;
   menuExtraClock.ShowSeconds = false;
 
-  ".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";    # disable mouse acceleration
+  ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;    # disable mouse acceleration
   universalaccess.reduceTransparency = true;                  # reduce transparency (purple glitch)
   NSGlobalDomain = {
     ApplePressAndHoldEnabled = false;               # enable key repeating

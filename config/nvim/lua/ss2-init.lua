@@ -1,16 +1,13 @@
--- this should be the only require, so it's global
 Ss2 = require("ss2-lib")
 
-Ss2.safeLoadModule("ss2-bootstrap")     -- bootstrapper
+-- dependency-less configuration
 Ss2.safeLoadModule("ss2-settings")      -- neovim options
-Ss2.safeLoadModule("ss2-colors")        -- neovim options
 Ss2.safeLoadModule("ss2-keybinds")      -- global keymaps
+Ss2.safeLoadModule("ss2-colors")        -- neovim colorscheme
+
+Ss2.safeLoadModule("ss2-lazy")          -- package manager
 Ss2.safeLoadModule("ss2-lsp")           -- lsp
 Ss2.safeLoadModule("ss2-package")       -- packages
-
--- require('telescope')
--- require('treesitter')
--- require('gitsigns')
 
 -- todo
 -- lsp diagnostic interaction/code actions

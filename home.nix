@@ -4,26 +4,24 @@
   programs.home-manager.enable = true;
 
   # pin home manager modules/packages to the latest nix-stable channel
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
   
   home.username = "softsun2";
   home.homeDirectory = /Users/softsun2;
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    # dev
-    ffmpeg
-    yt-dlp
-    tldr
-    tree
-    plistwatch
-    neofetch
-    jq
+    (nerdfonts.override { fonts = [ "Hasklig" ]; })  # <3
+
+    # media
+    ffmpeg yt-dlp
+
+    # dev tools
+    tldr tree plistwatch jq
 
     # emacs extra packages
-    # rnix-lsp
-    # pyright
-    # nixfmt
+    # rnix-lsp pyright nixfmt
 
-    # misc
+    # gaming
     optifinePackages.optifine_1_19_2
   ];
 
@@ -63,12 +61,13 @@
     defaultEditor = true;
     extraLuaConfig = ''
       -- source my config
-      vim.opt.runtimepath:prepend('${config.home.homeDirectory}/.dotfiles/config/nvim')
-      require('ss2-init')
+      vim.opt.runtimepath:prepend("${config.home.homeDirectory}/.dotfiles/config/nvim")
+      require("ss2-init")
     '';
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig          # community maintained lsp configurations
       lspkind-nvim            # lsp suggestion pictograms
+      lsp-overloads-nvim
 
       nvim-cmp                # completion engine
       cmp-nvim-lsp            # lsp completion source
@@ -82,16 +81,13 @@
 
       # treesitter with grammars
       (nvim-treesitter.withPlugins (g: with g; [
-        nix
-        lua
-        bash
-        c cpp
-        haskell
+        nix lua bash c cpp haskell markdown markdown-inline regex
       ]))
 
       vim-nix                 # nix
       gitsigns-nvim           # gutter git info
       telescope-nvim          # integrated fuzzy finder
+      vim-devicons
     ];
     extraPackages = with pkgs; [
       rnix-lsp
