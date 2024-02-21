@@ -10,7 +10,7 @@
   home.homeDirectory = /Users/softsun2;
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hasklig" ]; })  # <3
+    (nerdfonts.override { fonts = [ "Hasklig" ]; })
 
     # media
     ffmpeg yt-dlp
@@ -20,12 +20,9 @@
 
     # emacs extra packages
     # rnix-lsp pyright nixfmt
-
-    # gaming
-    optifinePackages.optifine_1_19_2
   ];
 
-  # TODO: reduce code resuse with some sort of higher order function
+  # TODO: use a list or something
   home.file."${config.home.username}/agenda/.keep".text = "";
   home.file."${config.home.username}/archive/.keep".text = "";
   home.file."${config.home.username}/dev/.keep".text = "";
@@ -84,7 +81,6 @@
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    viAlias = true;
     vimdiffAlias = true;
     defaultEditor = true;
     extraLuaConfig = ''
@@ -102,10 +98,7 @@
       cmp-path                # file system completion source
       cmp-nvim-lua            # lua (for nvim) completion source
       # cmp-spell/cmp-dictionary
-
-      # am I lazy enough to use snippets?
       luasnip
-      # friendly-snippets
 
       # treesitter with grammars
       (nvim-treesitter.withPlugins (g: with g; [
@@ -115,7 +108,7 @@
       vim-nix                 # nix
       gitsigns-nvim           # gutter git info
       telescope-nvim          # integrated fuzzy finder
-      vim-devicons
+      vim-devicons            # stupid icon dependency
     ];
     extraPackages = with pkgs; [
       rnix-lsp
@@ -159,9 +152,10 @@
     enable = true;
     prefix = "C-a";
     escapeTime = 50;
+    baseIndex = 1;
     terminal = "screen-256color";
     extraConfig = ''
-      set-option -g status-position bottom
+      setw -g mode-keys vi
     '';
   };
 

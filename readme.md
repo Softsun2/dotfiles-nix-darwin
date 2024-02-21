@@ -32,7 +32,9 @@ I desire an intentional and static development environment.
 -   [ ] Document full boostrap process
     - 	[ ] [Pinning flake inputs to channels](https://ayats.org/blog/channels-to-flakes/)
 -   [ ] Submit to MacOS
-    -   [ ] Single theme (for apps where the theming is trivial) with light/dark variant. If possible, the **only** runtime theming should be [toggling light and dark mode system-wide](https://grrr.tech/posts/2020/switch-dark-mode-os/).
+    -   [X] Single theme (for apps where the theming is trivial) with light/dark variant. If possible, the **only** runtime theming should be [toggling light and dark mode system-wide](https://grrr.tech/posts/2020/switch-dark-mode-os/).
+        - lunaperche (vim)
+        - ef-autumn (emacs)
     -   [X] One persistent bg.
     -   [X] Satisfactory nix-darwin system configurations ([See notes](./notes/nix-darwin-system-defaults.md)). Attempt to eliminate any imperative system configurations.
     -   [X] Use MacOS applications for non-cross-platform applications whenever possible. The built-in terminal app is terrible *but* it does enough. If it comes to it alacritty looks like a simple alternative.
@@ -60,6 +62,7 @@ I desire an intentional and static development environment.
     -   [ ] Intentional browser experience.
     -   [X] Manage user **data** (file) structure with Nix
     -   [ ] Investigate syncing vs version control (keep mobile devices in mind).
+-   [ ] Project config (sessionizer + shell envs) w/ Nix
 
 ## Notes
 

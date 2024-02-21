@@ -3,12 +3,7 @@
   # nix-darwin options: https://daiderd.com/nix-darwin/manual/index.html
   # https://github.com/LnL7/nix-darwin/blob/master/tests/system-defaults-write.nix
   # system packages
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    nix-prefetch-docker
-    xquartz
-  ];
+  environment.systemPackages = with pkgs; [ vim git ];
 
   # enable flakes
   nix.extraOptions = ''
@@ -31,7 +26,6 @@
     options = "--delete-older-than 1w";
   };
 
-  # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
 
   # https://github.com/LnL7/nix-darwin/blob/master/modules/system/activation-scripts.nix:
@@ -65,10 +59,8 @@
 
   # services
   services = {
-
     skhd = import ./config/nix/skhd.nix { enable = true; package = pkgs.skhd; };
     yabai = import ./config/nix/yabai.nix { enable = true; package = pkgs.yabai; };
-
   };
 
   homebrew = {
@@ -86,13 +78,11 @@
       "homebrew/cask-versions"
     ];
     casks = [
+      "alacritty"
       "docker"
       "via"
       "firefox"
-      "tor-browser"
       "discord"
-      "steam"
-      "minecraft"
       "olive"
       "vlc"
     ];

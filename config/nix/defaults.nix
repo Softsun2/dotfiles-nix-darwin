@@ -56,7 +56,6 @@
     Clicking = true;                 # enable tap to click
   };
 
-  # TODO: implement defaults write com.apple.dock workspaces-auto-swoosh -bool NO
   dock = {
     autohide = true;
     mru-spaces = false;              # disable rearranging spaces based on most recent use
@@ -67,7 +66,7 @@
 
   finder = {
     AppleShowAllExtensions = true;   # show all file extensions
-    AppleShowAllFiles = true;        # show hidden files
+    AppleShowAllFiles = false;       # don't show hidden files
     QuitMenuItem = true;             # enable quitting finder
     _FXShowPosixPathInTitle = true;  # show the full POSIX filepath in the window title
     FXPreferredViewStyle = "clmv";   # set the default view to column view

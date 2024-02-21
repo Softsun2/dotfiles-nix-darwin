@@ -15,7 +15,10 @@
         (load-theme ss2-dark-theme :no-confirm))
     (when ss2-light-theme
       (load-theme ss2-light-theme :no-confirm))))
-	
+
+;;; Font
+
+;;; (add-to-list 'default-frame-alist '(font . "Hasklug Nerd Font"))
 
 ;;; Theme
 

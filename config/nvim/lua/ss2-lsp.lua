@@ -29,7 +29,10 @@ Ss2.useModule({
             }
         })
         lspconfig.rnix.setup({})
-        lspconfig.hls.setup({ on_attach = supportLspOverloads })
+        lspconfig.hls.setup({
+            cmd = { "haskell-language-server-wrapper", "--lsp", "-l", "/tmp/hls.out" },
+            on_attach = supportLspOverloads,
+        })
         lspconfig.ccls.setup({
             on_attach = supportLspOverloads,
             init_options = {
