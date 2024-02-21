@@ -37,20 +37,48 @@
   home.file."${config.home.username}/videos/.keep".text = "";
   home.file."${config.home.username}/writing/.keep".text = "";
 
-  programs.zsh = {
+  home.file."${config.xdg.configHome}/alacritty.toml".text = ''
+    [shell]
+      program = "/run/current-system/sw/bin/bash"
+      args = ["--login"]
+  '';
+
+  # added to .profile
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.dotfiles/bin"
+  ];
+
+  home.shellAliases = {
+    l = "ls -l";
+    ll = "ls -al";
+    ".." = "cd ..";
+  };
+
+  programs.bash = {
     enable = true;
+    enableCompletion = true;
     initExtra = ''
       ${config.home.homeDirectory}/.dotfiles/bin/solar-system
+      ss2-prompt () {
+          host="\e[2;37m\h\e[0m"
+          user="$(test -z $IN_NIX_SHELL && echo '\e[4;33m' || echo '\e[4;34m')\u\e[0m"
+          path="\e[0;33m$(basename $(pwd))\e[0m"
+          seperator="\e[2;37m¶\e[0m"
+          PS1="$host\e[2;37m(\e[0m$user\e[2;37m)\e[0m$seperator "
+      }
     '';
+    sessionVariables = {
+      SHELL = "/run/current-system/sw/bin/bash";
+      PROMPT_COMMAND = "ss2-prompt";
+    };
     shellAliases = {
-      l = "ls -l";
-      ll = "ls -al";
-
+      dot = "cd ${config.home.homeDirectory}/.dotfiles";
+      home-switch = "home-manager switch --flake ${config.home.homeDirectory}/.dotfiles";
+      darwin-switch = "darwin-rebuild switch --flake ${config.home.homeDirectory}/.dotfiles";
       # window role patch support
       # https://nixos.wiki/wiki/Emacs#Window_manager_integration
       emacs = "${config.programs.emacs.finalPackage}/Applications/Emacs.app/Contents/MacOS/Emacs";
     };
-    cdpath = [ "${config.home.homeDirectory}/softsun2" ];
   };
 
   programs.neovim = {
