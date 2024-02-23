@@ -46,6 +46,7 @@
   ];
 
   home.shellAliases = {
+    c = "clear";
     l = "ls -l";
     ll = "ls -al";
     ".." = "cd ..";
