@@ -1,0 +1,24 @@
+#!/bin/sh
+
+usage() {
+    echo "Usage: $0 enable|disable" >&2
+    exit 1
+}
+
+setkeybinds () {
+    enabled="$1"
+    userKeyMapping="[]"
+    if [ "$enabled" -eq 1 ]; then
+        userKeyMapping="$(nix eval --json ~/.dotfiles\#darwinConfigurations.woollymammoth.config.system.keyboard.userKeyMapping)"
+    fi
+    hidutil property --set "{\"UserKeyMapping\":$userKeyMapping}"
+}
+
+[ "$#" -eq 1 ] || usage
+
+case "$1" in
+  enable) setkeybinds 1 ;;
+  disable) setkeybinds 0 ;;
+  *) usage ;;
+esac
+
