@@ -8,7 +8,7 @@ in lib.mkMerge [
     manual.manpages.enable = false;
 
     # pin home manager modules/packages to the latest nix-stable channel
-    home.stateVersion = "25.05";
+    home.stateVersion = "25.11";
 
     home.username = "softsun2";
     home.homeDirectory = (if isLinux then /home else /Users) + /softsun2;
@@ -155,9 +155,9 @@ in lib.mkMerge [
 
     programs.git = {
       enable = true;
-      userName = "softsun2";
-      userEmail = "peyton.okubo13@gmail.com";
-      extraConfig = { init = { defaultBranch = "main"; }; };
+      settings.user.name = "softsun2";
+      settings.user.email = "peyton.okubo13@gmail.com";
+      settings.init.defaultBranch = "main";
     };
 
   }
